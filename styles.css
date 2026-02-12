@@ -4,27 +4,52 @@
    ======================================== */
 
 /* === IMPORTS === */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+
+
+@font-face {
+  font-family: "Gendy";
+  src: url("Gendy.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* === CSS CUSTOM PROPERTIES === */
 :root {
   /* Colors - Primary */
-  --color-yellow-primary: #FFC107;
-  --color-yellow-light: #FFD54F;
-  --color-yellow-dark: #F9A825;
+  --color-yellow-primary: #ffc107;
+  --color-yellow-light: #ffd54f;
+  --color-yellow-dark: #f9a825;
   --color-black: #000000;
-  --color-black-light: #1A1A1A;
-  --color-gray-dark: #2D2D2D;
+  --color-black-light: #1a1a1a;
+  --color-gray-dark: #2d2d2d;
   --color-gray-medium: #424242;
-  --color-white: #FFFFFF;
+  --color-white: #ffffff;
 
   /* Gradients */
-  --gradient-yellow: linear-gradient(135deg, var(--color-yellow-primary) 0%, var(--color-yellow-dark) 100%);
-  --gradient-black: linear-gradient(135deg, var(--color-black) 0%, var(--color-gray-dark) 100%);
-  --gradient-hero: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 26, 0.9) 100%);
+  --gradient-yellow: linear-gradient(
+    135deg,
+    var(--color-yellow-primary) 0%,
+    var(--color-yellow-dark) 100%
+  );
+  --gradient-black: linear-gradient(
+    135deg,
+    var(--color-black) 0%,
+    var(--color-gray-dark) 100%
+  );
+  --gradient-hero: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(26, 26, 26, 0.9) 100%
+  );
 
   /* Typography */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-primary: var(--font-body);
+  --font-footer: var(--font-body);
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -85,7 +110,7 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-body);
   font-weight: var(--font-weight-regular);
   line-height: 1.6;
   color: var(--color-gray-medium);
@@ -119,6 +144,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-heading);
   font-weight: var(--font-weight-bold);
   line-height: 1.2;
   color: var(--color-black);
@@ -234,7 +260,7 @@ p {
 }
 
 .navbar-menu a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -283,20 +309,27 @@ p {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(circle at 20% 50%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255, 193, 7, 0.1) 0%, transparent 50%);
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(255, 193, 7, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 193, 7, 0.1) 0%,
+      transparent 50%
+    );
   animation: pulse 8s ease-in-out infinite;
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 0.5;
@@ -503,7 +536,7 @@ p {
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -564,6 +597,7 @@ p {
   background: var(--gradient-black);
   color: var(--color-white);
   padding: var(--spacing-3xl) 0 var(--spacing-lg);
+  font-family: var(--font-footer);
 }
 
 .footer-content {
@@ -627,7 +661,8 @@ p {
   width: 24px;
   height: 24px;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(77%) sepia(85%) saturate(1352%) hue-rotate(1deg) brightness(103%) contrast(101%);
+  filter: brightness(0) saturate(100%) invert(77%) sepia(85%) saturate(1352%)
+    hue-rotate(1deg) brightness(103%) contrast(101%);
 }
 
 .social-link:hover {
@@ -637,7 +672,8 @@ p {
 }
 
 .social-link:hover img {
-  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%)
+    hue-rotate(0deg) brightness(0%) contrast(100%);
 }
 
 /* === SPONSORSHIP TIERS === */
@@ -653,7 +689,7 @@ p {
 }
 
 .tier-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -663,15 +699,15 @@ p {
 }
 
 .tier-card.gold::before {
-  background: linear-gradient(135deg, #F9A825 0%, #FFC107 100%);
+  background: linear-gradient(135deg, #f9a825 0%, #ffc107 100%);
 }
 
 .tier-card.diamond::before {
-  background: linear-gradient(135deg, #B9F2FF 0%, #00BCD4 100%);
+  background: linear-gradient(135deg, #b9f2ff 0%, #00bcd4 100%);
 }
 
 .tier-card.platinum::before {
-  background: linear-gradient(135deg, #E8E8E8 0%, #9E9E9E 100%);
+  background: linear-gradient(135deg, #e8e8e8 0%, #9e9e9e 100%);
 }
 
 .tier-card:hover {
@@ -707,7 +743,7 @@ p {
 }
 
 .tier-benefits li::before {
-  content: '✓';
+  content: "✓";
   color: var(--color-yellow-primary);
   font-weight: var(--font-weight-bold);
   font-size: 1.25rem;
@@ -763,6 +799,12 @@ p {
 
 .text-yellow {
   color: var(--color-yellow-primary);
+}
+
+.font-brand {
+  font-family: "Gendy", sans-serif;
+  font-weight: normal; /* Gendy appears to be a display font, ensure it renders correctly */
+  padding-left: 0.5em;
 }
 
 .bg-black {
