@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://kclms-ftc.github.io/ftc_web/sitemap.xml
+Sitemap: https://kclms-ftc.github.io/kclms-ftc-web/sitemap.xml
 
 # Disallow crawling of generated assets (optional)
 Disallow: /generated/
