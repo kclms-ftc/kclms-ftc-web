@@ -5,32 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="KCLMS FTC ASYMPTOTES resources - guides, tutorials, and helpful links for students and teams. Learn FTC programming, CAD design, and robotics fundamentals.">
-    <meta name="keywords" content="FTC resources, robotics tutorials, FTC programming guide, CAD software learning, STEM education resources, robotics for students">
-    <link rel="canonical" href="https://kclms-ftc.github.io/ftc_web/resources.html">
+        content="KCLMS Volcanix resources - guides, tutorials and helpful links for students and FTC teams. Learn programming, CAD and robotics fundamentals.">
+    <meta name="keywords" content="FTC resources, robotics tutorials, FTC programming guide, CAD learning, STEM resources">
+    <link rel="canonical" href="https://kclms-ftc.github.io/kclms-ftc-web/resources.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Resources - KCLMS FTC ASYMPTOTES">
-    <meta property="og:description" content="Guides, tutorials, and helpful links for students and teams.">
-    <meta property="og:image" content="https://kclms-ftc.github.io/ftc_web/kclms asymptotes.jpeg">
+    <meta property="og:title" content="Resources - KCLMS Volcanix">
+    <meta property="og:description" content="Guides, tutorials and helpful links for students and teams.">
+    <meta property="og:image" content="https://kclms-ftc.github.io/kclms-ftc-web/media/robot-cad.jpeg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="robots" content="index, follow">
-    <title>Resources - KCLMS FTC ASYMPTOTES</title>
-    <link rel="icon" type="image/jpeg" href="kclms asymptotes.jpeg">
+    <meta name="theme-color" content="#000000">
+    <title>Resources - KCLMS Volcanix</title>
+    <link rel="icon" type="image/png" href="media/volcanix-logo-96.png">
+    <script>(function(){try{var d=document.documentElement;var t=localStorage.getItem("theme")||"dark";d.setAttribute("data-theme",t);if(localStorage.getItem("volcanixLoaderSeen")){d.setAttribute("data-loader","seen");}}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Navigation -->
+    <div id="loader" aria-hidden="true">
+        <div class="loader-stripes"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="loader-foot">
+            <div class="loader-mark"><span class="loader-word">KCLMS</span><span class="loader-sub">Volcanix</span></div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="navbar-brand">
-                <img src="kclms asymptotes.jpeg" alt="KCLMS ASYMPTOTES Logo">
-                <span class="font-brand">KCLMS ASYMPTOTES</span>
+                <img src="media/volcanix-logo-96.png" alt="KCLMS Volcanix logo">
+                <span>Volcanix</span>
             </a>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme" title="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <div class="mobile-menu-toggle"><span></span><span></span><span></span></div>
             </div>
             <ul class="navbar-menu">
                 <li><a href="index.html">Home</a></li>
@@ -45,227 +56,175 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="hero" style="min-height: 50vh; padding-top: 120px;">
-        <div class="hero-content">
+    <header class="page-header">
+        <div class="hero-media"><img src="media/programming-2.jpg" alt="Programming session"></div>
+        <div class="container page-header-content">
+            <span class="stripe-accent"></span>
             <h1>Resources</h1>
-            <p class="hero-subtitle">Guides, Tutorials, and Helpful Links</p>
+            <p>Guides, tutorials and helpful links — and our open-source ethos in practice.</p>
         </div>
-    </section>
+    </header>
 
-    <!-- For Students -->
+    <!-- For students -->
     <section class="section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">For Students</h2>
-                <p class="section-subtitle">Learning resources to get started with robotics</p>
+            <div class="section-header center">
+                <span class="eyebrow">For Students</span>
+                <h2 class="section-title">Get Started With Robotics</h2>
+                <span class="stripe-accent"></span>
             </div>
-            <div class="grid grid-2">
-                <div class="card reveal">
-                    <h3 class="card-title">🤖 What is FTC?</h3>
-                    <p class="card-text" style="margin-bottom: var(--spacing-md);">
-                        Comprehensive guide to understanding the FIRST Tech Challenge, competition structure,
-                        and what to expect as a team member.
-                    </p>
-                    <a href="https://www.firstinspires.org/robotics/ftc" target="_blank" class="btn btn-outline">Learn
-                        More</a>
+            <div class="list-rows">
+                <div class="row reveal">
+                    <span class="row-num">01</span>
+                    <h3 class="row-title">What is FTC?</h3>
+                    <div class="row-text">A guide to the FIRST Tech Challenge, its structure and what to expect as a team member. <div class="row-links"><a href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener">FIRST Inspires</a></div></div>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title">💻 Programming Tutorials</h3>
-                    <p class="card-text" style="margin-bottom: var(--spacing-md);">
-                        Python and Java basics for FTC robotics. Start with block coding and progress to
-                        advanced autonomous programming.
-                    </p>
-                    <ul style="font-size: 0.95rem; margin-bottom: var(--spacing-md);">
-                        <li><a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Python Basics
-                                (Codecademy)</a></li>
-                        <li><a href="https://www.codecademy.com/learn/learn-java" target="_blank">Java Basics
-                                (Codecademy)</a></li>
-                        <li><a href="https://github.com/FIRST-Tech-Challenge/FtcRobotController" target="_blank">FTC SDK
-                                Documentation</a></li>
-                    </ul>
+                <div class="row reveal">
+                    <span class="row-num">02</span>
+                    <h3 class="row-title">Programming Tutorials</h3>
+                    <div class="row-text">Java and Python foundations for FTC robotics. <div class="row-links"><a href="https://www.codecademy.com/learn/learn-java" target="_blank" rel="noopener">Java basics</a><a href="https://www.codecademy.com/learn/learn-python-3" target="_blank" rel="noopener">Python basics</a><a href="https://github.com/FIRST-Tech-Challenge/FtcRobotController" target="_blank" rel="noopener">FTC SDK</a></div></div>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title">🔧 CAD Software Guides</h3>
-                    <p class="card-text" style="margin-bottom: var(--spacing-md);">
-                        Learn 3D CAD design for robot prototyping and visualization.
-                    </p>
-                    <ul style="font-size: 0.95rem; margin-bottom: var(--spacing-md);">
-                        <li><a href="https://www.onshape.com/en/education/" target="_blank">Onshape (Free for
-                                Students)</a></li>
-                        <li><a href="https://www.autodesk.com/education/edu-software" target="_blank">Fusion 360 (Free
-                                for Students)</a></li>
-                        <li><a href="https://www.youtube.com/playlist?list=PLxRZHBbZQoe7cPqCCwqCmxZYmWfBCwGqq"
-                                target="_blank">CAD Tutorial Playlist</a></li>
-                    </ul>
+                <div class="row reveal">
+                    <span class="row-num">03</span>
+                    <h3 class="row-title">CAD Software Guides</h3>
+                    <div class="row-text">Free, student-friendly CAD for prototyping and visualisation. <div class="row-links"><a href="https://www.onshape.com/en/education/" target="_blank" rel="noopener">Onshape</a><a href="https://www.autodesk.com/education/edu-software" target="_blank" rel="noopener">Fusion 360</a></div></div>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title">📚 Recommended Learning</h3>
-                    <p class="card-text" style="margin-bottom: var(--spacing-md);">
-                        Additional resources for developing robotics skills.
-                    </p>
-                    <ul style="font-size: 0.95rem;">
-                        <li>Engineering design process</li>
-                        <li>Project management basics</li>
-                        <li>Technical documentation</li>
-                        <li>Teamwork and collaboration</li>
-                    </ul>
+                <div class="row reveal">
+                    <span class="row-num">04</span>
+                    <h3 class="row-title">Path Following &amp; Vision</h3>
+                    <div class="row-text">The tools behind our autonomous stack. <div class="row-links"><a href="https://pedropathing.com/" target="_blank" rel="noopener">Pedro Pathing</a><a href="https://limelightvision.io/" target="_blank" rel="noopener">Limelight</a></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- For Teams -->
-    <section class="section bg-black">
+    <!-- For teams -->
+    <section class="section bg-soft">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" style="color: var(--color-yellow-primary);">For Teams</h2>
-                <p class="section-subtitle" style="color: var(--color-white);">
-                    Resources for starting and running an FTC team
-                </p>
+            <div class="section-header center">
+                <span class="eyebrow">For Teams</span>
+                <h2 class="section-title">Starting &amp; Running a Team</h2>
+                <span class="stripe-accent"></span>
             </div>
-            <div class="grid grid-2">
-                <div class="card reveal">
-                    <h3 class="card-title" style="color: var(--color-yellow-primary);">🚀 Starting an FTC Team</h3>
-                    <p class="card-text">
-                        Step-by-step guide to establishing a new FTC team at your school, including registration,
-                        recruitment, and initial setup.
-                    </p>
+            <div class="list-rows compact">
+                <div class="row reveal">
+                    <span class="row-num">01</span>
+                    <h3 class="row-title">Starting a Team</h3>
+                    <div class="row-text">Registration, recruitment and initial setup for a new FTC team.</div>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title" style="color: var(--color-yellow-primary);">💰 Fundraising Tips</h3>
-                    <p class="card-text">
-                        Strategies for securing sponsorships, writing grant proposals, and managing team finances
-                        effectively.
-                    </p>
+                <div class="row reveal">
+                    <span class="row-num">02</span>
+                    <h3 class="row-title">Fundraising</h3>
+                    <div class="row-text">Securing sponsorships, writing proposals and managing finances.</div>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title" style="color: var(--color-yellow-primary);">🏆 Competition Preparation</h3>
-                    <p class="card-text">
-                        What to expect at competitions, pit setup, judging presentations, and match strategy
-                        development.
-                    </p>
+                <div class="row reveal">
+                    <span class="row-num">03</span>
+                    <h3 class="row-title">Competition Prep</h3>
+                    <div class="row-text">Pit setup, judging presentations and match strategy.</div>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title" style="color: var(--color-yellow-primary);">📖 Lessons from Our Rookie Season
-                    </h3>
-                    <p class="card-text">
-                        Insights and lessons learned from our first year competing in FTC. What worked, what
-                        didn't, and what we'd do differently.
-                    </p>
+                <div class="row reveal">
+                    <span class="row-num">04</span>
+                    <h3 class="row-title">Rookie Lessons</h3>
+                    <div class="row-text">What worked, what did not, and what we would do differently.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Official Links -->
+    <!-- Official links -->
     <section class="section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Official FTC Links</h2>
+            <div class="section-header center">
+                <span class="eyebrow">Official</span>
+                <h2 class="section-title">FTC Links</h2>
+                <span class="stripe-accent"></span>
             </div>
-            <div class="grid grid-3">
-                <div class="card reveal">
-                    <h3 class="card-title">🌐 FIRST Official Website</h3>
-                    <p class="card-text" style="margin-bottom: var(--spacing-md);">
-                        The official FIRST organization website with information about all FIRST programs.
-                    </p>
-                    <a href="https://www.firstinspires.org/" target="_blank" class="btn btn-outline">Visit Website</a>
+            <div class="list-rows">
+                <div class="row reveal">
+                    <span class="row-num">FIRST</span>
+                    <h3 class="row-title">FIRST Inspires</h3>
+                    <div class="row-text">The official FIRST organisation and all of its programmes. <a href="https://www.firstinspires.org/" target="_blank" rel="noopener" class="text-link">Visit</a></div>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title">📋 FTC Game Manual</h3>
-                    <p class="card-text" style="margin-bottom: var(--spacing-md);">
-                        Official game rules, robot regulations, and competition guidelines for the current season.
-                    </p>
-                    <a href="https://www.firstinspires.org/resource-library/ftc/game-and-season-info" target="_blank"
-                        class="btn btn-outline">View Manual</a>
+                <div class="row reveal">
+                    <span class="row-num">Rules</span>
+                    <h3 class="row-title">Game &amp; Season Info</h3>
+                    <div class="row-text">Official rules, robot regulations and competition guidelines. <a href="https://www.firstinspires.org/resource-library/ftc/game-and-season-info" target="_blank" rel="noopener" class="text-link">View</a></div>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title">🇬🇧 FTC UK</h3>
-                    <p class="card-text" style="margin-bottom: var(--spacing-md);">
-                        Regional competition information, event schedules, and UK-specific FTC resources.
-                    </p>
-                    <a href="https://www.firstinspires.org/robotics/ftc" target="_blank" class="btn btn-outline">UK
-                        Info</a>
+                <div class="row reveal">
+                    <span class="row-num">UK</span>
+                    <h3 class="row-title">FTC in the UK</h3>
+                    <div class="row-text">Regional events, schedules and UK-specific resources. <a href="https://www.firstinspires.org/robotics/ftc" target="_blank" rel="noopener" class="text-link">Explore</a></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Media Kit -->
-    <section class="section bg-yellow">
-        <div class="container container-narrow" style="text-align: center;">
-            <div class="reveal">
-                <h2 style="margin-bottom: var(--spacing-md);">Media Kit</h2>
-                <p style="font-size: 1.25rem; line-height: 1.8; margin-bottom: var(--spacing-xl);">
-                    Download our team logos, robot photos, fact sheet, and press releases for media coverage
-                    or promotional purposes.
-                </p>
-                <div class="grid grid-2" style="text-align: left;">
-                    <div class="card">
-                        <h3 class="card-title">📸 Team Photos</h3>
-                        <p class="card-text">High-resolution team and robot photos</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">🎨 Team Logos</h3>
-                        <p class="card-text">Logo files in various formats</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">📄 Fact Sheet</h3>
-                        <p class="card-text">Team information and statistics</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">📰 Press Releases</h3>
-                        <p class="card-text">Competition results and announcements</p>
-                    </div>
+    <!-- Media kit -->
+    <section class="section bg-soft">
+        <div class="container">
+            <div class="split">
+                <div class="reveal prose">
+                    <span class="eyebrow">Media Kit</span>
+                    <h2 class="section-title">For Press &amp; Partners</h2>
+                    <span class="stripe-accent"></span>
+                    <p>Need our logos, robot photos, a fact sheet or a press release? Get in touch and we will share
+                        everything you need for coverage or promotion.</p>
+                    <a href="mailto:kclmsftc@gmail.com" class="btn btn-primary mt-lg">Request Media Kit</a>
                 </div>
-                <a href="contact.html" class="btn btn-outline" style="margin-top: var(--spacing-xl);">Request Media
-                    Kit</a>
+                <div class="reveal">
+                    <ul class="def-list">
+                        <li><strong>Team photos</strong>&nbsp;— high-resolution team and robot images.</li>
+                        <li><strong>Logos</strong>&nbsp;— Volcanix logo files in various formats.</li>
+                        <li><strong>Fact sheet</strong>&nbsp;— team information and statistics.</li>
+                        <li><strong>Press releases</strong>&nbsp;— results and announcements.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><span class="font-brand">KCLMS FTC ASYMPTOTES</span></h3>
-                    <p>Building tomorrow's engineers today through competitive robotics and STEM education.</p>
+                    <span class="footer-brand">KCLMS Volcanix</span>
+                    <p>The First Tech Challenge team at King's College London Mathematics School. Think Award
+                        winners, and open source by default.</p>
+                    <div class="social-links">
+                        <a class="social-link" href="https://www.instagram.com/kclms_ftc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                        <a class="social-link" href="https://www.linkedin.com/in/kclms-ftc" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+                    </div>
                 </div>
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
+                    <h4>Team</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="team.html">Our Team</a></li>
                         <li><a href="robot.html">Our Robot</a></li>
-                        <li><a href="season.html">Current Season</a></li>
+                        <li><a href="season.html">Season</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Get Involved</h3>
+                    <h4>Get Involved</h4>
                     <ul class="footer-links">
-
-                        <li><a href="sponsors.html">Become a Sponsor</a></li>
-                        <li><a href="outreach.html">Outreach Programs</a></li>
+                        <li><a href="sponsors.html">Sponsor Us</a></li>
+                        <li><a href="outreach.html">Outreach</a></li>
                         <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact</h3>
+                    <h4>Contact</h4>
                     <ul class="footer-links">
-                        <li>📧 kavan.vyas@kcl.ac.uk</li>
-                        <li>📍 King's College London<br>Mathematics School<br>SE11 6NJ</li>
-                        <li><a href="contact.html">Contact Form</a></li>
+                        <li><a href="mailto:kclmsftc@gmail.com">kclmsftc@gmail.com</a></li>
+                        <li><a href="https://www.google.com/maps/place/King's+College+London+Mathematics+School/@51.4958875,-0.1140411,17z/data=!3m1!4b1!4m6!3m5!1s0x487604be7bc868c3:0x41455f6e6b8f68e8!8m2!3d51.4958875!4d-0.1114662!16s%2Fg%2F11cmyvcq2s?entry=ttu" target="_blank" rel="noopener">King's College London<br>Mathematics School<br>London SE11 6NJ</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025-2026 KCLMS FTC | All Rights Reserved</p>
-                <p style="margin-top: var(--spacing-xs); font-size: 0.875rem;">
-                    FIRST® and FIRST® Tech Challenge are registered trademarks of For Inspiration and Recognition of
-                    Science and Technology (FIRST).
-                </p>
+                <p>© 2025–2026 KCLMS Volcanix. All rights reserved.</p>
+                <p>FIRST® and FIRST® Tech Challenge are trademarks of FIRST (For Inspiration and Recognition of Science
+                    and Technology).</p>
             </div>
         </div>
     </footer>

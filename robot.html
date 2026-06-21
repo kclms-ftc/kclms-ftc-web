@@ -5,32 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Explore our FTC competition robot - technical specifications, mecanum drive system, dual-flywheel launcher, autonomous capabilities, and build progress for DECODE Challenge 2024-25.">
-    <meta name="keywords" content="FTC robot design, mecanum wheels, autonomous robot, competition robot specs, robotics CAD design, FTC DECODE challenge">
-    <link rel="canonical" href="https://kclms-ftc.github.io/ftc_web/robot.html">
+        content="Inside the KCLMS Volcanix robot - mecanum drive, three-wheel odometry, Pedro Pathing path following and a ground-up Limelight vision system for the DECODE challenge.">
+    <meta name="keywords" content="FTC robot, mecanum wheels, odometry, Pedro Pathing, Limelight FTC, autonomous robot, CAD robotics, DECODE challenge robot">
+    <link rel="canonical" href="https://kclms-ftc.github.io/kclms-ftc-web/robot.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Our Robot - KCLMS FTC ASYMPTOTES">
-    <meta property="og:description" content="Explore our FTC competition robot - technical specs and build progress.">
-    <meta property="og:image" content="https://kclms-ftc.github.io/ftc_web/kclms asymptotes.jpeg">
+    <meta property="og:title" content="Our Robot - KCLMS Volcanix">
+    <meta property="og:description" content="Mecanum drive, odometry, Pedro Pathing and a ground-up Limelight vision system.">
+    <meta property="og:image" content="https://kclms-ftc.github.io/kclms-ftc-web/media/robot-hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="robots" content="index, follow">
-    <title>Our Robot - KCLMS FTC ASYMPTOTES</title>
-    <link rel="icon" type="image/jpeg" href="kclms asymptotes.jpeg">
+    <meta name="theme-color" content="#000000">
+    <title>Our Robot - KCLMS Volcanix</title>
+    <link rel="icon" type="image/png" href="media/volcanix-logo-96.png">
+    <script>(function(){try{var d=document.documentElement;var t=localStorage.getItem("theme")||"dark";d.setAttribute("data-theme",t);if(localStorage.getItem("volcanixLoaderSeen")){d.setAttribute("data-loader","seen");}}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Navigation -->
+    <div id="loader" aria-hidden="true">
+        <div class="loader-stripes"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="loader-foot">
+            <div class="loader-mark"><span class="loader-word">KCLMS</span><span class="loader-sub">Volcanix</span></div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="navbar-brand">
-                <img src="kclms asymptotes.jpeg" alt="KCLMS ASYMPTOTES Logo">
-                <span class="font-brand">KCLMS ASYMPTOTES</span>
+                <img src="media/volcanix-logo-96.png" alt="KCLMS Volcanix logo">
+                <span>Volcanix</span>
             </a>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme" title="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <div class="mobile-menu-toggle"><span></span><span></span><span></span></div>
             </div>
             <ul class="navbar-menu">
                 <li><a href="index.html">Home</a></li>
@@ -45,222 +56,232 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="hero" style="min-height: 50vh; padding-top: 120px;">
-        <div class="hero-content">
-            <h1>Our Robot</h1>
-            <p class="hero-subtitle">Engineered for Excellence, Built for Competition</p>
+    <header class="page-header">
+        <div class="hero-media"><img src="media/robot-2.jpg" alt="KCLMS Volcanix robot"></div>
+        <div class="container page-header-content">
+            <span class="stripe-accent"></span>
+            <h1>The Machine</h1>
+            <p>Engineered in-house for the DECODE challenge — built, tested and refined by the team.</p>
         </div>
-    </section>
+    </header>
 
-    <!-- Robot Profile -->
+    <!-- Profile -->
     <section class="section">
         <div class="container">
-            <div class="grid grid-2" style="align-items: center;">
-                <div class="reveal">
-                    <img src="generated/robot_hero.png" alt="KCLMS FTC Robot"
-                        style="border-radius: var(--radius-xl); box-shadow: var(--shadow-xl);">
+            <div class="split">
+                <div class="reveal media-frame media-tall">
+                    <img src="media/robot-hero.jpg" alt="KCLMS Volcanix competition robot">
                 </div>
-                <div class="reveal">
-                    <h2 style="color: var(--color-yellow-primary); margin-bottom: var(--spacing-md);">Season 2024-25
-                        DECODE Challenge</h2>
-                    <p style="font-size: 1.125rem; margin-bottom: var(--spacing-md);">
-                        <strong>Status:</strong> <span style="color: var(--color-yellow-primary);">In Process of
-                            Design</span>
-                    </p>
-                    <p style="font-size: 1.125rem; line-height: 1.8;">
-                        Our robot represents months of design, iteration, and refinement. Built to excel in
-                        the DECODE Challenge, it combines precision engineering with advanced autonomous
-                        capabilities to compete at the highest level.
-                    </p>
+                <div class="reveal prose">
+                    <span class="eyebrow">Season 2025–26 · DECODE</span>
+                    <h2 class="section-title">How We Build It</h2>
+                    <span class="stripe-accent"></span>
+                    <p>We design the robot in two ways at the same time. We build rough prototypes to test on the
+                        field, and we model the whole machine in CAD before cutting parts. Most subsystems went
+                        through a few versions before they worked.</p>
+                    <p>The drivetrain, the launcher and the vision stack were all built and tuned by the team, and the
+                        code is in our open-source repository.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Technical Specifications -->
-    <section class="section bg-black">
+    <!-- Spec cells -->
+    <section class="section bg-soft">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" style="color: var(--color-yellow-primary);">Technical Specifications</h2>
+                <span class="eyebrow">At a Glance</span>
+                <h2 class="section-title">Core Systems</h2>
+                <span class="stripe-accent"></span>
             </div>
-            <div class="grid grid-2">
-                <div class="card reveal">
-                    <h3 class="card-title" style="color: var(--color-yellow-primary);">Drive System</h3>
-                    <ul style="list-style: none; padding: 0; color: var(--color-black);">
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Type:</strong> Mecanum Wheels</li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Motors:</strong> 4× High-torque DC motors</li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Capability:</strong> Omnidirectional movement
-                        </li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Speed:</strong> Optimized for agility and
-                            precision</li>
-                    </ul>
+            <div class="spec-grid">
+                <div class="spec-cell">
+                    <span class="spec-value">4WD</span>
+                    <span class="spec-label">Mecanum Drive</span>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title" style="color: var(--color-yellow-primary);">Launcher Mechanism</h3>
-                    <ul style="list-style: none; padding: 0; color: var(--color-black);">
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Type:</strong> Dual-flywheel launcher</li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Motors:</strong> 4× High-speed motors</li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Accuracy:</strong> Consistent trajectory
-                            control</li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Range:</strong> Full-field capability</li>
-                    </ul>
+                <div class="spec-cell">
+                    <span class="spec-value">3</span>
+                    <span class="spec-label">Odometry Pods</span>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title" style="color: var(--color-yellow-primary);">Autonomous Systems</h3>
-                    <ul style="list-style: none; padding: 0; color: var(--color-black);">
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Vision:</strong> AprilTag detection camera
-                        </li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Navigation:</strong> Odometry pods for
-                            precision</li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Control:</strong> REV Expansion Hub</li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Software:</strong> Custom Python/Java
-                            algorithms</li>
-                    </ul>
+                <div class="spec-cell">
+                    <span class="spec-value">360°</span>
+                    <span class="spec-label">Omnidirectional</span>
                 </div>
-                <div class="card reveal">
-                    <h3 class="card-title" style="color: var(--color-yellow-primary);">Structure</h3>
-                    <ul style="list-style: none; padding: 0; color: var(--color-black);">
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Frame:</strong> Machined aluminum plates</li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Weight:</strong> Optimized for performance
-                        </li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Dimensions:</strong> Within FTC regulations
-                        </li>
-                        <li style="padding: var(--spacing-xs) 0;"><strong>Durability:</strong> Competition-tested</li>
-                    </ul>
+                <div class="spec-cell">
+                    <span class="spec-value">1</span>
+                    <span class="spec-label">Limelight Camera</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Design Philosophy -->
+    <!-- Advanced systems detail -->
     <section class="section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Design Philosophy</h2>
+            <div class="section-header center">
+                <span class="eyebrow">Under the Hood</span>
+                <h2 class="section-title">Advanced Systems</h2>
+                <span class="stripe-accent"></span>
             </div>
-            <div class="grid grid-2" style="align-items: center;">
+            <div class="list-rows">
+                <div class="row reveal">
+                    <span class="row-num">Drivetrain</span>
+                    <h3 class="row-title">Mecanum Wheels</h3>
+                    <p class="row-text">Four independently driven mecanum wheels let the robot move in any direction — strafing and rotating as well as driving forward — which makes positioning on the field much easier.</p>
+                </div>
+                <div class="row reveal">
+                    <span class="row-num">Path Following</span>
+                    <h3 class="row-title">Pedro Pathing</h3>
+                    <p class="row-text">We use Pedro Pathing for smooth, reactive path following. It lets the robot track planned trajectories accurately during autonomous, correcting in real time rather than following blind timed moves.</p>
+                </div>
+                <div class="row reveal">
+                    <span class="row-num">Localisation</span>
+                    <h3 class="row-title">Three-Wheel Odometry</h3>
+                    <p class="row-text">Three odometry pods track position and heading without relying on the drive wheels, so wheel slip does not throw off the autonomous routines.</p>
+                </div>
+                <div class="row reveal">
+                    <span class="row-num">Vision</span>
+                    <h3 class="row-title">Limelight, From the Ground Up</h3>
+                    <p class="row-text">We set up the Limelight ourselves — the pipelines, calibration and integration — to read the DECODE sequence and line the robot up to targets in different lighting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full spec table -->
+    <section class="section bg-soft">
+        <div class="container">
+            <div class="split">
                 <div class="reveal">
-                    <h3 style="margin-bottom: var(--spacing-md);">Innovation Through Iteration</h3>
-                    <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: var(--spacing-md);">
-                        Our design process emphasizes rapid prototyping and continuous improvement. We don't
-                        settle for the first solution—we iterate, test, and refine until we achieve excellence.
-                    </p>
-                    <h4 style="color: var(--color-yellow-primary); margin-bottom: var(--spacing-sm);">Key Innovations:
-                    </h4>
-                    <ul style="margin-bottom: var(--spacing-md);">
-                        <li>Custom-designed intake system for reliable ball collection</li>
-                        <li>Precision indexing mechanism for accurate ball sorting</li>
-                        <li>Integrated computer vision for autonomous operation</li>
+                    <span class="eyebrow">Specification</span>
+                    <h2 class="section-title">Built to a Standard</h2>
+                    <span class="stripe-accent"></span>
+                    <ul class="spec-list mt-lg">
+                        <li><span>Drive</span><span>4× mecanum, omnidirectional</span></li>
+                        <li><span>Localisation</span><span>Three-wheel odometry</span></li>
+                        <li><span>Path Following</span><span>Pedro Pathing</span></li>
+                        <li><span>Vision</span><span>Limelight, custom pipelines</span></li>
+                        <li><span>Launcher</span><span>Dual-flywheel artifact launcher</span></li>
+                        <li><span>Control</span><span>REV control system</span></li>
+                        <li><span>Structure</span><span>Machined aluminium plates</span></li>
+                        <li><span>Software</span><span>Java, open-source</span></li>
                     </ul>
                 </div>
-                <div class="reveal">
-                    <img src="generated/roboto.jpeg" alt="Robot CAD Design"
-                        style="border-radius: var(--radius-xl); box-shadow: var(--shadow-lg);">
+                <div class="reveal media-frame media-wide">
+                    <img src="media/robot-cad.jpeg" alt="Robot CAD model">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Challenges Overcome -->
-    <section class="section bg-yellow">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Challenges We've Overcome</h2>
-            </div>
-            <div class="grid grid-3">
-                <div class="card reveal">
-                    <h3 class="card-title">⚙️ Mechanical Precision</h3>
-                    <p class="card-text">
-                        Achieving consistent ball launching required extensive testing and calibration.
-                        We developed a dual-flywheel system with adjustable speed control for different distances.
-                    </p>
-                </div>
-                <div class="card reveal">
-                    <h3 class="card-title">💻 Autonomous Reliability</h3>
-                    <p class="card-text">
-                        Computer vision in varying lighting conditions was challenging. We implemented robust
-                        AprilTag detection with fallback navigation strategies.
-                    </p>
-                </div>
-                <div class="card reveal">
-                    <h3 class="card-title">🔧 Weight Optimization</h3>
-                    <p class="card-text">
-                        Balancing durability with weight constraints required creative material choices and
-                        structural optimization through CAD analysis.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Build Progress -->
+    <!-- Engineering philosophy -->
     <section class="section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Build Progress Gallery</h2>
-                <p class="section-subtitle">From concept to competition-ready</p>
+            <div class="section-header center">
+                <span class="eyebrow">How We Engineer</span>
+                <h2 class="section-title">How We Engineer</h2>
+                <span class="stripe-accent"></span>
+                <p class="section-subtitle">We work two ways at once, and they keep each other honest.</p>
             </div>
-            <div class="grid grid-3">
-                <div class="reveal">
-                    <img src="generated/robot_cad.png" alt="CAD Design Phase"
-                        style="border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; height: 250px; object-fit: cover;">
-                    <h4 style="margin-top: var(--spacing-md); text-align: center;">CAD Design Phase</h4>
+            <div class="list-rows">
+                <div class="row reveal">
+                    <span class="row-num">Method 01</span>
+                    <h3 class="row-title">Fast Experimental Engineering</h3>
+                    <p class="row-text">We prototype quickly and test in the real world — building rough mechanisms, measuring what works, and learning from hardware rather than guessing on paper.</p>
                 </div>
-                <div class="reveal">
-                    <img src="generated/team_workshop.png" alt="Building Process"
-                        style="border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; height: 250px; object-fit: cover;">
-                    <h4 style="margin-top: var(--spacing-md); text-align: center;">Assembly & Testing</h4>
-                </div>
-                <div class="reveal">
-                    <img src="generated/roboto.jpeg" alt="Final Robot"
-                        style="border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; height: 250px; object-fit: cover;">
-                    <h4 style="margin-top: var(--spacing-md); text-align: center;">In the process of being built</h4>
+                <div class="row reveal">
+                    <span class="row-num">Method 02</span>
+                    <h3 class="row-title">Full-System CAD</h3>
+                    <p class="row-text">At the same time we model the whole robot in CAD, checking fit, clearance and weight before cutting metal, so the final build matches a drawing we can come back to.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Build gallery -->
+    <section class="section bg-soft">
+        <div class="container">
+            <div class="section-header center">
+                <span class="eyebrow">From Concept to Competition</span>
+                <h2 class="section-title">Build Gallery</h2>
+                <span class="stripe-accent"></span>
+            </div>
+            <div class="gallery">
+                <figure class="reveal">
+                    <div class="media-frame"><img src="media/build-1.jpg" alt="Build phase"></div>
+                    <figcaption>Prototyping</figcaption>
+                </figure>
+                <figure class="reveal">
+                    <div class="media-frame"><img src="media/build-2.jpg" alt="Assembly"></div>
+                    <figcaption>Assembly &amp; wiring</figcaption>
+                </figure>
+                <figure class="reveal">
+                    <div class="media-frame"><img src="media/robot-3.jpg" alt="Robot detail"></div>
+                    <figcaption>Competition-ready</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-band">
+        <div class="hero-media"><img src="media/arena.jpg" alt="Competition arena"></div>
+        <div class="container">
+            <div class="cta-band-inner">
+                <span class="eyebrow">Open Source</span>
+                <h2>We Share What We Build</h2>
+                <p>Our code is public. Get in touch if you want to use it, or if you have questions about how we did
+                    something.</p>
+                <div class="hero-cta">
+                    <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+                    <a href="season.html" class="btn btn-outline">See the Season</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><span class="font-brand">KCLMS FTC ASYMPTOTES</span></h3>
-                    <p>Building tomorrow's engineers today through competitive robotics and STEM education.</p>
+                    <span class="footer-brand">KCLMS Volcanix</span>
+                    <p>The First Tech Challenge team at King's College London Mathematics School. Think Award
+                        winners, and open source by default.</p>
+                    <div class="social-links">
+                        <a class="social-link" href="https://www.instagram.com/kclms_ftc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                        <a class="social-link" href="https://www.linkedin.com/in/kclms-ftc" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+                    </div>
                 </div>
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
+                    <h4>Team</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="team.html">Our Team</a></li>
                         <li><a href="robot.html">Our Robot</a></li>
-                        <li><a href="season.html">Current Season</a></li>
+                        <li><a href="season.html">Season</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Get Involved</h3>
+                    <h4>Get Involved</h4>
                     <ul class="footer-links">
-                        <li><a href="sponsors.html">Become a Sponsor</a></li>
-                        <li><a href="outreach.html">Outreach Programs</a></li>
+                        <li><a href="sponsors.html">Sponsor Us</a></li>
+                        <li><a href="outreach.html">Outreach</a></li>
                         <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact</h3>
+                    <h4>Contact</h4>
                     <ul class="footer-links">
-                        <li>📧 kavan.vyas@kcl.ac.uk</li>
-                        <li>📍 King's College London<br>Mathematics School<br>SE11 6NJ</li>
-                        <li><a href="contact.html">Contact Form</a></li>
+                        <li><a href="mailto:kclmsftc@gmail.com">kclmsftc@gmail.com</a></li>
+                        <li><a href="https://www.google.com/maps/place/King's+College+London+Mathematics+School/@51.4958875,-0.1140411,17z/data=!3m1!4b1!4m6!3m5!1s0x487604be7bc868c3:0x41455f6e6b8f68e8!8m2!3d51.4958875!4d-0.1114662!16s%2Fg%2F11cmyvcq2s?entry=ttu" target="_blank" rel="noopener">King's College London<br>Mathematics School<br>London SE11 6NJ</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025-2026 KCLMS FTC | All Rights Reserved</p>
-                <p style="margin-top: var(--spacing-xs); font-size: 0.875rem;">
-                    FIRST® and FIRST® Tech Challenge are registered trademarks of For Inspiration and Recognition of
-                    Science and Technology (FIRST).
-                </p>
+                <p>© 2025–2026 KCLMS Volcanix. All rights reserved.</p>
+                <p>FIRST® and FIRST® Tech Challenge are trademarks of FIRST (For Inspiration and Recognition of Science
+                    and Technology).</p>
             </div>
         </div>
     </footer>
