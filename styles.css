@@ -143,6 +143,8 @@ h3 { font-size: clamp(1.4rem, 2.6vw, 2rem); }
 h4 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 700; }
 p { font-size: 1rem; line-height: 1.6; color: var(--body); }
 strong { color: var(--body-strong); font-weight: 700; }
+/* Stop long words/URLs from forcing horizontal overflow on narrow screens. */
+h1, h2, h3, h4, h5, h6, p, li, a, span { overflow-wrap: break-word; }
 
 .eyebrow {
   display: inline-block;
@@ -388,6 +390,9 @@ body.loading { overflow: hidden; }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-xxl); align-items: center; }
+/* min-width:0 lets grid/flex children shrink below their content size instead of
+   overflowing — the default min-width:auto is the usual cause of mobile overflow. */
+.grid > *, .split > *, .finance-card > *, .tier-card, .card, .finance-card, .feature-card { min-width: 0; }
 
 /* === EDITORIAL LIST ROWS (replaces card spam) === */
 .list-rows { border-top: 1px solid var(--hairline); }
@@ -494,14 +499,18 @@ body.loading { overflow: hidden; }
 .tier-card:hover { transform: translateY(-4px); border-color: var(--tier); }
 .tier-name { font-size: 1.4rem; font-weight: 800; text-transform: uppercase; color: var(--tier); margin-bottom: var(--sp-xs); }
 .tier-price { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 800; color: var(--tier); margin-bottom: var(--sp-lg); }
-.tier-benefits li { padding: var(--sp-sm) 0; border-bottom: 1px solid var(--hairline); color: var(--body); font-size: 0.95rem; display: flex; gap: var(--sp-sm); }
-.tier-benefits li::before { content: "\2014"; color: var(--tier); }
+.tier-benefits li { padding: var(--sp-sm) 0 var(--sp-sm) 1.6ch; border-bottom: 1px solid var(--hairline); color: var(--body); font-size: 0.95rem; position: relative; }
+.tier-benefits li::before { content: "\2014"; color: var(--tier); position: absolute; left: 0; top: var(--sp-sm); }
 .tier-benefits li:last-child { border-bottom: none; }
 
 /* Tier accents */
+.tier-card.bronze { --tier: #c87f3a; }
+.tier-card.silver { --tier: #9aa3b2; }
 .tier-card.gold { --tier: #d4a017; }
 .tier-card.diamond { --tier: #29a8d4; }
 .tier-card.platinum { --tier: #a7adba; }
+
+.tier-metal { display: inline-block; margin-left: 0.5ch; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); vertical-align: middle; }
 
 /* Platinum: silver border with two short rainbow stripes travelling around it */
 @property --tier-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
@@ -838,5 +847,25 @@ body.loading { overflow: hidden; }
   .gallery { grid-template-columns: 1fr; }
   .footer-content { grid-template-columns: 1fr; }
   .hero-cta { flex-direction: column; align-items: stretch; }
-  .btn { width: 100%; }
+
+  /* Long uppercase labels ("Become a Platinum Sponsor") were forcing their card
+     wider than the screen because .btn is nowrap + fixed-height. Let them wrap. */
+  .btn {
+    width: 100%; max-width: 100%;
+    height: auto; min-height: 48px; padding: 12px 18px;
+    white-space: normal; line-height: 1.25; text-align: center;
+  }
+  .text-link { white-space: normal; height: auto; min-height: 38px; padding: 8px 14px; }
+  .row-links a { height: auto; min-height: 32px; padding: 6px 12px; white-space: normal; }
+
+  /* Trim oversized card padding so content stays clear of the screen edges. */
+  .card, .tier-card, .finance-card { padding: var(--sp-lg); }
+  .finance-stat { flex: 1 1 130px; padding: var(--sp-md); }
+  .sponsor-logo { flex-basis: 100%; min-height: 130px; padding: var(--sp-lg); }
+}
+
+@media (max-width: 400px) {
+  :root { --sp-section: 56px; }
+  /* Narrow the page gutters on small phones to reclaim horizontal space. */
+  .container { padding: 0 var(--sp-md); }
 }
