@@ -150,6 +150,9 @@ strong { color: var(--body-strong); font-weight: 700; }
 /* Stop long words/URLs from forcing horizontal overflow on narrow screens. */
 h1, h2, h3, h4, h5, h6, p, li, a, span { overflow-wrap: break-word; }
 
+/* Handwritten pop word inside a sentence */
+.hand-pop { font-family: var(--font-hand); font-size: 1.45em; font-weight: 700; color: var(--yellow); line-height: 1; padding: 0 0.06em; }
+
 /* Handwritten section labels — the one place cursive is allowed */
 .eyebrow {
   display: inline-block;
