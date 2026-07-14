@@ -314,7 +314,7 @@ body.loading { overflow: hidden; }
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 .theme-toggle:hover { opacity: 0.85; }
-.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle:active:hover { transform: scale(0.92); }
 .theme-toggle svg { width: 16px; height: 16px; }
 .theme-toggle .icon-moon { display: none; }
 [data-theme="light"] .theme-toggle .icon-sun { display: none; }
@@ -339,7 +339,7 @@ body.loading { overflow: hidden; }
   cursor: pointer; white-space: nowrap; user-select: none;
 }
 .btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 0 var(--btn-sh); }
-.btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 0 var(--btn-sh); }
+.btn:active:hover { transform: translate(3px, 3px); box-shadow: 1px 1px 0 0 var(--btn-sh), 0 4px 12px rgba(0, 0, 0, 0.3); }
 .btn:focus-visible { outline: 2px solid var(--papaya); outline-offset: 3px; }
 
 /* Shadows use the papaya family so the clickiness stays visible on dark, light and photos */
@@ -355,7 +355,7 @@ body.loading { overflow: hidden; }
 .hero .btn-ghost:hover, .page-header .btn-ghost:hover, .cta-band .btn-ghost:hover { background: #FFF2DC; color: #000; }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn, .btn:hover, .btn:active, .text-link, .text-link:hover, .text-link:active { transform: none; }
+  .btn, .btn:hover, .btn:active:hover, .text-link, .text-link:hover, .text-link:active:hover { transform: none; }
 }
 
 /* Action links rendered as small tactile buttons */
@@ -371,7 +371,7 @@ body.loading { overflow: hidden; }
 }
 .text-link::after { content: "\2192"; }
 .text-link:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 0 var(--btn-sh); background: var(--papaya); color: var(--on-accent); }
-.text-link:active { transform: translate(3px, 3px); box-shadow: 0 0 0 0 var(--btn-sh); }
+.text-link:active:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 0 var(--btn-sh), 0 3px 10px rgba(0, 0, 0, 0.3); }
 
 /* === HERO === */
 .hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; background: #000; }
@@ -448,7 +448,7 @@ body.loading { overflow: hidden; }
   transition: transform 90ms ease, box-shadow 90ms ease, color 140ms ease, background 140ms ease;
 }
 .row-links a:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 0 var(--btn-sh); background: var(--papaya); color: var(--on-accent); }
-.row-links a:active { transform: translate(3px, 3px); box-shadow: 0 0 0 0 var(--btn-sh); }
+.row-links a:active:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 0 var(--btn-sh), 0 3px 10px rgba(0, 0, 0, 0.3); }
 
 /* === DEFINITION COLUMNS (lightweight, no boxes) === */
 .def-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-xxl); max-width: 880px; margin-left: auto; margin-right: auto; }
@@ -955,3 +955,301 @@ body.loading { overflow: hidden; }
   /* Narrow the page gutters on small phones to reclaim horizontal space. */
   .container { padding: 0 var(--sp-md); }
 }
+
+/* === LONDON SKYLINE BAND ===
+   The real London silhouette, tiled edge to edge, sitting
+   directly on top of the footer. */
+.skyline { line-height: 0; margin-top: 64px; }
+.skyline img { width: 100%; height: auto; display: block; }
+.skyline + .footer { margin-top: 0; }
+
+/* === MASCOT STICKERS ===
+   The hidden-sticker minigame: exactly one of each mascot exists
+   across the whole site, tucked somewhere unexpected, always
+   fully visible (never clipped). They twitch when found. */
+.sticker {
+  position: absolute;
+  z-index: 6;
+  filter:
+    drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff)
+    drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff)
+    drop-shadow(7px 9px 0 rgba(0, 0, 0, 0.45));
+  transition: transform 0.25s ease;
+  cursor: grab;
+}
+.sticker:hover { transform: rotate(7deg) scale(1.12) !important; }
+.sticker.s1 { transform: rotate(-10deg); }
+.sticker.s2 { transform: rotate(8deg); }
+.sticker.s3 { transform: rotate(-6deg); }
+.clip { overflow: hidden; }
+
+
+/* ============================================================
+   STICKER HUNT MINIGAME
+   Find and click every mascot sticker hidden across the site.
+   Progress lives in localStorage; the tracker sits bottom-right
+   on every page. Full set unlocks the volcano, which erupts and
+   pays out a cookie (an SVG one, and a real browser cookie).
+   ============================================================ */
+
+/* --- tracker widget --- */
+.hunt { position: fixed; right: 16px; bottom: 64px; z-index: 1090; font-size: 14px; }
+.hunt-tab {
+  display: block;
+  margin-left: auto;
+  transform: skewX(-12deg);
+  background: #e57c41;
+  color: #000;
+  border: 2px solid #000;
+  font-family: var(--font-brand);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 9px 20px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55);
+  transition: background-color 0.22s, transform 0.22s;
+}
+.hunt-tab:hover { background: #facc57; transform: skewX(-12deg) translateY(-2px); }
+.hunt-tab span { display: inline-block; transform: skewX(12deg); }
+.hunt-tab.all-found { animation: hunt-throb 1.4s ease-in-out infinite; }
+@keyframes hunt-throb {
+  0%, 100% { box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55), 0 0 0 rgba(229, 124, 65, 0); }
+  50% { box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55), 0 0 22px rgba(229, 124, 65, 0.9); }
+}
+
+.hunt-panel {
+  display: none;
+  width: 264px;
+  margin-top: 10px;
+  background: #160604;
+  border: 2px solid #e57c41;
+  box-shadow: 8px 8px 0 rgba(143, 32, 22, 0.85);
+  padding: 16px;
+}
+.hunt.open .hunt-panel { display: block; }
+.hunt-panel h5 {
+  font-family: var(--font-brand);
+  font-style: italic;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #facc57;
+  margin-bottom: 4px;
+}
+.hunt-panel .hunt-hint { font-size: 12px; color: rgba(255, 242, 220, 0.65); margin-bottom: 12px; }
+.hunt-slots { display: flex; gap: 10px; justify-content: space-between; margin-bottom: 12px; }
+.hunt-slot {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  background: #0e0403;
+  border: 1px dashed rgba(255, 242, 220, 0.25);
+  padding: 7px 4px 5px;
+}
+.hunt-slot img { max-width: 100%; max-height: 38px; filter: brightness(0) opacity(0.35); }
+.hunt-slot-name {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 242, 220, 0.4);
+}
+.hunt-slot.found .hunt-slot-name { color: #facc57; }
+.hunt-slot.found { border: 1px solid #e57c41; }
+.hunt-slot.found img { filter: none; animation: hunt-slot-in 0.35s ease; }
+@keyframes hunt-slot-in { from { transform: scale(0.4) rotate(-30deg); } to { transform: none; } }
+
+.hunt-status { font-size: 12px; color: rgba(255, 242, 220, 0.75); }
+.hunt-erupt {
+  display: block;
+  width: 100%;
+  border: 2px solid #e57c41;
+  background: #e57c41;
+  color: #000;
+  font-family: var(--font-brand);
+  font-style: italic;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55);
+  transition: background-color 0.22s, transform 0.22s;
+}
+.hunt-erupt:hover { background: #facc57; border-color: #facc57; transform: translateY(-2px); }
+.hunt-reset {
+  background: none; border: none; cursor: pointer;
+  font-size: 11px; color: rgba(255, 242, 220, 0.4);
+  margin-top: 10px; padding: 0;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.hunt-reset:hover { color: #fff2dc; }
+
+/* found-sticker pop */
+.hunt-found-pop { animation: hunt-pop 0.5s ease; }
+@keyframes hunt-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35) rotate(10deg); }
+  100% { transform: scale(1); }
+}
+
+/* --- eruption overlay --- */
+.eruption {
+  position: fixed; inset: 0; z-index: 300;
+  background: radial-gradient(ellipse at 50% 100%, #41120d 0%, #000000 70%);
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden;
+  animation: eruption-in 0.4s ease;
+}
+@keyframes eruption-in { from { opacity: 0; } }
+.eruption.rumble { animation: rumble 0.14s linear infinite; }
+@keyframes rumble {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(3px, -2px); }
+  50% { transform: translate(-3px, 2px); }
+  75% { transform: translate(2px, 3px); }
+  100% { transform: translate(-2px, -3px); }
+}
+
+.volcano-img {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: min(52vh, 470px);
+  width: auto;
+  filter: drop-shadow(0 0 46px rgba(229, 124, 65, 0.55));
+}
+.crater-glow {
+  position: absolute;
+  left: 50%; bottom: min(44vh, 396px);
+  width: 170px; height: 85px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at 50% 100%, rgba(250, 204, 87, 0.95), rgba(229, 124, 65, 0.6) 45%, transparent 75%);
+  filter: blur(4px);
+}
+.lava-bit {
+  position: absolute;
+  left: 50%; bottom: min(44vh, 396px);
+  width: 12px; height: 12px;
+  background: #facc57;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.eruption-reward {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; text-align: center; padding: 24px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.eruption-reward.show { opacity: 1; }
+.eruption-reward h3 {
+  font-size: clamp(26px, 5vw, 52px);
+  color: #fff2dc;
+  text-shadow: 4px 4px 0 #8f2016, 0 0 30px rgba(229, 124, 65, 0.8);
+}
+.eruption-reward p { color: rgba(255, 242, 220, 0.85); max-width: 420px; }
+.eruption-reward .cookie-img { width: 150px; height: 150px; border-radius: 50%; animation: cookie-drop 0.7s cubic-bezier(0.2, 1.6, 0.4, 1); filter: drop-shadow(6px 8px 0 rgba(0, 0, 0, 0.5)); }
+@keyframes cookie-drop { from { transform: translateY(-60vh) rotate(-260deg); } to { transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .eruption.rumble { animation: none; }
+  .hunt-tab.all-found { animation: none; }
+}
+
+/* --- the cookie terms and conditions gate --- */
+.tnc {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.55);
+}
+.tnc-panel {
+  width: min(580px, 94vw);
+  max-height: 86vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff2dc;
+  color: #1b0805;
+  border: 2px solid #e57c41;
+  box-shadow: 8px 8px 0 rgba(143, 32, 22, 0.85);
+  padding: 18px 20px;
+}
+.tnc-panel h4 {
+  font-family: var(--font-brand);
+  font-style: italic;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #000;
+}
+.tnc-sub { font-size: 11px; color: #7c6a52; margin-top: 2px; }
+.tnc-box {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  background: #fffaf0;
+  border: 1px solid #cdbb9a;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-size: 11px;
+  line-height: 1.55;
+  text-align: justify;
+  color: #2b1a12;
+}
+.tnc-box h6 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; margin: 12px 0 3px; color: #000; }
+.tnc-box h6:first-child { margin-top: 0; }
+.tnc-box p { font-size: 11px; color: #2b1a12; }
+.tnc-end { text-align: center; font-weight: 800; margin-top: 14px; }
+.tnc-actions { display: flex; gap: 12px; align-items: center; }
+.tnc-actions .btn { margin: 0; font-size: 14px; padding: 9px 22px; }
+.tnc-actions .btn.ghost { color: #8f2016; border-color: #8f2016; }
+.tnc-actions .btn.solid[disabled] { opacity: 0.4; cursor: not-allowed; }
+.tnc-actions .btn.solid[disabled]:hover { background: #e57c41; border-color: #e57c41; color: #fff2dc; transform: skewX(-12deg); box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.55); }
+.tnc-note { font-size: 10px; color: #7c6a52; margin-top: 8px; }
+
+/* === CLICKY PRESS STATES ===
+   Every button physically presses into its hard shadow on click:
+   nudge toward the shadow offset, shadow shrinks to match. */
+.btn:active,
+.btn.solid:active,
+.btn.ghost:active {
+  transform: skewX(-12deg) translate(4px, 4px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+  transition-duration: 0.06s;
+}
+.nav-links a:active,
+.nav-links a.active:active {
+  transform: skewX(-14deg) translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.55);
+  transition-duration: 0.06s;
+}
+.hero-social a:active,
+.footer-social a:active {
+  transform: skewX(-12deg) translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  transition-duration: 0.06s;
+}
+.hunt-tab:active {
+  transform: skewX(-12deg) translate(3px, 3px);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.55);
+  transition-duration: 0.06s;
+}
+.hunt-erupt:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.55);
+  transition-duration: 0.06s;
+}
+.brand:active { transform: skewX(-14deg) translate(2px, 2px); }
+.wordmark:active .wm-main { text-shadow:
+  -1.5px 0 0 #000, 1.5px 0 0 #000,
+  0 -1.5px 0 #000, 0 1.5px 0 #000,
+  1px 1px 0 rgba(0, 0, 0, 0.55); }
+.team-card:active { transform: rotate(0deg) translate(4px, 5px); box-shadow: 3px 3px 0 rgba(143, 32, 22, 0.85); }
+.sticker:active { transform: scale(0.94) !important; transition-duration: 0.06s; }
+
+.has-sticker { position: relative; }
