@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="xMidYMax slice" role="img" aria-label="London skyline silhouette">
+  <!-- back rank of generic blocks -->
+  <g fill="#380d06">
+    <rect x="0" y="118" width="70" height="82"/>
+    <rect x="95" y="100" width="48" height="100"/>
+    <rect x="150" y="132" width="62" height="68"/>
+    <rect x="255" y="108" width="66" height="92"/>
+    <rect x="360" y="124" width="88" height="76"/>
+    <rect x="470" y="102" width="52" height="98"/>
+    <rect x="530" y="120" width="70" height="80"/>
+    <rect x="650" y="94" width="64" height="106"/>
+    <rect x="726" y="112" width="44" height="88"/>
+    <rect x="860" y="98" width="56" height="102"/>
+    <rect x="960" y="116" width="76" height="84"/>
+    <rect x="1064" y="94" width="52" height="106"/>
+    <rect x="1180" y="108" width="58" height="92"/>
+    <rect x="1300" y="96" width="52" height="104"/>
+    <rect x="1385" y="118" width="55" height="82"/>
+  </g>
+
+  <!-- front rank: the landmarks -->
+  <g fill="#611509">
+    <!-- Battersea power station -->
+    <rect x="14" y="132" width="96" height="68"/>
+    <rect x="20" y="106" width="9" height="30"/>
+    <rect x="40" y="106" width="9" height="30"/>
+    <rect x="76" y="106" width="9" height="30"/>
+    <rect x="96" y="106" width="9" height="30"/>
+
+    <!-- London Eye -->
+    <polygon points="172,200 204,116 212,116 244,200 228,200 208,132 188,200"/>
+    <circle cx="208" cy="106" r="47" fill="none" stroke="#611509" stroke-width="7"/>
+    <g stroke="#611509" stroke-width="3">
+      <line x1="208" y1="59" x2="208" y2="153"/>
+      <line x1="161" y1="106" x2="255" y2="106"/>
+      <line x1="175" y1="73" x2="241" y2="139"/>
+      <line x1="241" y1="73" x2="175" y2="139"/>
+    </g>
+    <circle cx="208" cy="106" r="7"/>
+
+    <!-- Big Ben + Houses of Parliament -->
+    <rect x="304" y="88" width="28" height="112"/>
+    <rect x="299" y="70" width="38" height="22"/>
+    <polygon points="299,70 337,70 318,30"/>
+    <rect x="316" y="18" width="4" height="14"/>
+    <rect x="336" y="126" width="104" height="74"/>
+    <rect x="340" y="116" width="8" height="12"/>
+    <rect x="356" y="116" width="8" height="12"/>
+    <rect x="372" y="116" width="8" height="12"/>
+    <rect x="388" y="116" width="8" height="12"/>
+    <rect x="404" y="116" width="8" height="12"/>
+    <rect x="420" y="116" width="8" height="12"/>
+    <rect x="438" y="94" width="34" height="106"/>
+    <polygon points="438,94 472,94 455,72"/>
+
+    <!-- St Paul's -->
+    <rect x="548" y="132" width="96" height="68"/>
+    <path d="M556,132 Q596,66 636,132 Z"/>
+    <rect x="592" y="52" width="8" height="22"/>
+    <rect x="586" y="72" width="20" height="8"/>
+
+    <!-- Gherkin -->
+    <path d="M766,200 C752,132 764,74 786,56 C808,74 820,132 806,200 Z"/>
+
+    <!-- Cheesegrater -->
+    <polygon points="852,200 858,66 908,200"/>
+
+    <!-- Walkie-Talkie -->
+    <path d="M934,200 L940,100 Q968,82 996,100 L1002,200 Z"/>
+
+    <!-- The Shard -->
+    <polygon points="1080,200 1108,26 1114,26 1142,200"/>
+    <rect x="1109" y="10" width="4" height="18"/>
+
+    <!-- Tower Bridge -->
+    <rect x="1218" y="96" width="36" height="104"/>
+    <polygon points="1218,96 1254,96 1236,66"/>
+    <rect x="1318" y="96" width="36" height="104"/>
+    <polygon points="1318,96 1354,96 1336,66"/>
+    <rect x="1254" y="118" width="64" height="10"/>
+    <rect x="1254" y="164" width="64" height="10"/>
+    <path d="M1190,148 Q1236,96 1286,132 Q1336,96 1382,148 L1382,200 L1190,200 Z" fill="none" stroke="#611509" stroke-width="6"/>
+  </g>
+
+  <!-- ground line -->
+  <rect x="0" y="196" width="1440" height="4" fill="#611509"/>
+</svg>

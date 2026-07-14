@@ -3,76 +3,61 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=980">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Inside the KCLMS Volcanix robot - mecanum drive, three-wheel odometry, Pedro Pathing path following and a ground-up Limelight vision system for the DECODE challenge.">
+        content="Inside the KCLMS Volcanix robot - mecanum drive, three-wheel odometry, Pedro Pathing and a ground-up Limelight vision system for the DECODE challenge.">
     <meta name="keywords" content="FTC robot, mecanum wheels, odometry, Pedro Pathing, Limelight FTC, autonomous robot, CAD robotics, DECODE challenge robot">
     <link rel="canonical" href="https://kclms-ftc.github.io/kclms-ftc-web/robot.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Our Robot - KCLMS Volcanix">
+    <meta property="og:title" content="The Machine - KCLMS Volcanix">
     <meta property="og:description" content="Mecanum drive, odometry, Pedro Pathing and a ground-up Limelight vision system.">
     <meta property="og:image" content="https://kclms-ftc.github.io/kclms-ftc-web/media/robot-hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#14100c">
-    <title>Our Robot - KCLMS Volcanix</title>
+    <meta name="theme-color" content="#000000">
+    <title>The Machine - KCLMS Volcanix</title>
     <link rel="icon" type="image/png" href="media/volcanix-logo-96.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-<div id="page">
 
     <nav class="topnav">
-        <div class="content">
-            <a href="index.html" class="brand">
-                <img src="media/volcanix-logo-96.png" alt="KCLMS Volcanix logo">
-                <span>KCLMS Volcanix</span>
+        <div class="nav-bar">
+            <a href="index.html" class="wordmark" aria-label="Volcanix home">
+                <span class="wm-main">Volcanix</span>
+                <span class="wm-sub">Robotics</span>
             </a>
             <ul class="nav-links">
-                <li class="has-dropdown">
-                    <a href="about.html">About</a>
-                    <ul class="dropdown">
-                        <li><a href="about.html">Our Story</a></li>
-                        <li><a href="team.html">The Team</a></li>
-                        <li><a href="outreach.html">Outreach</a></li>
-                    </ul>
-                </li>
-                <li><a href="robot.html">Robot</a></li>
-                <li><a href="season.html">Season</a></li>
-                <li class="has-dropdown">
-                    <a href="resources.html">Resources</a>
-                    <ul class="dropdown">
-                        <li><a href="resources.html">Guides &amp; Links</a></li>
-                        <li><a href="portfolio.html">Engineering Portfolio</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="sponsors.html" class="nav-underline">Sponsor Us</a></li>
+                <li><a href="index.html"><span>Home</span></a></li>
+                <li><a href="robot.html"><span>Robot</span></a></li>
+                <li><a href="team.html"><span>Team</span></a></li>
+                <li><a href="sponsors.html"><span>Sponsors</span></a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero page-banner">
+    <header class="hero page-banner clip">
         <div class="hero-slide active"><img src="media/robot-2.jpg" alt="KCLMS Volcanix robot"></div>
         <div class="hero-copy">
-            <h1>The Machine</h1>
-            <p>Built in-house for the DECODE challenge, season 2025&ndash;26.</p>
+            <h1 class="mega">The Machine</h1>
+            <p class="tagline">Built in-house for DECODE, season 2025&ndash;26.</p>
         </div>
+        <div class="zz abs"></div>
     </header>
 
     <!-- How we build -->
-    <div class="block">
+    <div class="block reveal">
         <div class="block-media"><img src="media/robot-hero.jpg" alt="KCLMS Volcanix competition robot"></div>
         <div class="block-body">
-            <h3>How We Build It</h3>
-            <p>We design the robot in two ways at the same time. We build rough prototypes to test on the field, and we model the whole machine in CAD before cutting parts. Most subsystems went through a few versions before they worked. The drivetrain, launcher and vision stack were all built and tuned by the team, and the code is in our open-source repository.</p>
-            <a href="portfolio.html" class="btn-outline">Read the Portfolio</a>
+            <h3>How We Build</h3>
+            <p>Rough prototypes on the field, full CAD model in parallel. Every subsystem went through a few versions before it earned its spot, and all the code is public.</p>
+            <a href="portfolio.html" class="btn ghost"><span>Read the Portfolio</span></a>
         </div>
     </div>
 
     <!-- Core systems -->
-    <section class="stats">
+    <section class="stats clip">
         <div class="stat">
             <span class="stat-number">4WD</span>
             <span class="stat-label">Mecanum drive</span>
@@ -94,19 +79,19 @@
     <!-- Systems detail -->
     <div class="section-banner">
         <h2>Under the Hood</h2>
-        <p class="meta">Drive &middot; Localisation &middot; Path following &middot; Vision</p>
+        <p class="meta">Drive &middot; Localisation &middot; Paths &middot; Vision</p>
     </div>
-    <section class="section">
+    <section class="section reveal">
         <div class="rows">
             <div class="row-item">
                 <span class="row-label">Drivetrain</span>
                 <h3>Mecanum Wheels</h3>
-                <p>The robot drives in any direction, including sideways.</p>
+                <p>Drives in any direction, including sideways.</p>
             </div>
             <div class="row-item">
                 <span class="row-label">Paths</span>
                 <h3>Pedro Pathing</h3>
-                <p>Follows planned paths in autonomous and corrects itself as it goes.</p>
+                <p>Follows planned paths in autonomous, correcting as it goes.</p>
             </div>
             <div class="row-item">
                 <span class="row-label">Localisation</span>
@@ -116,13 +101,13 @@
             <div class="row-item">
                 <span class="row-label">Vision</span>
                 <h3>Limelight Vision</h3>
-                <p>Reads the DECODE sequence and lines up shots. We built the pipelines ourselves.</p>
+                <p>Reads the DECODE pattern and lines up shots. Pipelines built by us.</p>
             </div>
         </div>
     </section>
 
     <!-- Full spec -->
-    <div class="block flip">
+    <div class="block flip reveal from-right">
         <div class="block-media"><img src="media/robot-cad.jpeg" alt="Robot CAD model"></div>
         <div class="block-body">
             <h3>Specification</h3>
@@ -139,75 +124,90 @@
         </div>
     </div>
 
+    <!-- Season -->
+    <div class="section-banner" id="season">
+        <h2>Season 2025&ndash;26: Decode</h2>
+        <p class="meta">Read the code &middot; Launch in order</p>
+    </div>
+    <div class="block reveal from-left">
+        <div class="block-media"><img src="media/think-award-best.jpg" alt="FIRST Tech Challenge UK Think Award plaque"></div>
+        <div class="block-body">
+            <h3>Think Award, First Try</h3>
+            <p>DECODE scores accuracy: robots decode a vision pattern, then launch artifacts in that order. Our tuned launcher and repeatable autonomous carried us to the <strong>Think Award</strong> at our first UK qualifier, judged on the engineering and documentation behind the robot.</p>
+            <a href="portfolio.html" class="btn ghost"><span>The Winning Portfolio</span></a>
+        </div>
+    </div>
+
     <!-- Build gallery -->
     <div class="section-banner">
         <h2>Build Gallery</h2>
-        <p class="meta">From concept to competition</p>
+        <p class="meta">Concept to competition</p>
     </div>
-    <section class="section">
+    <section class="section reveal zoom">
         <div class="gallery">
-            <figure><img src="media/build-1.jpg" alt="Build phase"><figcaption>Prototyping</figcaption></figure>
-            <figure><img src="media/build-2.jpg" alt="Assembly"><figcaption>Assembly &amp; wiring</figcaption></figure>
-            <figure><img src="media/robot-3.jpg" alt="Robot detail"><figcaption>Competition-ready</figcaption></figure>
+            <figure><img src="media/build-1.jpg" alt="Build phase" loading="lazy"><figcaption>Prototyping</figcaption></figure>
+            <figure><img src="media/build-2.jpg" alt="Assembly" loading="lazy"><figcaption>Assembly &amp; wiring</figcaption></figure>
+            <figure><img src="media/robot-3.jpg" alt="Robot detail" loading="lazy"><figcaption>Competition-ready</figcaption></figure>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="cta-band">
-        <div class="cta-bg"><img src="media/arena.jpg" alt="Competition arena"></div>
+        <div class="cta-bg"><img src="media/arena.jpg" alt="Competition arena" loading="lazy"></div>
+        <img class="sticker s3" src="mascots/m1-cut.png" alt="Hidden Volcanix sticker" data-hunt="m1" style="left:5%; bottom:26px; width:92px;">
         <div class="cta-inner">
             <h2>We Share What We Build</h2>
-            <p>Our code is public. Get in touch if you want to use it, or if you have questions about how we did something.</p>
-            <a href="contact.html" class="btn-solid">Get in Touch</a>
-            <a href="season.html" class="btn-outline on-dark">See the Season</a>
+            <p>Our code is public. Ask us anything about how we did it.</p>
+            <a href="mailto:kclmsftc@gmail.com" class="btn solid"><span>Get in Touch</span></a>
+            <a href="portfolio.html" class="btn ghost"><span>The Portfolio</span></a>
         </div>
     </section>
 
+    <!-- London skyline -->
+    <div class="skyline">
+        <span class="skyline-label">London &middot; UK</span>
+        <img src="media/skyline-red.png" alt="London skyline silhouette">
+    </div>
+
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-cols">
-            <div>
-                <span class="footer-brand">KCLMS Volcanix</span>
-                <p>The First Tech Challenge team at King's College London Mathematics School. Think Award winners, and open source by default.</p>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/kclms_ftc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-                    <a href="https://www.linkedin.com/in/kclms-ftc" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <img class="footer-watermark" src="mascots/m4-cut.png" alt="" aria-hidden="true">
+        <div class="footer-inner">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html"><img class="footer-mascot" src="mascots/m3-cut.png" alt="Volcanix mascot sticker" data-hunt="m3"></a>
+                    <span class="footer-brand">KCLMS Volcanix</span>
+                    <p>The First Tech Challenge team at King's College London Mathematics School. Think Award winners, open source by default.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/kclms_ftc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                        <a href="https://www.linkedin.com/in/kclms-ftc" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+                        <a href="mailto:kclmsftc@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <h4>Team</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="robot.html">Our Robot</a></li>
-                    <li><a href="season.html">Season</a></li>
-                    <li><a href="portfolio.html">Engineering Portfolio</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Get Involved</h4>
-                <ul>
-                    <li><a href="sponsors.html">Sponsor Us</a></li>
-                    <li><a href="outreach.html">Outreach</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <a href="portfolio.html" class="btn-outline on-dark">Download the Portfolio</a>
-            </div>
-            <div>
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="mailto:kclmsftc@gmail.com">kclmsftc@gmail.com</a></li>
-                    <li><a href="https://www.google.com/maps/place/King's+College+London+Mathematics+School/@51.4958875,-0.1140411,17z/data=!3m1!4b1!4m6!3m5!1s0x487604be7bc868c3:0x41455f6e6b8f68e8!8m2!3d51.4958875!4d-0.1114662!16s%2Fg%2F11cmyvcq2s?entry=ttu" target="_blank" rel="noopener">King's College London<br>Mathematics School<br>London SE11 6NJ</a></li>
-                </ul>
+                <div>
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="robot.html">The Robot</a></li>
+                        <li><a href="team.html">The Team</a></li>
+                        <li><a href="sponsors.html">Sponsors &amp; Finances</a></li>
+                        <li><a href="portfolio.html">Engineering Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:kclmsftc@gmail.com">kclmsftc@gmail.com</a></li>
+                        <li><a href="https://www.google.com/maps/place/King's+College+London+Mathematics+School/@51.4958875,-0.1140411,17z/data=!3m1!4b1!4m6!3m5!1s0x487604be7bc868c3:0x41455f6e6b8f68e8!8m2!3d51.4958875!4d-0.1114662!16s%2Fg%2F11cmyvcq2s?entry=ttu" target="_blank" rel="noopener">King's College London<br>Mathematics School<br>London SE11 6NJ</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025&ndash;2026 KCLMS Volcanix. All rights reserved.</p>
-            <p>FIRST&reg; and FIRST&reg; Tech Challenge are trademarks of FIRST (For Inspiration and Recognition of Science and Technology).</p>
+            <p>FIRST&reg; and FIRST&reg; Tech Challenge are trademarks of FIRST.</p>
         </div>
     </footer>
 
-</div>
 <script src="script.js"></script>
 </body>
 
