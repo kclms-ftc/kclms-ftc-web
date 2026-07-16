@@ -1,78 +1,17 @@
-// KCLMS VOLCANIX - Interactive behaviour
-// ======================================
+// KCLMS VOLCANIX - interactive behaviour
+// =======================================
 
-// === RACING-STRIPE LOADER ===
-// A stripe streaks across the screen and "draws" KCLMS in volcanic red,
-// then the overlay clears to reveal the page.
-(function () {
-  const loader = document.getElementById('loader');
-  if (!loader) return;
-
-  // Only on the very first visit ever; never again, including page-to-page nav.
-  let seen = null;
-  try { seen = localStorage.getItem('volcanixLoaderSeen'); } catch (e) { seen = null; }
-  if (seen) { loader.remove(); return; }
-
-  document.body.classList.add('loading');
-
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hold = reduce ? 200 : 2100;
-  let done = false;
-
-  function dismiss() {
-    if (done) return;
-    done = true;
-    try { localStorage.setItem('volcanixLoaderSeen', '1'); } catch (e) { /* storage blocked */ }
-    document.documentElement.setAttribute('data-loader', 'seen');
-    loader.classList.add('is-done');
-    document.body.classList.remove('loading');
-    setTimeout(() => loader.remove(), 700);
-  }
-
-  window.addEventListener('load', () => setTimeout(dismiss, hold));
-  // Safety net in case the load event already fired or is delayed
-  setTimeout(dismiss, hold + 2500);
-})();
-
-// === THEME TOGGLE ===
-// Initial theme is set by an inline <head> script to avoid a flash of the
-// wrong theme. Here we just wire the toggle button and persist the choice.
+// === HERO CAROUSEL ===
+// Crossfade between slides (0.7s opacity handled in CSS).
 document.addEventListener('DOMContentLoaded', function () {
-  const toggle = document.querySelector('.theme-toggle');
-  if (!toggle) return;
-  // The navbar uses backdrop-filter, which traps position:fixed inside it.
-  // Move the toggle out to <body> so it pins to the viewport's bottom-right.
-  document.body.appendChild(toggle);
-  toggle.addEventListener('click', function () {
-    const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) { /* storage blocked */ }
-  });
-});
-
-// === MOBILE MENU ===
-document.addEventListener('DOMContentLoaded', function () {
-  const toggle = document.querySelector('.mobile-menu-toggle');
-  const menu = document.querySelector('.navbar-menu');
-
-  if (toggle && menu) {
-    toggle.addEventListener('click', function () {
-      menu.classList.toggle('active');
-      toggle.classList.toggle('active');
-    });
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('active');
-        toggle.classList.remove('active');
-      });
-    });
-  }
-});
-
-// === NAVBAR SCROLL STATE ===
-window.addEventListener('scroll', function () {
-  const navbar = document.querySelector('.navbar');
-  if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 40);
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length < 2) return;
+  let current = 0;
+  setInterval(function () {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5000);
 });
 
 // === ANIMATED COUNTERS ===
@@ -88,45 +27,44 @@ function animateCounter(el, target, duration = 1800) {
   requestAnimationFrame(tick);
 }
 
-// === SCROLL REVEAL + COUNTER TRIGGER ===
-const observer = new IntersectionObserver(function (entries) {
+const counterObserver = new IntersectionObserver(function (entries) {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-    entry.target.classList.add('active');
-    if (entry.target.classList.contains('stat-number')) {
-      const target = parseInt(entry.target.getAttribute('data-target'), 10);
-      if (!isNaN(target)) animateCounter(entry.target, target);
-    }
-    observer.unobserve(entry.target);
+    const target = parseInt(entry.target.getAttribute('data-target'), 10);
+    if (!isNaN(target)) animateCounter(entry.target, target);
+    counterObserver.unobserve(entry.target);
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.4 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.reveal, .stat-number').forEach(el => observer.observe(el));
+  document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObserver.observe(el));
 });
 
 // === ACTIVE NAV LINK ===
 document.addEventListener('DOMContentLoaded', function () {
   const current = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.navbar-menu a').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === current || (current === '' && href === 'index.html')) {
-      link.classList.add('active');
-    }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if (link.getAttribute('href') === current) link.classList.add('active');
   });
 });
 
-// === SMOOTH SCROLL FOR ANCHORS ===
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href === '#' || href === '') return;
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-    }
-  });
+// === SCROLL REVEAL ===
+// Directional entrances for anything tagged .reveal.
+document.addEventListener('DOMContentLoaded', function () {
+  const items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in'));
+    return;
+  }
+  const revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(el => revealObserver.observe(el));
 });
 
 // === HCB OPEN FINANCES (live) ===
@@ -157,8 +95,8 @@ document.addEventListener('DOMContentLoaded', function () {
       setStat('raised', money(b.total_raised));
     })
     .catch(() => {
-      setStat('balance', '—');
-      setStat('raised', '—');
+      setStat('balance', '…');
+      setStat('raised', '…');
     });
 
   const feed = card.querySelector('[data-hcb="transactions"]');
@@ -172,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         feed.innerHTML = txns.map(t => {
           const incoming = (t.amount_cents || 0) > 0;
-          const sign = incoming ? '+' : '−';
+          const sign = incoming ? '+' : '-';
           const amount = sign + money(Math.abs(t.amount_cents));
           const memo = (t.memo || 'Transaction').replace(/[<>]/g, '');
           return '<li>' +
@@ -185,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }).join('');
       })
       .catch(() => {
-        feed.innerHTML = '<li class="finance-feed-empty">Live feed unavailable — view it on HCB.</li>';
+        feed.innerHTML = '<li class="finance-feed-empty">Live feed unavailable. View it on HCB.</li>';
       });
   }
 });
@@ -201,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const HINTS = {
     m1: 'hot-headed, near the machine',
     m2: 'watching the money',
-    m3: 'with the crew',
+    m3: 'at the bottom of everything',
     m4: 'orbiting this season'
   };
   const LS_FOUND = 'vx-hunt-found';
@@ -331,8 +269,8 @@ document.addEventListener('DOMContentLoaded', function () {
           '<p class="tnc-sub">Please read all 38 provisions carefully. Scroll to the bottom to unlock acceptance. This is the law.</p>' +
           '<div class="tnc-box">' + tncHTML() + '</div>' +
           '<div class="tnc-actions">' +
-            '<button class="btn btn-primary tnc-accept" type="button" disabled><span>Accept cookies</span></button>' +
-            '<button class="btn btn-ghost tnc-decline" type="button"><span>Decline</span></button>' +
+            '<button class="btn solid tnc-accept" type="button" disabled><span>Accept cookies</span></button>' +
+            '<button class="btn ghost tnc-decline" type="button"><span>Decline</span></button>' +
           '</div>' +
           '<p class="tnc-note">By scrolling you agree that scrolling constitutes reading.</p>' +
         '</div>';
@@ -365,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<img class="cookie-img" src="media/cookie-cut.png" alt="Your cookie">' +
           '<h3>Cookie accepted!!</h3>' +
           '<p>One browser cookie has been set, as per provision 4. Thank you for reading all 38 provisions. We both know you scrolled.</p>' +
-          '<button class="btn btn-primary" type="button"><span>Return to the website</span></button>';
+          '<button class="btn solid" type="button"><span>Return to the website</span></button>';
         doneMsg.querySelector('button').addEventListener('click', function () {
           overlay.remove();
           document.body.style.overflow = '';
@@ -416,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<img class="cookie-img" src="media/cookie-cut.png" alt="A cookie">' +
           '<h3>The volcano erupted!!</h3>' +
           '<p>It produced exactly one cookie. To claim it, you must first accept the cookie terms and conditions. All of them.</p>' +
-          '<button class="btn btn-primary" type="button"><span>Claim the cookie</span></button>';
+          '<button class="btn solid" type="button"><span>Claim the cookie</span></button>';
         overlay.appendChild(reward);
         requestAnimationFrame(() => reward.classList.add('show'));
         reward.querySelector('button').addEventListener('click', function () {

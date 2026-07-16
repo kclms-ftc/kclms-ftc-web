@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="description"
         content="KCLMS Volcanix - King's College London Mathematics School's First Tech Challenge robotics team. Think Award winners, open-source engineering, and advanced autonomous systems.">
@@ -15,14 +15,14 @@
     <meta property="og:url" content="https://kclms-ftc.github.io/kclms-ftc-web/index.html">
     <meta property="og:title" content="KCLMS Volcanix - Engineered to Erupt">
     <meta property="og:description" content="King's College London Mathematics School's First Tech Challenge team. Think Award winners and open-source engineers.">
-    <meta property="og:image" content="https://kclms-ftc.github.io/kclms-ftc-web/media/team-season.jpg">
+    <meta property="og:image" content="https://kclms-ftc.github.io/kclms-ftc-web/media/team-group.jpg">
     <meta property="og:site_name" content="KCLMS Volcanix">
     <meta property="og:locale" content="en_GB">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="KCLMS Volcanix - Engineered to Erupt">
     <meta name="twitter:description" content="King's College London Mathematics School's First Tech Challenge team.">
-    <meta name="twitter:image" content="https://kclms-ftc.github.io/kclms-ftc-web/media/team-season.jpg">
+    <meta name="twitter:image" content="https://kclms-ftc.github.io/kclms-ftc-web/media/team-group.jpg">
 
     <meta name="robots" content="index, follow">
     <meta name="author" content="KCLMS Volcanix">
@@ -30,7 +30,6 @@
 
     <title>KCLMS Volcanix - First Tech Challenge | Engineered to Erupt</title>
     <link rel="icon" type="image/png" href="media/volcanix-logo-96.png">
-    <script>(function(){try{var d=document.documentElement;var t=localStorage.getItem("theme")||"dark";d.setAttribute("data-theme",t);if(localStorage.getItem("volcanixLoaderSeen")){d.setAttribute("data-loader","seen");}}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
     <link rel="stylesheet" href="styles.css">
 
     <script type="application/ld+json">
@@ -64,328 +63,182 @@
 </head>
 
 <body>
-    <!-- Loader -->
-    <div id="loader" aria-hidden="true">
-        <div class="loader-stripes"><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="loader-foot">
-            <div class="loader-mark"><span class="loader-word">KCLMS</span><span class="loader-sub">Volcanix</span></div>
-            <div class="loader-bar"></div>
-        </div>
-    </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="navbar-brand">
-                <img src="media/volcanix-logo-96.png" alt="KCLMS Volcanix logo">
-                <span>Volcanix</span>
+    <!-- Fixed navigation -->
+    <nav class="topnav">
+        <div class="nav-bar">
+            <a href="index.html" class="wordmark" aria-label="Volcanix home">
+                <span class="wm-main">Volcanix</span>
+                <span class="wm-sub">Robotics</span>
             </a>
-            <div class="nav-actions">
-                <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme" title="Toggle theme">
-                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                </button>
-                <div class="mobile-menu-toggle"><span></span><span></span><span></span></div>
-            </div>
-            <ul class="navbar-menu">
-                <li><a href="about.html">About</a></li>
-                <li><a href="robot.html">Robot</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="season.html">Season</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="sponsors.html" class="nav-cta">Sponsor us</a></li>
+            <ul class="nav-links">
+                <li><a href="index.html"><span>Home</span></a></li>
+                <li><a href="robot.html"><span>Robot</span></a></li>
+                <li><a href="team.html"><span>Team</span></a></li>
+                <li><a href="sponsors.html"><span>Sponsors</span></a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero -->
-    <header class="hero">
-        <div class="hero-media"><img src="media/team-season.jpg" alt="KCLMS Volcanix team"></div>
-        <div class="hero-content">
-            <div class="container">
-                <span class="stripe-accent"></span>
-                <h1>Hi, we're <span class="accent">Volcanix</span>.</h1>
-                <p class="hero-subtitle">Upcoming team of 15 dedicated and proactive students from King's College London Mathematics School working towards the same goal: <span class="hand-pop">Success.</span></p>
-                <div class="hero-cta">
-                    <a href="robot.html" class="btn btn-primary">Meet the robot</a>
-                    <a href="sponsors.html" class="btn btn-outline">Sponsor the team</a>
-                </div>
-            </div>
+    <header class="hero clip">
+        <div class="hero-slide active"><img src="media/team-season.jpg" alt="KCLMS Volcanix team"></div>
+        <div class="hero-slide"><img src="media/robot-hero.jpg" alt="KCLMS Volcanix competition robot"></div>
+        <div class="hero-slide"><img src="media/matchup-2.jpg" alt="Match action"></div>
+        <div class="hero-slide"><img src="media/think-award-best.jpg" alt="Think Award plaque"></div>
+        <div class="hero-social">
+            <a href="https://www.instagram.com/kclms_ftc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://www.linkedin.com/in/kclms-ftc" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+            <a href="mailto:kclmsftc@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
         </div>
+        <div class="hero-copy">
+            <h1 class="mega">Volcanix</h1>
+            <p class="tagline">The First Tech Challenge team at King's College London Mathematics School.</p>
+            <a href="robot.html" class="btn solid"><span>The Robot</span></a>
+            <a href="sponsors.html" class="btn ghost"><span>Sponsor Us</span></a>
+        </div>
+        <div class="zz abs"></div>
     </header>
 
+    <!-- Shout band -->
+    <div class="shout">
+        <p>&ldquo;Engineered to erupt!!&rdquo;</p>
+    </div>
+
+    <!-- Who we are -->
+    <div class="block reveal">
+        <div class="block-media"><img src="media/team-group.jpg" alt="The KCLMS Volcanix team" loading="lazy"></div>
+        <div class="block-body">
+            <h3>Who We Are</h3>
+            <p>Fifteen students who design, build and program a competition robot from scratch. We won the <strong>Think Award</strong> at our first UK qualifier, and everything we make (CAD, code, write-ups) is <strong>open source</strong>.</p>
+            <a href="team.html" class="btn ghost"><span>Meet the Crew</span></a>
+        </div>
+    </div>
+
     <!-- Stats -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number" data-target="1">0</span>
-                    <span class="stat-label">Think Award, first try</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="12">0</span>
-                    <span class="stat-label">teammates</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="600">0</span>
-                    <span class="stat-label">hours in the workshop</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="100">0</span><span class="stat-number unit">%</span>
-                    <span class="stat-label">of our code is public</span>
-                </div>
-            </div>
+    <section class="stats clip">
+        <div class="stat">
+            <span class="stat-number" data-target="1">0</span>
+            <span class="stat-label">Think Award, first try</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number" data-target="15">0</span>
+            <span class="stat-label">teammates</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number" data-target="600">0</span>
+            <span class="stat-label">hours in the workshop</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number" data-target="100">0</span>
+            <span class="stat-label">% of our code is public</span>
         </div>
     </section>
 
-    <!-- Think Award highlight -->
-    <section class="section bg-soft">
-        <div class="container">
-            <div class="split">
-                <div class="reveal">
-                    <span class="eyebrow">our first trophy</span>
-                    <h2 class="section-title">Think Award<br>Winners</h2>
-                    <span class="stripe-accent"></span>
-                    <p class="lead mb-lg">Won at our first ever UK qualifier — it's the award judged on engineering
-                        and documentation, not match results.</p>
-                    <p>Not bad for a rookie team. We want more.</p>
-                    <a href="season.html" class="text-link mt-lg">Read our season story</a>
-                </div>
-                <div class="reveal media-frame media-tall">
-                    <img src="media/think-award.jpg" alt="FIRST Tech Challenge UK Think Award plaque for the DECODE 2025-26 season">
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- What we do -->
+    <div class="section-banner">
+        <h2>What We Do</h2>
+        <p class="meta">Design &middot; Build &middot; Program &middot; Compete</p>
+    </div>
 
-    <!-- What is FTC -->
-    <section class="section has-sticker">
-        <img class="sticker s2" src="mascots/m4-cut.png" alt="Hidden Volcanix sticker" data-hunt="m4" style="right:4%; bottom:22px; width:96px;">
-        <div class="container">
-            <div class="section-header center">
-                <span class="eyebrow">what we actually do</span>
-                <h2 class="section-title">What is the First Tech Challenge?</h2>
-                <span class="stripe-accent"></span>
-                <p class="section-subtitle">Student teams design, build and program a robot to play a brand-new game
-                    every season.</p>
-            </div>
-            <div class="list-rows">
-                <div class="row reveal">
-                    <span class="row-num">01</span>
-                    <h3 class="row-title">Design &amp; Build</h3>
-                    <p class="row-text">A new game every season, a new robot to invent.</p>
-                </div>
-                <div class="row reveal">
-                    <span class="row-num">02</span>
-                    <h3 class="row-title">Compete</h3>
-                    <p class="row-text">From local qualifiers all the way to world championships.</p>
-                </div>
-                <div class="row reveal">
-                    <span class="row-num">03</span>
-                    <h3 class="row-title">Learn Real Skills</h3>
-                    <p class="row-text">CAD, code, fabrication, and keeping a project on the rails.</p>
-                </div>
-                <div class="row reveal">
-                    <span class="row-num">04</span>
-                    <h3 class="row-title">Pass It On</h3>
-                    <p class="row-text">Getting younger students hooked on STEM.</p>
-                </div>
-            </div>
+    <div class="block flip reveal from-right">
+        <div class="block-media"><img src="media/robot-hero.jpg" alt="KCLMS Volcanix competition robot" loading="lazy"></div>
+        <div class="block-body">
+            <h3>The Robot</h3>
+            <p>Mecanum drive, three-wheel odometry, Pedro Pathing and a Limelight vision stack we tuned ourselves.</p>
+            <a href="robot.html" class="btn ghost"><span>Technical Details</span></a>
         </div>
-    </section>
+    </div>
 
-    <!-- Season feature -->
-    <section class="section bg-soft">
-        <div class="container">
-            <div class="split">
-                <div class="reveal media-frame media-wide">
-                    <img src="media/arena.jpg" alt="DECODE competition arena">
-                </div>
-                <div class="reveal">
-                    <span class="eyebrow">this season</span>
-                    <h2 class="section-title">The DECODE Challenge</h2>
-                    <span class="stripe-accent"></span>
-                    <p class="mb-lg">Robots read a coded sequence with computer vision, then launch artifacts into
-                        the goals in that order. Accuracy wins it.</p>
-                    <ul class="spec-list">
-                        <li><span>Autonomous</span><span>Computer-vision sequence reading</span></li>
-                        <li><span>Mechanism</span><span>Precision artifact launcher</span></li>
-                        <li><span>Strategy</span><span>Offensive scoring &amp; defence</span></li>
-                        <li><span>Alliances</span><span>Coordinated two-team play</span></li>
-                    </ul>
-                    <a href="season.html" class="btn btn-ghost mt-xl">Our Strategy</a>
-                </div>
-            </div>
+    <div class="block reveal from-left">
+        <div class="block-media"><img src="media/arena.jpg" alt="DECODE competition arena" loading="lazy"></div>
+        <img class="sticker s2" src="mascots/m4-cut.png" alt="Hidden Volcanix sticker" data-hunt="m4" style="right:6%; bottom:14px; width:96px;">
+        <div class="block-body">
+            <h3>This Season: Decode</h3>
+            <p>Robots read a coded pattern with vision, then launch artifacts into goals in that order. Our answer: a tuned dual-flywheel launcher and a repeatable autonomous.</p>
+            <a href="robot.html#season" class="btn ghost"><span>Our Strategy</span></a>
         </div>
-    </section>
+    </div>
 
-    <!-- Robot feature -->
-    <section class="section">
-        <div class="container">
-            <div class="split">
-                <div class="reveal">
-                    <span class="eyebrow">the robot</span>
-                    <h2 class="section-title">Built and Tuned<br>Entirely by Us</h2>
-                    <span class="stripe-accent"></span>
-                    <p class="mb-lg">Rough prototypes in hardware, a full CAD model in parallel, and every line of
-                        code public.</p>
-                    <ul class="spec-list">
-                        <li><span>Drivetrain</span><span>Mecanum — omnidirectional</span></li>
-                        <li><span>Path Following</span><span>Pedro Pathing</span></li>
-                        <li><span>Localisation</span><span>Three-wheel odometry</span></li>
-                        <li><span>Vision</span><span>Limelight, ground-up integration</span></li>
-                    </ul>
-                    <a href="robot.html" class="btn btn-ghost mt-xl">Technical Details</a>
-                </div>
-                <div class="reveal media-frame media-tall">
-                    <img src="media/robot-hero.jpg" alt="KCLMS Volcanix competition robot">
-                </div>
-            </div>
+    <div class="block flip reveal from-right">
+        <div class="block-media"><img src="media/bakesale.jpeg" alt="Bake sale fundraiser" loading="lazy"></div>
+        <div class="block-body">
+            <h3>Outreach</h3>
+            <p>School visits, workshops and help for rookie teams: around 200 students reached so far.</p>
+            <a href="mailto:kclmsftc@gmail.com" class="btn ghost"><span>Work With Us</span></a>
         </div>
-    </section>
+    </div>
 
-    <!-- Team showcase -->
-    <section class="section bg-soft">
-        <div class="container">
-            <div class="section-header center">
-                <span class="eyebrow">the humans</span>
-                <h2 class="section-title">One Team, Many Obsessions</h2>
-                <span class="stripe-accent"></span>
-            </div>
-            <div class="grid grid-3">
-                <div class="feature-card reveal">
-                    <img src="media/build-1.jpg" alt="Engineering and build session">
-                    <div class="feature-body">
-                        <h4>Mechanical</h4>
-                        <p>Prototype fast, break it, CAD it properly, repeat.</p>
-                    </div>
-                </div>
-                <div class="feature-card reveal">
-                    <img src="media/programming-1.jpg" alt="Programming on the go">
-                    <div class="feature-body">
-                        <h4>Programming</h4>
-                        <p>Autonomous routines, odometry and vision.</p>
-                    </div>
-                </div>
-                <div class="feature-card reveal">
-                    <img src="media/foosball.jpg" alt="Team bonding">
-                    <div class="feature-body">
-                        <h4>Off the Field</h4>
-                        <p>Outreach, fundraising, and the occasional foosball match.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-xl">
-                <a href="team.html" class="btn btn-outline">Meet the full team</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Camera roll -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header center">
-                <span class="eyebrow">straight off the camera roll</span>
-                <h2 class="section-title">Life on the Team</h2>
-                <span class="stripe-accent"></span>
-            </div>
-            <div class="camera-roll">
-                <figure class="polaroid reveal">
-                    <img src="media/candid-selfie.jpg" alt="Team selfie over the robot mid-build">
-                    <figcaption>post match selfie</figcaption>
-                </figure>
-                <figure class="polaroid reveal">
-                    <img src="media/enthusiasm.jpeg" alt="Team member explaining the plan at the whiteboard">
-                    <figcaption>the master plan</figcaption>
-                </figure>
-                <figure class="polaroid reveal">
-                    <img src="media/Photos/aichen.jpg" alt="Aichen on the rooftop">
-                    <figcaption>aichen being aichen</figcaption>
-                </figure>
-                <figure class="polaroid reveal">
-                    <img src="media/planning.jpeg" alt="Whole-team meeting in the classroom">
-                    <figcaption>Friday meetings</figcaption>
-                </figure>
-                <figure class="polaroid reveal">
-                    <img src="media/carskey-parth.jpeg" alt="Two team members deep in the code">
-                    <figcaption>locked in</figcaption>
-                </figure>
-                <figure class="polaroid reveal">
-                    <img src="media/mechanical.jpeg" alt="Fixing 3D-printed parts around the table">
-                    <figcaption>parts everywhere</figcaption>
-                </figure>
-            </div>
+    <!-- Life on the team -->
+    <div class="section-banner">
+        <h2>Life on the Team</h2>
+        <p class="meta">Straight off the camera roll</p>
+    </div>
+    <section class="section reveal zoom">
+        <div class="gallery">
+            <figure><img src="media/candid-selfie.jpg" alt="Team selfie over the robot mid-build" loading="lazy"><figcaption>Post-match selfie</figcaption></figure>
+            <figure><img src="media/planning.jpeg" alt="Whole-team meeting in the classroom" loading="lazy"><figcaption>Friday meetings</figcaption></figure>
+            <figure><img src="media/mechanical.jpeg" alt="3D-printed parts around the table" loading="lazy"><figcaption>Parts everywhere</figcaption></figure>
         </div>
     </section>
 
     <!-- CTA band -->
-    <section class="cta-band">
-        <div class="hero-media"><img src="media/matchup-2.jpg" alt="KCLMS Volcanix match action"></div>
-        <div class="container">
-            <div class="cta-band-inner">
-                <span class="eyebrow">help us keep building</span>
-                <h2>Like what we're making?</h2>
-                <p>Sponsorship covers parts, entry fees and outreach. If you'd like to help, we'd love to hear
-                    from you.</p>
-                <div class="hero-cta">
-                    <a href="sponsors.html" class="btn btn-primary">Sponsor the team</a>
-                    <a href="mailto:kclmsftc@gmail.com" class="btn btn-outline">Email the Team Directly</a>
-                </div>
-            </div>
+    <section class="cta-band clip">
+        <div class="cta-bg"><img src="media/matchup-2.jpg" alt="KCLMS Volcanix match action" loading="lazy"></div>
+        <div class="cta-inner">
+            <h2>Help Us Keep Building</h2>
+            <p>Sponsorship covers parts, entry fees and outreach, and our books are public.</p>
+            <a href="sponsors.html" class="btn solid"><span>Sponsor the Team</span></a>
+            <a href="mailto:kclmsftc@gmail.com" class="btn ghost"><span>Email the Team</span></a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <div class="skyline" aria-hidden="true"><img src="media/skyline-red.png" alt="" loading="lazy"></div>
+    <!-- London skyline -->
+    <div class="skyline">
+        <span class="skyline-label">London &middot; UK</span>
+        <img src="media/skyline-red.png" alt="London skyline silhouette">
+    </div>
 
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+        <img class="footer-watermark" src="mascots/m4-cut.png" alt="" aria-hidden="true">
+        <div class="footer-inner">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html"><img class="footer-mascot" src="mascots/m3-cut.png" alt="Volcanix mascot sticker" data-hunt="m3"></a>
                     <span class="footer-brand">KCLMS Volcanix</span>
-                    <p>The First Tech Challenge team at King's College London Mathematics School. Think Award
-                        winners, and open source by default.</p>
-                    <div class="social-links">
-                        <a class="social-link" href="https://www.instagram.com/kclms_ftc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-                        <a class="social-link" href="https://www.linkedin.com/in/kclms-ftc" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+                    <p>The First Tech Challenge team at King's College London Mathematics School. Think Award winners, open source by default.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/kclms_ftc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                        <a href="https://www.linkedin.com/in/kclms-ftc" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+                        <a href="mailto:kclmsftc@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Team</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="robot.html">Our Robot</a></li>
-                        <li><a href="season.html">Season</a></li>
+                <div>
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="robot.html">The Robot</a></li>
+                        <li><a href="team.html">The Team</a></li>
+                        <li><a href="sponsors.html">Sponsors &amp; Finances</a></li>
                         <li><a href="portfolio.html">Engineering Portfolio</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Get Involved</h4>
-                    <ul class="footer-links">
-                        <li><a href="sponsors.html">Sponsor Us</a></li>
-                        <li><a href="outreach.html">Outreach</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
+                <div>
                     <h4>Contact</h4>
-                    <ul class="footer-links">
+                    <ul>
                         <li><a href="mailto:kclmsftc@gmail.com">kclmsftc@gmail.com</a></li>
                         <li><a href="https://www.google.com/maps/place/King's+College+London+Mathematics+School/@51.4958875,-0.1140411,17z/data=!3m1!4b1!4m6!3m5!1s0x487604be7bc868c3:0x41455f6e6b8f68e8!8m2!3d51.4958875!4d-0.1114662!16s%2Fg%2F11cmyvcq2s?entry=ttu" target="_blank" rel="noopener">King's College London<br>Mathematics School<br>London SE11 6NJ</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2025–2026 KCLMS Volcanix. All rights reserved.</p>
-                <p>FIRST® and FIRST® Tech Challenge are trademarks of FIRST (For Inspiration and Recognition of Science
-                    and Technology).</p>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 KCLMS Volcanix. All rights reserved.</p>
+            <p>FIRST&reg; and FIRST&reg; Tech Challenge are trademarks of FIRST.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 
 </html>
