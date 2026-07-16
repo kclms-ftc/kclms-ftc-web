@@ -74,8 +74,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const slug = card.getAttribute('data-hcb-slug');
   const api = 'https://hcb.hackclub.com/api/v3/organizations/' + slug;
-  const gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' });
-  const money = cents => gbp.format((cents || 0) / 100);
+  // HCB amounts are in USD cents
+  const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+  const money = cents => usd.format((cents || 0) / 100);
 
   const setStat = (key, text) => {
     const el = card.querySelector('[data-hcb="' + key + '"]');
