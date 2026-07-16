@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://kclms-ftc.github.io/kclms-ftc-web/sitemap.xml
+Sitemap: https://volcanixftc.com/sitemap.xml
 
 # Allow site content
 Allow: /*.html
