@@ -646,12 +646,44 @@ strong { font-weight: 700; color: var(--cream); }
   .hero-social { top: 84px; right: 12px; }
   /* stickers stay visible on small screens so the hunt still works */
   .sticker { max-width: 72px; }
+  /* safety net: nothing may widen the page sideways on small screens */
+  html { overflow-x: clip; }
+  /* side slide-ins push full-width blocks past the viewport edge
+     and create horizontal scroll; on small screens reveal
+     everything with the vertical rise instead */
+  .reveal.from-left:not(.in),
+  .reveal.from-right:not(.in) { transform: translateY(30px); }
 }
 @media (max-width: 560px) {
   .hero { height: 72vh; min-height: 480px; }
   .tier { flex: 1 1 100%; }
   .footer-bottom { flex-direction: column; gap: 6px; }
   .pdf-frame { height: 520px; }
+  /* nav: the fixed-content slab is 492px wide and clips on phones.
+     Let it span the viewport and wrap onto two rows
+     (wordmark on top, links underneath); the angled clip tail
+     goes - there is no room for it. */
+  .topnav { padding: 0 0 14px; }
+  .nav-bar {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px 12px;
+    padding: 8px 8px 9px;
+    clip-path: none;
+  }
+  .nav-links { flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .nav-links a { padding: 8px 11px; }
+  .nav-links a span { font-size: 12px; }
+  .wm-main { font-size: 20px; }
+  /* finance card: stats row and feed rows overflow at 320px */
+  .finance { padding: 20px 14px; }
+  .finance-stats { flex-wrap: wrap; gap: 10px; }
+  .finance-stat { flex: 1 1 130px; }
+  .finance-stat-value { font-size: 21px; }
+  .finance-feed-memo { display: block; flex: 1; min-width: 0; }
+  .finance-feed-name { max-width: none; }
 }
 
 /* ============================================================
