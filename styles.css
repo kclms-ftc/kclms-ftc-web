@@ -953,3 +953,24 @@ strong { font-weight: 700; color: var(--cream); }
   1px 1px 0 rgba(0, 0, 0, 0.55); }
 .team-card:active { transform: rotate(0deg) translate(4px, 5px); box-shadow: 3px 3px 0 rgba(143, 32, 22, 0.85); }
 .sticker:active { transform: scale(0.94) !important; transition-duration: 0.06s; }
+
+/* === WONK TOGGLE ===
+   Every tilted "sticker" element straightens up when clicked and
+   goes wonky again on the next click. Hunt stickers and the footer
+   mascot are exempt - their clicks belong to the minigame. */
+.block-media img, .team-card, .gallery img { cursor: pointer; }
+.block-media img.straightened,
+.block.flip .block-media img.straightened,
+.team-card.straightened,
+.team-grid .team-card:nth-child(even).straightened,
+.gallery img.straightened,
+.gallery figure:nth-child(even) img.straightened,
+.sponsor-logos li.straightened,
+.sponsor-logos li:nth-child(even).straightened { transform: rotate(0deg); }
+/* keep the hover lift/zoom alive while straightened */
+.block-media img.straightened:hover { transform: rotate(0deg) scale(1.02); }
+.team-card.straightened:hover { transform: rotate(0deg) translateY(-5px); }
+.gallery img.straightened:hover { transform: rotate(0deg) scale(1.03); }
+.sponsor-logos li.straightened:hover { transform: rotate(0deg) translateY(-4px); }
+/* and the clicky press-in */
+.team-card.straightened:active { transform: rotate(0deg) translate(4px, 5px); }

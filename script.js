@@ -367,3 +367,17 @@ document.addEventListener('DOMContentLoaded', function () {
     buildWidget();
   });
 })();
+
+// === WONK TOGGLE ===
+// Tilted "sticker" elements straighten up on click and go wonky
+// again on the next. Hunt stickers and the footer mascot are
+// exempt - their clicks belong to the sticker-hunt minigame.
+document.addEventListener('DOMContentLoaded', function () {
+  document
+    .querySelectorAll('.block-media img, .team-card, .gallery img, .sponsor-logos li')
+    .forEach(function (el) {
+      el.addEventListener('click', function () {
+        el.classList.toggle('straightened');
+      });
+    });
+});
