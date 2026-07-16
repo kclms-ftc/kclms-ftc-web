@@ -5,19 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Inside the KCLMS Volcanix robot - mecanum drive, three-wheel odometry, Pedro Pathing and a ground-up Limelight vision system for the DECODE challenge.">
-    <meta name="keywords" content="FTC robot, mecanum wheels, odometry, Pedro Pathing, Limelight FTC, autonomous robot, CAD robotics, DECODE challenge robot">
-    <link rel="canonical" href="https://kclms-ftc.github.io/kclms-ftc-web/robot.html">
+        content="Inside our First Tech Challenge robot: mecanum drive, three-wheel odometry, Pedro Pathing and a custom Limelight vision system for the DECODE challenge.">
+    <meta name="keywords" content="FTC robot, First Tech Challenge UK, mecanum wheels, odometry, Pedro Pathing, Limelight FTC, autonomous robot, CAD robotics, DECODE challenge robot">
+    <link rel="canonical" href="https://volcanixftc.com/robot.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="The Machine - KCLMS Volcanix">
+    <meta property="og:url" content="https://volcanixftc.com/robot.html">
+    <meta property="og:title" content="FTC Robot Design &amp; Code - KCLMS Volcanix">
     <meta property="og:description" content="Mecanum drive, odometry, Pedro Pathing and a ground-up Limelight vision system.">
-    <meta property="og:image" content="https://kclms-ftc.github.io/kclms-ftc-web/media/robot-hero.jpg">
+    <meta property="og:image" content="https://volcanixftc.com/media/robot-hero.jpg">
+    <meta property="og:site_name" content="KCLMS Volcanix">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://volcanixftc.com/media/robot-hero.jpg">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#000000">
-    <title>The Machine - KCLMS Volcanix</title>
+    <title>FTC Robot Design &amp; Code - KCLMS Volcanix</title>
     <link rel="icon" type="image/png" href="media/volcanix-logo-96.png">
+    <link rel="preload" href="Gendy.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="media/robot-2.jpg" as="image" fetchpriority="high">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://volcanixftc.com/#organization",
+          "name": "KCLMS Volcanix",
+          "url": "https://volcanixftc.com/",
+          "logo": "https://volcanixftc.com/media/volcanix-logo-512.png",
+          "sameAs": [
+            "https://www.instagram.com/kclms_ftc/",
+            "https://www.linkedin.com/in/kclms-ftc"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcanixftc.com/" },
+            { "@type": "ListItem", "position": 2, "name": "The Robot", "item": "https://volcanixftc.com/robot.html" }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -38,7 +68,7 @@
     </nav>
 
     <header class="hero page-banner clip">
-        <div class="hero-slide active"><img src="media/robot-2.jpg" alt="KCLMS Volcanix robot"></div>
+        <div class="hero-slide active"><img src="media/robot-2.jpg" alt="The KCLMS Volcanix DECODE season competition robot" width="4624" height="3472" fetchpriority="high"></div>
         <div class="hero-copy">
             <h1 class="mega">The Machine</h1>
             <p class="tagline">Built in-house for DECODE, season 2025&ndash;26.</p>
@@ -48,10 +78,10 @@
 
     <!-- How we build -->
     <div class="block reveal">
-        <div class="block-media"><img src="media/robot-hero.jpg" alt="KCLMS Volcanix competition robot"></div>
+        <div class="block-media"><img src="media/robot-hero.jpg" alt="KCLMS Volcanix competition robot in the workshop" width="3472" height="4624" loading="lazy"></div>
         <div class="block-body">
             <h3>How We Build</h3>
-            <p>Rough prototypes on the field, full CAD model in parallel. Every subsystem went through a few versions before it earned its spot, and all the code is public.</p>
+            <p>Rough prototypes on the field, full CAD model in parallel. Every subsystem went through a few versions before it earned its spot, and all the code is public. <a href="team.html">Meet the students behind the build</a>.</p>
             <a href="portfolio.html" class="btn ghost"><span>Read the Portfolio</span></a>
         </div>
     </div>
@@ -108,7 +138,7 @@
 
     <!-- Full spec -->
     <div class="block flip reveal from-right">
-        <div class="block-media"><img src="media/robot-cad.jpeg" alt="Robot CAD model"></div>
+        <div class="block-media"><img src="media/robot-cad.jpeg" alt="Full CAD model of the KCLMS Volcanix robot" width="1573" height="1007" loading="lazy"></div>
         <div class="block-body">
             <h3>Specification</h3>
             <ul class="spec-list">
@@ -130,7 +160,7 @@
         <p class="meta">Read the code &middot; Launch in order</p>
     </div>
     <div class="block reveal from-left">
-        <div class="block-media"><img src="media/think-award-best.jpg" alt="FIRST Tech Challenge UK Think Award plaque"></div>
+        <div class="block-media"><img src="media/think-award-best.jpg" alt="FIRST Tech Challenge UK Think Award plaque won by KCLMS Volcanix" width="1237" height="1653" loading="lazy"></div>
         <div class="block-body">
             <h3>Think Award, First Try</h3>
             <p>DECODE scores accuracy: robots decode a vision pattern, then launch artifacts in that order. Our tuned launcher and repeatable autonomous carried us to the <strong>Think Award</strong> at our first UK qualifier, judged on the engineering and documentation behind the robot.</p>
@@ -145,16 +175,16 @@
     </div>
     <section class="section reveal zoom">
         <div class="gallery">
-            <figure><img src="media/build-1.jpg" alt="Build phase" loading="lazy"><figcaption>Prototyping</figcaption></figure>
-            <figure><img src="media/build-2.jpg" alt="Assembly" loading="lazy"><figcaption>Assembly &amp; wiring</figcaption></figure>
-            <figure><img src="media/robot-3.jpg" alt="Robot detail" loading="lazy"><figcaption>Competition-ready</figcaption></figure>
+            <figure><img src="media/build-1.jpg" alt="Early robot prototype during the build phase" width="4096" height="3072" loading="lazy"><figcaption>Prototyping</figcaption></figure>
+            <figure><img src="media/build-2.jpg" alt="Robot assembly and wiring in progress" width="4096" height="3072" loading="lazy"><figcaption>Assembly &amp; wiring</figcaption></figure>
+            <figure><img src="media/robot-3.jpg" alt="Detail of the finished competition-ready robot" width="4096" height="3072" loading="lazy"><figcaption>Competition-ready</figcaption></figure>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="cta-band">
-        <div class="cta-bg"><img src="media/arena.jpg" alt="Competition arena" loading="lazy"></div>
-        <img class="sticker s3" src="mascots/m1-cut.png" alt="Hidden Volcanix sticker" data-hunt="m1" style="left:5%; bottom:26px; width:92px;">
+        <div class="cta-bg"><img src="media/arena.jpg" alt="First Tech Challenge competition arena" width="3472" height="4624" loading="lazy"></div>
+        <img class="sticker s3" src="mascots/m1-cut.png" alt="Hidden Volcanix sticker" data-hunt="m1" width="429" height="422" loading="lazy" style="left:5%; bottom:26px; width:92px;">
         <div class="cta-inner">
             <h2>We Share What We Build</h2>
             <p>Our code is public. Ask us anything about how we did it.</p>
@@ -166,16 +196,16 @@
     <!-- London skyline -->
     <div class="skyline">
         <span class="skyline-label">London &middot; UK</span>
-        <img src="media/skyline-red.png" alt="London skyline silhouette">
+        <img src="media/skyline-red.png" alt="London skyline silhouette" width="2880" height="420" loading="lazy">
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <img class="footer-watermark" src="mascots/m4-cut.png" alt="" aria-hidden="true">
+        <img class="footer-watermark" src="mascots/m4-cut.png" alt="" aria-hidden="true" width="553" height="552" loading="lazy">
         <div class="footer-inner">
             <div class="footer-cols">
                 <div>
-                    <a href="index.html"><img class="footer-mascot" src="mascots/m3-cut.png" alt="Volcanix mascot sticker" data-hunt="m3"></a>
+                    <a href="index.html"><img class="footer-mascot" src="mascots/m3-cut.png" alt="Volcanix mascot sticker" data-hunt="m3" width="469" height="463" loading="lazy"></a>
                     <span class="footer-brand">KCLMS Volcanix</span>
                     <p>The First Tech Challenge team at King's College London Mathematics School. Think Award winners, open source by default.</p>
                     <div class="footer-social">
