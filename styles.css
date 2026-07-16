@@ -50,7 +50,7 @@ body {
   background: var(--black);
   overflow-x: hidden;
 }
-img { border: 0; vertical-align: middle; max-width: 100%; }
+img { border: 0; vertical-align: middle; max-width: 100%; height: auto; }
 a { text-decoration: none; color: var(--amber); transition: color var(--t), background-color var(--t), transform var(--t); }
 a:hover { color: var(--yellow); }
 ul { list-style: none; }
