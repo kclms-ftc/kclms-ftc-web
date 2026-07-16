@@ -533,6 +533,14 @@ strong { font-weight: 700; color: var(--cream); }
   line-height: 0;
 }
 .skyline svg, .skyline img { width: 100%; height: auto; display: block; }
+/* Landmark span (Big Ben to Tower Bridge) cropped from the full
+   silhouette and tiled edge to edge, so every screen width shows
+   London proper instead of the generic filler buildings. */
+.skyline-strip {
+  height: clamp(70px, 14.6vw, 240px);
+  background: url('media/skyline-loop.png') left bottom repeat-x;
+  background-size: auto 100%;
+}
 .skyline-label {
   position: absolute;
   top: 26px; left: 0; right: 0;
