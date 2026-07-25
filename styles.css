@@ -16,6 +16,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Bahnschrift';
+  src: url('Bahnschrift.ttf') format('truetype');
+  font-weight: 300 700;
+  font-display: swap;
+}
+
 /* === TOKENS === */
 :root {
   --black: #000000;
@@ -32,6 +39,7 @@
   --maroon: #2b0c0b;
 
   --display: 'Gendy', 'Arial Black', 'Open Sans', sans-serif;
+  --body: 'Bahnschrift', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --serif: Georgia, 'Times New Roman', serif;
 
   --t: 0.22s;
@@ -43,7 +51,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: var(--body);
   font-size: 15px;
   line-height: 1.65;
   color: var(--cream);
