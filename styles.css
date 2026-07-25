@@ -11,8 +11,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
 
 @font-face {
-  font-family: 'Gendy';
-  src: url('Gendy.otf') format('opentype');
+  font-family: 'Spline Sans Mono';
+  src: url('SplineSansMono.otf') format('opentype');
   font-display: swap;
 }
 
@@ -38,7 +38,7 @@
   --red-deep: #8f2016;
   --maroon: #2b0c0b;
 
-  --display: 'Gendy', 'Arial Black', 'Open Sans', sans-serif;
+  --display: 'Spline Sans Mono', 'Arial Black', 'Open Sans', sans-serif;
   --body: 'Bahnschrift', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --serif: Georgia, 'Times New Roman', serif;
 
