@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Inside our First Tech Challenge robot: mecanum drive, three-wheel odometry, Pedro Pathing and a custom Limelight vision system for the DECODE challenge.">
-    <meta name="keywords" content="FTC robot, First Tech Challenge UK, mecanum wheels, odometry, Pedro Pathing, Limelight FTC, autonomous robot, CAD robotics, DECODE challenge robot">
+        content="Inside our First Tech Challenge robot: mecanum drive, two-wheel odometry, Pedro Pathing, a triple-flywheel launcher and a gear-driven turret for the DECODE challenge.">
+    <meta name="keywords" content="FTC robot, First Tech Challenge UK, mecanum wheels, odometry, Pedro Pathing, flywheel launcher, turret, autonomous robot, CAD robotics, DECODE challenge robot">
     <link rel="canonical" href="https://volcanixftc.com/robot.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://volcanixftc.com/robot.html">
     <meta property="og:title" content="FTC Robot Design &amp; Code - KCLMS Volcanix">
-    <meta property="og:description" content="Mecanum drive, odometry, Pedro Pathing and a ground-up Limelight vision system.">
+    <meta property="og:description" content="Mecanum drive, two-wheel odometry, Pedro Pathing, a triple-flywheel launcher and a gear-driven turret.">
     <meta property="og:image" content="https://volcanixftc.com/media/robot-hero.jpg">
     <meta property="og:site_name" content="KCLMS Volcanix">
     <meta name="twitter:card" content="summary_large_image">
@@ -98,45 +98,45 @@
             <span class="stat-label">Mecanum drive</span>
         </div>
         <div class="stat">
-            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-number" data-target="2">0</span>
             <span class="stat-label">Odometry pods</span>
         </div>
         <div class="stat">
-            <span class="stat-number">360&deg;</span>
-            <span class="stat-label">Omnidirectional</span>
+            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-label">Launcher flywheels</span>
         </div>
         <div class="stat">
-            <span class="stat-number" data-target="1">0</span>
-            <span class="stat-label">Limelight camera</span>
+            <span class="stat-number">360&deg;</span>
+            <span class="stat-label">Turret rotation</span>
         </div>
     </section>
 
     <!-- Systems detail -->
     <div class="section-banner">
         <h2>Under the Hood</h2>
-        <p class="meta">Drive &middot; Localisation &middot; Paths &middot; Vision</p>
+        <p class="meta">Drive &middot; Localisation &middot; Launcher &middot; Turret</p>
     </div>
     <section class="section reveal">
         <div class="rows">
             <div class="row-item">
                 <span class="row-label">Drivetrain</span>
                 <h3>Mecanum Wheels</h3>
-                <p>Drives in any direction, including sideways.</p>
-            </div>
-            <div class="row-item">
-                <span class="row-label">Paths</span>
-                <h3>Pedro Pathing</h3>
-                <p>Follows planned paths in autonomous, correcting as it goes.</p>
+                <p>Drives in any direction, including sideways. Motors slot straight into a U-shaped frame for a jam-free intake path.</p>
             </div>
             <div class="row-item">
                 <span class="row-label">Localisation</span>
-                <h3>Three-Wheel Odometry</h3>
-                <p>Tracks position even when the drive wheels slip.</p>
+                <h3>Two-Wheel Odometry</h3>
+                <p>Two dead-wheel encoder pods plus the Control Hub IMU track position even when the drive wheels slip. Paths run on Pedro Pathing.</p>
             </div>
             <div class="row-item">
-                <span class="row-label">Vision</span>
-                <h3>Limelight Vision</h3>
-                <p>Reads the DECODE pattern and lines up shots. Pipelines built by us.</p>
+                <span class="row-label">Launcher</span>
+                <h3>Triple-Flywheel Shooter</h3>
+                <p>Three flywheels for grip and an adjustable hood to reach both the close and far shooting zones.</p>
+            </div>
+            <div class="row-item">
+                <span class="row-label">Turret</span>
+                <h3>Lazy-Susan Turret</h3>
+                <p>Gear-driven rotation on a lazy-Susan bearing aims the shooter without turning the whole robot.</p>
             </div>
         </div>
     </section>
@@ -148,13 +148,13 @@
             <h3>Specification</h3>
             <ul class="spec-list">
                 <li><span>Drive</span><span>4&times; mecanum, omnidirectional</span></li>
-                <li><span>Localisation</span><span>Three-wheel odometry</span></li>
-                <li><span>Path following</span><span>Pedro Pathing</span></li>
-                <li><span>Vision</span><span>Limelight, custom pipelines</span></li>
-                <li><span>Launcher</span><span>Dual-flywheel artifact launcher</span></li>
-                <li><span>Control</span><span>REV control system</span></li>
-                <li><span>Structure</span><span>Machined aluminium plates</span></li>
-                <li><span>Software</span><span>Java, open-source</span></li>
+                <li><span>Localisation</span><span>Two-wheel odometry + IMU</span></li>
+                <li><span>Launcher</span><span>Triple-flywheel, adjustable hood</span></li>
+                <li><span>Turret</span><span>Gear-driven lazy-Susan</span></li>
+                <li><span>Intake</span><span>Vectored silicone wheels, servo feed</span></li>
+                <li><span>Control</span><span>REV Control Hub</span></li>
+                <li><span>Structure</span><span>Plywood &amp; MDF plates</span></li>
+                <li><span>Software</span><span>Java, FTCLib, open-source</span></li>
             </ul>
         </div>
     </div>
@@ -162,13 +162,13 @@
     <!-- Season -->
     <div class="section-banner" id="season">
         <h2>Season 2025&ndash;26: Decode</h2>
-        <p class="meta">Read the code &middot; Launch in order</p>
+        <p class="meta">Open source &middot; Repeatable autonomous</p>
     </div>
     <div class="block reveal from-left">
         <div class="block-media"><img src="media/think-award-best.jpg" alt="FIRST Tech Challenge UK Think Award plaque won by KCLMS Volcanix" width="1237" height="1653" loading="lazy"></div>
         <div class="block-body">
             <h3>Think Award, First Try</h3>
-            <p>DECODE scores accuracy: robots decode a vision pattern, then launch artifacts in that order. Our tuned launcher and repeatable autonomous carried us to the <strong>Think Award</strong> at our first UK qualifier, judged on the engineering and documentation behind the robot.</p>
+            <p>DECODE rewards accurate, repeatable scoring &mdash; launching artifacts into the goal against the clock. Our triple-flywheel launcher and a repeatable autonomous (drive off the line, spin up, land three shots) earned us the <strong>Think Award</strong> at our first UK qualifier, judged on the engineering and documentation behind the robot.</p>
             <a href="portfolio.html" class="btn ghost"><span>The Winning Portfolio</span></a>
         </div>
     </div>
