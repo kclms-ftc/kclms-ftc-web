@@ -1013,3 +1013,345 @@ strong { font-weight: 700; color: var(--cream); }
 .sponsor-logos li.straightened:hover { transform: rotate(0deg) translateY(-4px); }
 /* and the clicky press-in */
 .team-card.straightened:active { transform: rotate(0deg) translate(4px, 5px); }
+
+/* === EASTER-EGG: WORLD ALIGNMENT + POST-COOKIE MINIGAMES ===
+   Everything below is reachable only through the sticker-hunt egg.
+   Nothing here changes the site for a visitor who never plays. */
+
+/* Smooth the site-wide snap-to-true when the calibration is won. */
+body.world-aligned .block-media img,
+body.world-aligned .team-card,
+body.world-aligned .gallery img,
+body.world-aligned .sponsor-logos li { transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1); }
+
+/* --- humorous toast --- */
+.vx-toast {
+  position: fixed; left: 50%; bottom: 26px;
+  transform: translate(-50%, 30px);
+  z-index: 400;
+  max-width: min(460px, 92vw);
+  background: #1b0805; color: var(--cream);
+  border: 2px solid var(--orange);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+  padding: 12px 18px; font-size: 13px; line-height: 1.4;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.vx-toast.show { opacity: 1; transform: translate(-50%, 0); }
+.vx-toast b { color: var(--yellow); }
+
+.hunt-done-line { font-size: 12px; color: rgba(255, 242, 220, 0.85); margin-bottom: 6px; }
+
+/* --- Provision 11: rock-paper-scissors --- */
+.rps-panel { text-align: center; }
+.rps-score {
+  display: flex; justify-content: center; gap: 26px;
+  font-family: var(--display); font-style: italic; text-transform: uppercase;
+  font-size: 15px; margin: 12px 0 6px;
+}
+.rps-score .rps-you { color: var(--red-deep); }
+.rps-score .rps-bot { color: #1b0805; }
+.rps-stage {
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  margin: 10px 0 4px;
+}
+.rps-hand { font-size: 46px; line-height: 1; }
+.rps-hand-you { transform: scaleX(-1); }
+.rps-vs { font-family: var(--display); font-style: italic; color: #7c6a52; font-size: 14px; }
+.rps-hand.shake { animation: rps-shake 0.4s ease; }
+@keyframes rps-shake {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-10px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-6px); }
+}
+.rps-call { font-size: 12px; color: #2b1a12; min-height: 2.6em; margin: 6px 0 10px; }
+.rps-moves { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.rps-moves .btn { margin: 0; font-size: 13px; padding: 8px 16px; }
+.rps-move { color: var(--red-deep); border-color: var(--red-deep); }
+
+/* --- The Calibration: freeze the level bar --- */
+.calib-panel { text-align: center; }
+.calib-gauge {
+  position: relative;
+  width: min(320px, 80vw); height: 150px;
+  margin: 16px auto 8px;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+/* the level target zone, a faint wedge around true vertical */
+.calib-zone {
+  position: absolute; left: 50%; bottom: 8px;
+  width: 2px; height: 118px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(to top, rgba(143, 32, 22, 0.25) 0 6px, transparent 6px 12px);
+}
+.calib-zone::before {
+  content: ''; position: absolute; left: 50%; bottom: 0;
+  width: calc(var(--tol, 6) * 4px); height: 118px;
+  transform: translateX(-50%);
+  background: rgba(250, 204, 87, 0.16);
+  border-left: 1px dashed rgba(143, 32, 22, 0.35);
+  border-right: 1px dashed rgba(143, 32, 22, 0.35);
+}
+.calib-bar {
+  position: absolute; bottom: 8px;
+  width: 12px; height: 118px;
+  transform-origin: bottom center;
+  background: var(--red); border: 2px solid #1b0805;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+.calib-bar::after {
+  content: ''; position: absolute; top: -9px; left: 50%;
+  width: 16px; height: 16px; transform: translateX(-50%) rotate(45deg);
+  background: var(--yellow); border: 2px solid #1b0805;
+}
+.calib-bar.level { background: var(--yellow); }
+.calib-bar.level::after { background: var(--red); }
+.calib-readout {
+  position: absolute; top: -2px; left: 50%; transform: translateX(-50%);
+  font-family: var(--display); font-style: italic; font-size: 18px; color: #7c6a52;
+}
+.calib-readout.good { color: #1a7a3a; }
+.calib-readout.bad { color: var(--red); }
+.calib-progress { font-size: 12px; color: #2b1a12; margin: 6px 0 12px; min-height: 1.4em; }
+.calib-actions { display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.calib-actions .btn { margin: 0; font-size: 13px; padding: 9px 20px; }
+
+/* Readability guard: these egg panels are always light. Opt out of any
+   forced-dark inversion and never inherit the site's cream body text. */
+.tnc-panel, .codex-panel, .arcade-panel,
+.simon-panel, .whack-panel {
+  color-scheme: light;
+  background-color: var(--cream);
+  color: #1b0805;
+}
+
+/* --- The Volcanix Codex: an illuminated, chaptered field manual --- */
+.codex-panel {
+  width: min(760px, 96vw);
+  height: min(620px, 92vh);
+  max-height: 92vh;
+  padding: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(229, 124, 65, 0.10), transparent 60%),
+    var(--cream);
+}
+.codex-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  padding: 16px 18px 12px;
+  border-bottom: 2px solid var(--orange);
+}
+.codex-head h4 { margin: 0; }
+.codex-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.codex-badge {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 3px 8px; border: 1px solid #cdbb9a; color: #7c6a52;
+  background: #fffaf0;
+}
+.codex-badge.on { color: var(--cream); background: var(--red-deep); border-color: var(--red-deep); }
+.codex-close {
+  flex: none; width: 34px; height: 34px; line-height: 1;
+  font-size: 24px; color: var(--red-deep);
+  background: transparent; border: 2px solid transparent; cursor: pointer;
+}
+.codex-close:hover { border-color: var(--red-deep); }
+
+.codex-body { display: flex; min-height: 0; flex: 1; }
+.codex-nav {
+  flex: none; width: 168px;
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 12px 8px; overflow-y: auto;
+  background: rgba(143, 32, 22, 0.05);
+  border-right: 1px solid #cdbb9a;
+}
+.codex-chap {
+  text-align: left; font-size: 12px; font-weight: 700;
+  padding: 9px 10px; cursor: pointer;
+  color: #5a4634; background: transparent; border: none;
+  border-left: 3px solid transparent;
+}
+.codex-chap:hover { color: var(--red-deep); background: rgba(229, 124, 65, 0.10); }
+.codex-chap.active { color: var(--red-deep); background: rgba(229, 124, 65, 0.16); border-left-color: var(--orange); }
+
+.codex-page {
+  flex: 1; min-height: 0; overflow-y: auto;
+  padding: 20px 24px;
+  font-size: 13px; line-height: 1.65; color: #2b1a12; text-align: left;
+}
+.codex-page.turn { animation: codex-turn 0.4s ease; }
+@keyframes codex-turn { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+.codex-page b { color: var(--red-deep); }
+.codex-page code {
+  font-family: var(--mono, monospace); font-size: 11px;
+  background: rgba(143, 32, 22, 0.08); padding: 1px 5px;
+}
+.codex-page-title {
+  font-family: var(--display); font-style: italic; text-transform: uppercase;
+  font-size: 22px; color: #000; margin: 0 0 12px;
+}
+.codex-page p { margin: 0 0 11px; }
+.codex-drop {
+  float: left; font-family: var(--display); font-style: italic;
+  font-size: 52px; line-height: 0.82; color: var(--red);
+  margin: 4px 10px 0 0;
+}
+.codex-aside {
+  font-size: 11.5px; color: #7c6a52; font-style: italic;
+  border-left: 2px solid var(--orange); padding-left: 12px;
+}
+.codex-quote {
+  margin: 0 0 14px; padding: 14px 16px;
+  background: rgba(143, 32, 22, 0.06); border-left: 4px solid var(--red);
+  font-family: var(--display); font-style: italic; font-size: 16px; line-height: 1.5; color: #1b0805;
+}
+.codex-quote cite { display: block; margin-top: 8px; font-size: 12px; font-style: normal; color: #7c6a52; }
+.codex-quote cite span { color: var(--red-deep); font-weight: 700; letter-spacing: 0.04em; }
+.codex-creed, .codex-sign {
+  font-family: var(--display); font-style: italic; color: var(--red-deep);
+  text-align: center; font-size: 15px; line-height: 1.7; margin: 14px 0;
+}
+.codex-sign { color: #7c6a52; text-align: right; font-size: 14px; }
+
+.codex-bestiary { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 4px 0 12px; }
+.codex-beast {
+  display: flex; gap: 10px; margin: 0; padding: 10px;
+  background: #fffaf0; border: 1px solid #cdbb9a;
+}
+.codex-beast img {
+  width: 46px; height: 46px; object-fit: contain; flex: none;
+  filter: grayscale(1) opacity(0.4);
+}
+.codex-beast.got img { filter: none; }
+.codex-beast figcaption { display: flex; flex-direction: column; gap: 1px; }
+.codex-beast-name { font-weight: 800; color: #000; font-size: 13px; }
+.codex-beast-epi { font-family: var(--display); font-style: italic; color: var(--red); font-size: 12px; }
+.codex-beast-dom { font-size: 10.5px; color: #7c6a52; }
+.codex-beast-creed { font-size: 11px; font-style: italic; color: #2b1a12; margin-top: 2px; }
+
+.codex-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 18px; border-top: 1px solid #cdbb9a;
+}
+/* ghost buttons on the cream egg panels need dark text, not cream */
+.codex-foot .btn.ghost,
+.calib-actions .btn.ghost,
+.rps-moves .btn.ghost { color: var(--red-deep); border-color: var(--red-deep); }
+.codex-foot .btn { margin: 0; font-size: 13px; padding: 8px 18px; }
+.codex-foot .btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.codex-count { font-size: 12px; color: #7c6a52; font-style: italic; }
+
+@media (max-width: 560px) {
+  .codex-body { flex-direction: column; }
+  .codex-nav {
+    width: auto; flex-direction: row; overflow-x: auto;
+    border-right: none; border-bottom: 1px solid #cdbb9a; padding: 8px;
+  }
+  .codex-chap { white-space: nowrap; border-left: none; border-bottom: 3px solid transparent; }
+  .codex-chap.active { border-left: none; border-bottom-color: var(--orange); }
+  .codex-bestiary { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .codex-page.turn { animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vx-toast { transition: opacity 0.35s ease; transform: translate(-50%, 0); }
+  .rps-hand.shake { animation: none; }
+  body.world-aligned .block-media img,
+  body.world-aligned .team-card,
+  body.world-aligned .gallery img,
+  body.world-aligned .sponsor-logos li { transition: none; }
+}
+
+/* === THE VOLCANO ARCADE + ITS GAMES ================================= */
+.hunt-tab.grand { border-color: var(--yellow); box-shadow: 0 0 0 2px var(--yellow), 6px 6px 0 rgba(0,0,0,0.55); }
+
+.arcade-panel { width: min(720px, 96vw); padding: 0; overflow: hidden; }
+.arcade-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  padding: 16px 18px 12px; border-bottom: 2px solid var(--orange);
+}
+.arcade-head h4 { margin: 0; }
+.arcade-sub { font-size: 12px; color: #7c6a52; margin-top: 4px; }
+.arcade-sub b { color: var(--red-deep); }
+.arcade-panel.is-grand { background: radial-gradient(120% 90% at 50% 0%, rgba(250,204,87,0.22), var(--cream) 62%); }
+
+.arcade-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  padding: 16px 18px;
+}
+.arcade-tile {
+  display: flex; flex-direction: column; gap: 4px; text-align: left;
+  padding: 14px; cursor: pointer;
+  background: #fffaf0; border: 2px solid #cdbb9a; color: #1b0805;
+  transition: transform var(--t), border-color var(--t), box-shadow var(--t);
+}
+.arcade-tile:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: 5px 6px 0 rgba(0,0,0,0.3); }
+.arcade-tile.cleared { border-color: var(--red); background: #fff6ea; }
+.arcade-ico { font-size: 30px; line-height: 1; }
+.arcade-name { font-family: var(--display); font-style: italic; text-transform: uppercase; font-size: 16px; color: #000; }
+.arcade-blurb { font-size: 11.5px; color: #5a4634; line-height: 1.4; }
+.arcade-status {
+  margin-top: 4px; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--red-deep);
+}
+.arcade-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 18px; border-top: 1px solid #cdbb9a;
+}
+.arcade-foot .btn { margin: 0; font-size: 13px; padding: 8px 18px; }
+.arcade-foot .btn.ghost { color: var(--red-deep); border-color: var(--red-deep); }
+
+/* --- Stabiliser Sequence (Simon) --- */
+.simon-panel { text-align: center; }
+.simon-status { font-size: 12px; color: #2b1a12; min-height: 1.5em; margin: 8px 0 12px; }
+.simon-status b { color: var(--red-deep); }
+.simon-pads {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  width: min(280px, 78vw); margin: 0 auto 16px;
+}
+.simon-pad {
+  aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;
+  padding: 12px; cursor: pointer;
+  background: #fffaf0; border: 2px solid #cdbb9a;
+  transition: transform 0.08s ease, filter 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.simon-pad:nth-child(1) { border-color: var(--red); }
+.simon-pad:nth-child(2) { border-color: var(--yellow); }
+.simon-pad:nth-child(3) { border-color: var(--orange); }
+.simon-pad:nth-child(4) { border-color: var(--red-deep); }
+.simon-pad img { max-width: 76%; max-height: 76%; filter: grayscale(1) opacity(0.55); }
+.simon-pad:disabled { cursor: default; }
+.simon-pad.lit { background: var(--yellow); box-shadow: 0 0 0 3px var(--yellow), 0 0 22px rgba(250,204,87,0.8); transform: scale(1.05); }
+.simon-pad.lit img { filter: none; }
+.simon-pad:not(:disabled):hover { box-shadow: 4px 4px 0 rgba(0,0,0,0.25); }
+
+/* --- Wonk Patrol (whack-a-mole) --- */
+.whack-panel { text-align: center; }
+.whack-hud {
+  display: flex; justify-content: space-between; gap: 16px;
+  font-family: var(--display); font-style: italic; text-transform: uppercase;
+  font-size: 14px; color: var(--red-deep); margin: 10px 4px 12px;
+}
+.whack-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  width: min(320px, 82vw); margin: 0 auto 16px;
+}
+.whack-cell {
+  aspect-ratio: 1 / 1; cursor: pointer; overflow: hidden;
+  background: #f1e2c8; border: 2px solid #cdbb9a; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 8px;
+}
+.whack-cell img { max-width: 84%; max-height: 84%; opacity: 0; transform: scale(0.4); transition: transform 0.12s ease, opacity 0.12s ease; }
+.whack-cell.up { background: #fff6ea; border-color: var(--orange); }
+.whack-cell.up img { opacity: 1; transform: scale(1); }
+.whack-cell.hit { background: var(--yellow); }
+
+@media (max-width: 520px) {
+  .arcade-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arcade-tile, .simon-pad, .whack-cell img { transition: none; }
+}
