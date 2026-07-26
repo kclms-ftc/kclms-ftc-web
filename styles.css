@@ -487,6 +487,17 @@ strong { font-weight: 700; color: var(--cream); }
   background-size: 300% 300%;
   opacity: 0; transition: opacity var(--t);
 }
+/* KCL: red-focused rainbow (their brand red) */
+.sponsor-logos li.tier-tensor-kcl::before {
+  background: linear-gradient(120deg, #e1051d, #ff2d55, #ff5e3a, #ff8a00, #ffb400, #ff2d7a, #e1051d);
+}
+/* Record: deep-blue-focused rainbow (their brand navy) */
+.sponsor-logos li.tier-tensor-record::before {
+  background: linear-gradient(120deg, #001b6e, #0033cc, #0077ff, #00b0ff, #3a6bff, #5e17eb, #001b6e);
+}
+.sponsor-logos li.tier-tensor-kcl::before,
+.sponsor-logos li.tier-tensor-record::before { background-size: 300% 300%; }
+
 .sponsor-logos li.tier-tensor:hover::before { opacity: 1; animation: tensor-rainbow 3s linear infinite; }
 .sponsor-logos li.tier-tensor:hover img { animation: tensor-hue 3s linear infinite; }
 @keyframes tensor-rainbow { to { background-position: 300% 0; } }
