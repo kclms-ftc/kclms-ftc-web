@@ -385,8 +385,8 @@ strong { font-weight: 700; color: var(--cream); }
 .team-card img { width: 100%; height: 250px; object-fit: cover; object-position: 50% 22%; border-bottom: 2px solid var(--orange); }
 .team-card .team-info { padding: 14px 16px 18px; }
 .team-name { font-family: var(--display); font-style: italic; font-size: 20px; color: var(--cream); }
-.team-role { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--orange); margin: 3px 0 8px; }
-.team-bio { font-size: 13px; color: rgba(255, 242, 220, 0.75); }
+.team-role { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--orange); margin: 3px 0 0; }
+.team-bio { font-size: 13px; color: rgba(255, 242, 220, 0.75); margin-top: 8px; }
 
 /* === GALLERY === */
 .gallery { display: flex; gap: 22px; }
@@ -1365,4 +1365,70 @@ body.world-aligned .sponsor-logos li { transition: transform 0.8s cubic-bezier(0
 }
 @media (prefers-reduced-motion: reduce) {
   .arcade-tile, .simon-pad, .whack-cell img { transition: none; }
+}
+
+/* === FIREBOY: MASCOT IMAGERY, TROPHY, STOKE-THE-FLAME ================ */
+/* Fireboy in the Codex */
+.codex-hero { text-align: center; margin: 0 0 14px; }
+.codex-hero img { max-height: 200px; width: auto; filter: drop-shadow(4px 6px 0 rgba(0,0,0,0.18)); }
+.codex-trophy { text-align: center; margin: 4px 0 12px; }
+.codex-trophy img { max-height: 220px; width: auto; filter: drop-shadow(5px 7px 0 rgba(0,0,0,0.2)); }
+.codex-trophy figcaption { margin-top: 6px; font-family: var(--display); font-style: italic; color: var(--red-deep); }
+.codex-trophy.locked { padding: 24px 0; }
+.codex-trophy-lock { font-size: 52px; opacity: 0.5; }
+
+/* Fireboy rising from the eruption */
+.fireboy-rise {
+  width: auto; height: 200px;
+  filter: drop-shadow(0 0 26px rgba(229,124,65,0.7)) drop-shadow(4px 6px 0 rgba(0,0,0,0.4));
+  animation: fireboy-rise 0.9s cubic-bezier(0.2, 1.5, 0.4, 1);
+}
+@keyframes fireboy-rise { from { transform: translateY(70px) scale(0.6); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* Arcade trophy tile */
+.arcade-trophy { align-items: center; text-align: center; }
+.arcade-trophy.won { border-color: var(--yellow); background: radial-gradient(120% 100% at 50% 0%, rgba(250,204,87,0.28), #fffaf0 70%); }
+.arcade-trophy-img { height: 66px; width: auto; margin-bottom: 2px; filter: drop-shadow(2px 3px 0 rgba(0,0,0,0.25)); }
+.arcade-trophy .arcade-name, .arcade-trophy .arcade-blurb { text-align: center; }
+
+/* Trophy panel */
+.trophy-panel { text-align: center; }
+.trophy-panel.won { background: radial-gradient(120% 90% at 50% 0%, rgba(250,204,87,0.22), var(--cream) 62%); }
+.trophy-stage { margin: 14px 0; min-height: 220px; display: flex; align-items: center; justify-content: center; }
+.trophy-stage img { max-height: 300px; width: auto; filter: drop-shadow(0 0 30px rgba(229,124,65,0.55)) drop-shadow(5px 8px 0 rgba(0,0,0,0.25)); }
+.trophy-stage.locked .trophy-lock { font-size: 84px; opacity: 0.45; }
+
+/* Stoke the Flame */
+.flame-panel { text-align: center; }
+.flame-hud {
+  display: flex; justify-content: space-between; gap: 16px;
+  font-family: var(--display); font-style: italic; text-transform: uppercase;
+  font-size: 14px; color: var(--red-deep); margin: 10px 4px 12px;
+}
+.flame-gauge {
+  position: relative; width: 96px; height: 260px; margin: 0 auto 16px;
+  background: #1b0805; border: 2px solid #1b0805; overflow: hidden;
+  box-shadow: 5px 6px 0 rgba(0,0,0,0.35);
+}
+.flame-zone {
+  position: absolute; left: 0; right: 0;
+  background: repeating-linear-gradient(45deg, rgba(250,204,87,0.30) 0 8px, rgba(250,204,87,0.15) 8px 16px);
+  border-top: 2px dashed rgba(250,204,87,0.8); border-bottom: 2px dashed rgba(250,204,87,0.8);
+}
+.flame-fill {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 58%;
+  background: linear-gradient(to top, #d93e36, #e57c41 55%, #facc57);
+  transition: height 0.08s linear;
+}
+.flame-gauge.danger .flame-fill { background: linear-gradient(to top, #8f2016, #d93e36 60%, #f7b35b); }
+.flame-marker {
+  position: absolute; left: -4px; right: -4px; height: 3px; bottom: 58%;
+  background: var(--cream); box-shadow: 0 0 6px rgba(255,255,255,0.7);
+  transition: bottom 0.08s linear;
+}
+.flame-panel .flame-stoke span { font-size: 15px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fireboy-rise { animation: none; }
+  .flame-fill, .flame-marker { transition: none; }
 }
