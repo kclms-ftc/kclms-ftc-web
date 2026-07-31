@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // localStorage, the reward is document.cookie.
 (function () {
   const TARGETS = ['m1', 'm2', 'm3', 'm4'];
-  const NAMES = { m1: 'Volcy', m2: 'Happy', m3: 'Grumpy', m4: 'Orbitty' };
+  const NAMES = { m1: 'The Blaze', m2: 'The Warmth', m3: 'The Smoulder', m4: 'The Spark' };
   const HINTS = {
     m1: 'hot-headed, next to the paperwork',
     m2: 'watching the money',
