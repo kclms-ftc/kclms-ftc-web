@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // === STICKER HUNT MINIGAME ===
-// Four named mascot stickers are hidden across the site. Click
+// Fireboy's four flame moods are hidden across the site. Click
 // all of them, erupt the volcano, then survive the cookie terms
 // and conditions to claim your cookie. Fully static: progress is
 // localStorage, the reward is document.cookie.
@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // MOODS Fireboy's flame burns in. Collect all four and the flame is
   // whole again. Bestiary entries for the Codex.
   const LORE = {
-    m1: { epithet: 'Fireboy at full burn', domain: 'the machine when it runs hot', creed: '"Run it hotter. Then check your wiring."' },
-    m2: { epithet: 'Fireboy at his kindest', domain: 'the team, the books, the morale', creed: '"Accounted for &mdash; and cheerfully so."' },
-    m3: { epithet: 'Fireboy banked low', domain: 'the long grind, the foundation', creed: '"Level starts at the base, not the top."' },
-    m4: { epithet: 'Fireboy catching', domain: "this season's orbit", creed: '"I go around, so the team goes forward."' }
+    m1: { epithet: 'burning tallest, banner and all', domain: 'the machine when it runs hot', creed: '"Run it hotter. Then check your wiring."' },
+    m2: { epithet: 'eyes shut, grinning anyway', domain: 'the team, the books, the morale', creed: '"Accounted for &mdash; and cheerfully so."' },
+    m3: { epithet: 'the hard stare, held low', domain: 'the long grind, the foundation', creed: '"Level starts at the base, not the top."' },
+    m4: { epithet: 'ringed, sparking, never still', domain: "this season's orbit", creed: '"I go around, so the team goes forward."' }
   };
   const LS_FOUND = 'vx-hunt-found';
   const LS_DONE = 'vx-hunt-cookie';
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '<button class="hunt-tab" type="button" aria-expanded="false"><span></span></button>' +
         '<div class="hunt-panel" role="region" aria-label="Sticker hunt progress">' +
           '<h5>The Sticker Hunt</h5>' +
-          '<p class="hunt-hint">Four mascot stickers are hidden across the site. Only one of each exists. Click them when you spot them.</p>' +
+          '<p class="hunt-hint">Fireboy&rsquo;s flame burns in four moods, and all four are hidden across the site. Only one of each exists. Click them when you spot them.</p>' +
           '<div class="hunt-slots">' +
             TARGETS.map(id =>
               '<div class="hunt-slot" data-slot="' + id + '" title="' + HINTS[id] + '">' +
@@ -687,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<p>You cleared every game in the Volcano Arcade. The flame is steady, the frames are level, and Fireboy stands complete on your shelf. There is no higher honour we can hand out. There is no shelf, either. Enjoy him anyway.</p>' +
           '<p class="codex-creed">Keeper of the Flame.</p>'
         : '<figure class="codex-trophy locked"><div class="codex-trophy-lock">&#128274;</div><figcaption>Trophy locked</figcaption></figure>' +
-          '<p>Clear all five games in the <b>Volcano Arcade</b> and Fireboy &mdash; the whole animated mascot &mdash; becomes your trophy, displayed here forever. So far you have lit ' + (whole ? 'every' : 'some of the') + ' moods and started the work. Finish it.</p>';
+          '<p>Clear all five games in the <b>Volcano Arcade</b> and Fireboy &mdash; the whole animated mascot &mdash; becomes your trophy, displayed here forever. So far you have lit ' + (whole ? 'every mood' : 'some of the moods') + ' and started the work. Finish it.</p>';
 
       const chapters = [
         { tab: 'I · Fireboy', title: 'Fireboy', html:
