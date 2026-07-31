@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function () {
     checkGrand();
     return s;
   }
-  const SIMON_CLEAR = 5, WHACK_CLEAR = 20, FLAME_CLEAR = 22;
+  const SIMON_CLEAR = 5, WHACK_CLEAR = 14, FLAME_CLEAR = 22;
   function clears() {
     const s = loadScores();
     return {
@@ -1034,11 +1034,11 @@ document.addEventListener('DOMContentLoaded', function () {
         el.innerHTML = '<img src="mascots/' + id + '-cut.png" alt="" style="transform:rotate(' + tilt().toFixed(1) + 'deg)">';
         el.classList.add('up');
         active = { el: el, i: i };
-        const life = 780 - Math.min(score, 15) * 28;   // speeds up as you score
+        const life = 950 - Math.min(score, 12) * 25;   // speeds up as you score
         spawnT = setTimeout(function () {
           if (active && active.i === i) { el.classList.remove('up'); el.innerHTML = ''; active = null; }
           spawn();
-        }, Math.max(360, life));
+        }, Math.max(620, life));
       }
       function end() {
         running = false; clearTimers();
