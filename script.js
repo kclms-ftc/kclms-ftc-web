@@ -143,12 +143,14 @@ document.addEventListener('DOMContentLoaded', function () {
     m3: 'at the bottom of everything',
     m4: 'orbiting this season'
   };
-  // Bestiary entries for the Codex — one stabiliser spirit per mascot.
+  // The four hidden stickers are not four mascots — they are the four
+  // MOODS Fireboy's flame burns in. Collect all four and the flame is
+  // whole again. Bestiary entries for the Codex.
   const LORE = {
-    m1: { epithet: 'The Hot-Head', domain: 'the machine, the heat', creed: '"Run it hotter. Then check your wiring."' },
-    m2: { epithet: 'The Watcher',  domain: 'the books, every cent', creed: '"Accounted for &mdash; and cheerfully so."' },
-    m3: { epithet: 'The Foundation', domain: 'the bottom of everything', creed: '"Level starts at the base, not the top."' },
-    m4: { epithet: 'The Wanderer', domain: "this season's orbit", creed: '"I go around, so the team goes forward."' }
+    m1: { epithet: 'the Blaze', domain: 'the machine when it runs hot', creed: '"Run it hotter. Then check your wiring."' },
+    m2: { epithet: 'the Warmth', domain: 'the team, the books, the morale', creed: '"Accounted for &mdash; and cheerfully so."' },
+    m3: { epithet: 'the Smoulder', domain: 'the long grind, the foundation', creed: '"Level starts at the base, not the top."' },
+    m4: { epithet: 'the Spark', domain: "this season's orbit", creed: '"I go around, so the team goes forward."' }
   };
   const LS_FOUND = 'vx-hunt-found';
   const LS_DONE = 'vx-hunt-cookie';
@@ -215,19 +217,20 @@ document.addEventListener('DOMContentLoaded', function () {
     checkGrand();
     return s;
   }
-  const SIMON_CLEAR = 5, WHACK_CLEAR = 20;
+  const SIMON_CLEAR = 5, WHACK_CLEAR = 20, FLAME_CLEAR = 22;
   function clears() {
     const s = loadScores();
     return {
       calib: worldAligned(),
       rps: !!s.rps,
       simon: (s.simon || 0) >= SIMON_CLEAR,
-      whack: (s.whack || 0) >= WHACK_CLEAR
+      whack: (s.whack || 0) >= WHACK_CLEAR,
+      flame: (s.flame || 0) >= FLAME_CLEAR
     };
   }
   function allCleared() {
     const c = clears();
-    return c.calib && c.rps && c.simon && c.whack;
+    return c.calib && c.rps && c.simon && c.whack && c.flame;
   }
   const grandAligner = () => localStorage.getItem(LS_GRAND) === '1';
   function checkGrand() {
@@ -294,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const line = document.createElement('p');
         line.className = 'hunt-done-line';
         line.textContent = grandAligner()
-          ? 'Grand Aligner. Every game cleared.'
+          ? 'Keeper of the Flame. Every game cleared.'
           : worldAligned()
             ? 'Cookie claimed. Reality calibrated to 0.0°.'
             : 'Cookie claimed. Reality still drifts 1° off true.';
@@ -678,34 +681,40 @@ document.addEventListener('DOMContentLoaded', function () {
           '</figure>';
       }).join('');
 
-      const chapters = [
-        { tab: 'I · Origin', title: 'The Great Wonk', html:
-          '<p><span class="codex-drop">L</span>ong before the qualifier, before mecanum wheels and target velocity, there was only <b>Drift</b>. The <b>Great Wonk</b> reached across every straight edge and tilted it one degree off true. Engineers called it error. The Wonk called it <i>character</i>, and refused to apologise.</p>' +
-          '<p>You have felt it on every page here: the photos lean, the cards lean, the sponsors lean, all by a single stubborn degree. That lean is not a mistake in the stylesheet. It is the oldest force on this site, left deliberately in place so that one day someone patient would notice, and care enough to set it right.</p>' +
-          '<p class="codex-aside">Measured drift across the homepage: 1.0&deg;. Acceptable for competition. Intolerable for a perfectionist. Which are you?</p>' },
+      const whole = found.length === TARGETS.length;
+      const trophyBlock = grandAligner()
+        ? '<figure class="codex-trophy"><img src="media/fireboy-cut.gif" alt="Fireboy, whole again"><figcaption>Fireboy &mdash; whole, and yours.</figcaption></figure>' +
+          '<p>You cleared every game in the Volcano Arcade. The flame is steady, the frames are level, and Fireboy stands complete on your shelf. There is no higher honour we can hand out. There is no shelf, either. Enjoy him anyway.</p>' +
+          '<p class="codex-creed">Keeper of the Flame.</p>'
+        : '<figure class="codex-trophy locked"><div class="codex-trophy-lock">&#128274;</div><figcaption>Trophy locked</figcaption></figure>' +
+          '<p>Clear all five games in the <b>Volcano Arcade</b> and Fireboy &mdash; the whole animated mascot &mdash; becomes your trophy, displayed here forever. So far you have lit ' + (whole ? 'every' : 'some of the') + ' moods and started the work. Finish it.</p>';
 
-        { tab: 'II · Spirits', title: 'The Four Stabilisers', html:
-          '<p>To hold reality roughly level, four spirits were forged in the crater. Each guards one corner of the team. You hunted them as stickers; here they are as they truly are.</p>' +
+      const chapters = [
+        { tab: 'I · Fireboy', title: 'Fireboy', html:
+          '<figure class="codex-hero"><img src="media/fireboy-cut.gif" alt="Fireboy, the mascot"></figure>' +
+          '<p><span class="codex-drop">F</span>ireboy is the mascot. One small robot, built by the team, with a head that is not metal but living <b>flame</b>. The fire has burned since the first build season and it has never once gone out. He is the figure in our logo, and everything on this site belongs, in the end, to him.</p>' +
+          '<p>The flame does not stay the same. It burns in <b>four moods</b>, and when Fireboy is at rest those moods wander off on their own &mdash; drifting across these pages as four small stickers, each the same fire wearing a different face. Find all four and the flame is whole again. That is the hunt you just finished.</p>' +
+          '<p class="codex-aside">Yes, the whole site also leans one degree off true. Fireboy calls that <i>character</i>. The perfectionists on the team call it a bug. Both are right.</p>' },
+
+        { tab: 'II · Moods', title: 'The Four Moods of the Flame', html:
+          '<p>These are not four mascots. They are one flame in four tempers &mdash; the faces Fireboy&rsquo;s fire wears depending on the day, the deadline, and the score. You hunted them as stickers; here they are named.</p>' +
           '<div class="codex-bestiary">' + bestiary + '</div>' +
-          '<p class="codex-aside">Grey portraits are spirits you have not yet found on the site. Go click them.</p>' },
+          '<p class="codex-aside">Grey faces are moods you have not yet found on the site. Go click them &mdash; the flame is not whole without all four.</p>' },
 
         { tab: 'III · The Creed', title: 'Gracious Professionalism', html:
           '<blockquote class="codex-quote">&ldquo;Gracious professionalism&hellip; a way of doing things that encourages high-quality work, emphasises the value of others, and respects individuals and the community.&rdquo;<cite>&mdash; Aichen Su, <span>KCLMS Volcanix</span></cite></blockquote>' +
-          '<p>This is the north star of every FIRST team, and it is the real subject of this entire Codex. Everything else &mdash; the volcano, the cookie, the thirty-eight provisions &mdash; was theatre to bring you here.</p>' +
-          '<p>Notice what the game actually asked of you. It never asked you to <i>destroy</i> the Wonk. There is no attack button. The crooked frame was never a flaw to mock &mdash; it was an <b>invitation</b>. You straighten a thing quietly, with a steady hand, and you leave it better than you found it. You compete fiercely and you stay kind. You win the round of rock-paper-scissors and you shake the robot&rsquo;s hand anyway.</p>' +
-          '<p><b>That is the whole game.</b> You did not defeat the Great Wonk. You were gracious to it. That is why reality straightened for you and not for someone who tried to force it.</p>' +
+          '<p>This is the north star of every FIRST team, and it is the real subject of this entire Codex. Everything else &mdash; Fireboy, the volcano, the cookie, the thirty-eight provisions &mdash; was theatre to bring you here.</p>' +
+          '<p>Notice what the games actually asked of you. None of them handed you an attack button. You <i>straighten</i> a crooked frame; you <i>steady</i> a flame; you <i>repeat</i> a pattern with care. The lean was never a flaw to mock &mdash; it was an <b>invitation</b>. You fix a thing quietly, with a steady hand, and you leave it better than you found it. You compete fiercely and you stay kind. You beat the robot at rock-paper-scissors and you shake its hand anyway.</p>' +
+          '<p><b>That is the whole game.</b> Fireboy&rsquo;s flame does not burn to destroy anything. It burns to keep the team warm. Carry that.</p>' +
           '<p class="codex-aside">Gracious professionalism is not being soft. It is being excellent <i>and</i> generous at the same time, on purpose, especially when no one is watching &mdash; which, on a hidden Easter egg, no one is.</p>' },
 
         { tab: 'IV · The Cookie', title: 'The Calibration Cookie', html:
-          '<p>The volcano erupts exactly one cookie, and it is not for eating. It is <b>zeroed odometry</b> &mdash; a single perfect reading of true, pressed into chocolate-chip form. You spend it by swinging the level bar to 0.0&deg; with your own timing. Skill, not luck. Grace, not force.</p>' +
+          '<p>The volcano erupts exactly one cookie, and it is not for eating. It is <b>zeroed odometry</b> &mdash; a single perfect reading of true, pressed into chocolate-chip form &mdash; and Fireboy hands it to you personally. You spend it by swinging the level bar to 0.0&deg; with your own timing. Skill, not luck. Grace, not force.</p>' +
           '<p>The thirty-eight provisions you scrolled were real, in the sense that reading them was the point. Patience is the entry fee to precision. Provision 4 set one honest browser cookie named <code>volcanix_cookie</code>; it tracks nothing and it never will. Provision 11 let the robot referee its own dispute, which it lost graciously, as is tradition.</p>' +
           '<p class="codex-aside">Nutritional information: zero calories, zero sugar, zero cookies. Contains traces of pixels and gracious professionalism.</p>' },
 
-        { tab: 'V · Colophon', title: 'Colophon &amp; Creed', html:
-          '<p>You found four hidden spirits, read thirty-eight provisions, calibrated reality by hand, and chose to leave the world straighter than you found it. Few visitors ever will. The Codex closes, but the alignment holds &mdash; across every page, until you decide to let it drift again.</p>' +
-          '<p class="codex-creed">Compete fiercely.<br>Build honestly.<br>Straighten what leans.<br>Leave it better than you found it.<br>Stay kind while you win.</p>' +
-          '<p>Like everything else we make, this Codex is open source, and may be forked under the same licence as our code and our conduct.</p>' +
-          '<p class="codex-sign">Gracious professionalism, now at 0.0&deg;.<br>&mdash; KCLMS Volcanix</p>' }
+        { tab: 'V · Trophy', title: 'The Trophy', html: trophyBlock +
+          '<p class="codex-sign">Keep the flame steady.<br>Keep the frames level.<br>Stay kind while you win.<br>&mdash; KCLMS Volcanix</p>' }
       ];
 
       const overlay = document.createElement('div');
@@ -714,7 +723,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.style.overflow = 'hidden';
 
       const badges =
-        '<span class="codex-badge' + (found.length === TARGETS.length ? ' on' : '') + '">Spirits ' + found.length + '/' + TARGETS.length + '</span>' +
+        '<span class="codex-badge' + (found.length === TARGETS.length ? ' on' : '') + '">Moods ' + found.length + '/' + TARGETS.length + '</span>' +
         '<span class="codex-badge' + (cookieEarned() ? ' on' : '') + '">' + (cookieEarned() ? 'Cookie claimed' : 'Cookie pending') + '</span>' +
         '<span class="codex-badge' + (worldAligned() ? ' on' : '') + '">' + (worldAligned() ? 'Reality 0.0&deg;' : 'Reality 1.0&deg;') + '</span>';
 
@@ -803,10 +812,12 @@ document.addEventListener('DOMContentLoaded', function () {
           status: c.calib ? 'Reality aligned' : 'Not yet level', play: () => showCalibration(overlay, arcadeWrap, back) },
         { key: 'rps', icon: '&#9994;', name: 'Provision 11', blurb: 'Rock, paper, scissors against the robot referee.',
           status: c.rps ? 'Dispute won' : 'Undisputed', play: () => showDispute(overlay, arcadeWrap, back) },
-        { key: 'simon', icon: '&#128293;', name: 'Stabiliser Sequence', blurb: 'Repeat the spirits’ growing pattern from memory.',
+        { key: 'simon', icon: '&#128293;', name: 'Mood Sequence', blurb: 'Repeat Fireboy&rsquo;s growing pattern of moods from memory.',
           status: 'Best level ' + (s.simon || 0) + (c.simon ? ' ✓' : ' / ' + SIMON_CLEAR), play: () => gameSimon(overlay, back) },
         { key: 'whack', icon: '&#128296;', name: 'Wonk Patrol', blurb: 'Straighten crooked frames before they drift away. 30s.',
-          status: 'Best ' + (s.whack || 0) + (c.whack ? ' ✓' : ' / ' + WHACK_CLEAR), play: () => gameWhack(overlay, back) }
+          status: 'Best ' + (s.whack || 0) + (c.whack ? ' ✓' : ' / ' + WHACK_CLEAR), play: () => gameWhack(overlay, back) },
+        { key: 'flame', icon: '&#128293;', name: 'Stoke the Flame', blurb: 'Keep Fireboy&rsquo;s flame in the steady zone for ' + FLAME_CLEAR + 's.',
+          status: 'Best ' + (s.flame || 0) + 's' + (c.flame ? ' ✓' : ' / ' + FLAME_CLEAR + 's'), play: () => gameFlame(overlay, back) }
       ];
 
       const arcadeWrap = document.createElement('div');
@@ -816,21 +827,26 @@ document.addEventListener('DOMContentLoaded', function () {
           '<div class="arcade-head">' +
             '<div><h4>The Volcano Arcade</h4>' +
               '<p class="arcade-sub">' + (grand
-                ? 'You are the <b>Grand Aligner</b>. Every game cleared. The Wonk answers to you.'
-                : 'Clear all four games to become the Grand Aligner.') + '</p></div>' +
+                ? 'You are the <b>Keeper of the Flame</b>. Every game cleared. Fireboy is whole.'
+                : 'Clear all five games and win Fireboy, whole, as your trophy.') + '</p></div>' +
             '<button class="codex-close" type="button" aria-label="Leave the arcade">&times;</button>' +
           '</div>' +
           '<div class="arcade-grid">' +
             GAMES.map((g, i) =>
-              '<button class="arcade-tile' + (
-                (g.key === 'calib' && c.calib) || (g.key === 'rps' && c.rps) ||
-                (g.key === 'simon' && c.simon) || (g.key === 'whack' && c.whack) ? ' cleared' : ''
-              ) + '" type="button" data-g="' + i + '">' +
+              '<button class="arcade-tile' + (c[g.key] ? ' cleared' : '') + '" type="button" data-g="' + i + '">' +
                 '<span class="arcade-ico">' + g.icon + '</span>' +
                 '<span class="arcade-name">' + g.name + '</span>' +
                 '<span class="arcade-blurb">' + g.blurb + '</span>' +
                 '<span class="arcade-status">' + g.status + '</span>' +
               '</button>').join('') +
+            '<button class="arcade-tile arcade-trophy' + (grand ? ' won' : ' locked') + '" type="button" data-trophy="1">' +
+              (grand
+                ? '<img class="arcade-trophy-img" src="media/fireboy-cut.gif" alt="Fireboy trophy">'
+                : '<span class="arcade-ico">&#128274;</span>') +
+              '<span class="arcade-name">Fireboy Trophy</span>' +
+              '<span class="arcade-blurb">' + (grand ? 'Whole again. Click to admire.' : 'Locked until all five games are cleared.') + '</span>' +
+              '<span class="arcade-status">' + (grand ? 'Keeper of the Flame' : 'Locked') + '</span>' +
+            '</button>' +
           '</div>' +
           '<div class="arcade-foot">' +
             '<button class="btn ghost arcade-codex" type="button"><span>Read the Codex</span></button>' +
@@ -840,18 +856,42 @@ document.addEventListener('DOMContentLoaded', function () {
       overlay.appendChild(arcadeWrap);
 
       if (grand) arcadeWrap.querySelector('.arcade-panel').classList.add('is-grand');
-      arcadeWrap.querySelectorAll('.arcade-tile').forEach(t =>
+      arcadeWrap.querySelectorAll('.arcade-tile[data-g]').forEach(t =>
         t.addEventListener('click', () => GAMES[+t.getAttribute('data-g')].play()));
+      arcadeWrap.querySelector('.arcade-trophy').addEventListener('click', function () { showTrophy(overlay, arcadeWrap, back); });
       arcadeWrap.querySelector('.arcade-codex').addEventListener('click', showCodex);
       const leave = function () { closeStage(overlay); };
       arcadeWrap.querySelector('.arcade-leave').addEventListener('click', leave);
       arcadeWrap.querySelector('.codex-close').addEventListener('click', leave);
     }
 
-    // Celebrate the moment all four games are first cleared.
+    // The trophy: the whole animated Fireboy, awarded for clearing the arcade.
+    function showTrophy(overlay, prev, back) {
+      if (prev) prev.remove();
+      if (!overlay) overlay = openStage();
+      const won = grandAligner();
+      const wrap = document.createElement('div');
+      wrap.className = 'tnc trophy';
+      wrap.innerHTML =
+        '<div class="tnc-panel trophy-panel' + (won ? ' won' : '') + '" role="dialog" aria-label="Fireboy trophy">' +
+          '<h4>' + (won ? 'Fireboy &mdash; whole again' : 'The Fireboy Trophy') + '</h4>' +
+          (won
+            ? '<figure class="trophy-stage"><img src="media/fireboy-cut.gif" alt="Fireboy, whole"></figure>' +
+              '<p class="tnc-sub">You cleared every game in the Volcano Arcade and relit all four moods. The flame is whole and Fireboy is yours. Title earned: <b>Keeper of the Flame</b>.</p>'
+            : '<figure class="trophy-stage locked"><div class="trophy-lock">&#128274;</div></figure>' +
+              '<p class="tnc-sub">Fireboy, whole and animated, is the arcade&rsquo;s highest reward. Clear all five games to win him. You are not there yet &mdash; but the fire is patient.</p>') +
+          '<div class="calib-actions">' +
+            '<button class="btn solid trophy-back" type="button"><span>&larr; Arcade</span></button>' +
+          '</div>' +
+        '</div>';
+      overlay.appendChild(wrap);
+      wrap.querySelector('.trophy-back').addEventListener('click', back || function () { closeStage(overlay); });
+    }
+
+    // Celebrate the moment all five games are first cleared.
     function maybeGrand() {
       if (checkGrand()) {
-        toast('&#128081; <b>Grand Aligner.</b> Four games cleared. The Great Wonk has met its match &mdash; and its manners.');
+        toast('&#128293; <b>Keeper of the Flame.</b> Every game cleared &mdash; Fireboy is whole, and yours. Open the Fireboy Trophy in the arcade.');
       }
     }
 
@@ -1046,6 +1086,107 @@ document.addEventListener('DOMContentLoaded', function () {
       wrap.querySelector('.whack-back').addEventListener('click', function () { clearTimers(); back(); });
     }
 
+    // --- STOKE THE FLAME: keep Fireboy's flame in the steady zone.
+    // It cools on its own and flares at random; tap Stoke to add heat.
+    // Too cold (0) or too hot (100) and the flame breaks. Survive to clear. ---
+    function gameFlame(overlay, back) {
+      const wrap = document.createElement('div');
+      wrap.className = 'tnc flame';
+      wrap.innerHTML =
+        '<div class="tnc-panel flame-panel" role="dialog" aria-label="Stoke the Flame">' +
+          '<h4>Stoke the Flame</h4>' +
+          '<p class="tnc-sub">Fireboy&rsquo;s flame cools on its own and flares without warning. Tap <b>Stoke</b> to feed it. Keep it in the steady band &mdash; let it die or overheat and the run ends. Last ' + FLAME_CLEAR + 's to clear.</p>' +
+          '<div class="flame-hud"><span class="flame-time">0.0s</span><span class="flame-state">Steady</span></div>' +
+          '<div class="flame-gauge">' +
+            '<div class="flame-zone"></div>' +
+            '<div class="flame-fill"></div>' +
+            '<div class="flame-marker"></div>' +
+          '</div>' +
+          '<div class="calib-actions">' +
+            '<button class="btn solid flame-stoke" type="button"><span>&#128293; Stoke</span></button>' +
+            '<button class="btn ghost flame-back" type="button"><span>&larr; Arcade</span></button>' +
+          '</div>' +
+        '</div>';
+      overlay.appendChild(wrap);
+
+      const fill = wrap.querySelector('.flame-fill');
+      const marker = wrap.querySelector('.flame-marker');
+      const stoke = wrap.querySelector('.flame-stoke');
+      const timeEl = wrap.querySelector('.flame-time');
+      const stateEl = wrap.querySelector('.flame-state');
+      const LOW = 38, HIGH = 78;              // steady band
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let heat = 58, cool = 12, elapsed = 0, running = false, raf = 0, flareT = 0, last = 0;
+
+      // paint the steady zone once
+      wrap.querySelector('.flame-zone').style.cssText =
+        'bottom:' + LOW + '%;height:' + (HIGH - LOW) + '%;';
+
+      function paint() {
+        fill.style.height = heat + '%';
+        marker.style.bottom = heat + '%';
+        const steady = heat >= LOW && heat <= HIGH;
+        wrap.querySelector('.flame-gauge').classList.toggle('danger', !steady);
+        stateEl.textContent = heat < LOW ? 'Cooling…' : heat > HIGH ? 'Overheating!' : 'Steady';
+      }
+      function stop(win) {
+        running = false; cancelAnimationFrame(raf); clearTimeout(flareT);
+        stoke.disabled = true;
+        const secs = Math.floor(elapsed);
+        const best = recordScore('flame', secs).flame;
+        wrap.querySelector('.tnc-sub').innerHTML = win
+          ? '<b>Flame held!</b> ' + FLAME_CLEAR + 's of steady fire. Best: ' + best + 's.'
+          : (heat <= 0 ? '<b>The flame went out.</b> ' : '<b>The flame overheated.</b> ') + 'Lasted ' + secs + 's. Best: ' + best + 's.';
+        wrap.querySelector('.calib-actions').innerHTML = '';
+        const again = document.createElement('button');
+        again.className = 'btn solid'; again.type = 'button';
+        again.innerHTML = '<span>Again</span>';
+        again.addEventListener('click', function () { cancelAnimationFrame(raf); clearTimeout(flareT); wrap.remove(); gameFlame(overlay, back); });
+        const bk = document.createElement('button');
+        bk.className = 'btn ghost'; bk.type = 'button';
+        bk.innerHTML = '<span>&larr; Arcade</span>';
+        bk.addEventListener('click', function () { cancelAnimationFrame(raf); clearTimeout(flareT); back(); });
+        wrap.querySelector('.calib-actions').append(again, bk);
+        if (win) maybeGrand();
+      }
+      function flare() {
+        if (!running) return;
+        // random shove up or down, harder over time
+        heat += (Math.random() < 0.5 ? -1 : 1) * (8 + Math.random() * 10 + elapsed * 0.4);
+        flareT = setTimeout(flare, 900 + Math.random() * 1300);
+      }
+      function tick(now) {
+        if (!running) return;
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        elapsed += dt;
+        heat -= (cool + elapsed * 0.5) * dt;   // cooling accelerates
+        heat = Math.max(-1, Math.min(101, heat));
+        timeEl.textContent = elapsed.toFixed(1) + 's';
+        paint();
+        if (heat <= 0 || heat >= 100) return stop(false);
+        if (elapsed >= FLAME_CLEAR) { heat = Math.min(heat, 100); return stop(true); }
+        raf = requestAnimationFrame(tick);
+      }
+
+      function addHeat() { if (running) { heat = Math.min(100, heat + 9); paint(); } }
+
+      function start() {
+        wrap.querySelector('.flame-back').remove();
+        running = true; last = performance.now(); elapsed = 0; heat = 58;
+        paint();
+        raf = requestAnimationFrame(tick);
+        if (!reduced) flareT = setTimeout(flare, 1100);
+      }
+      // First press of Stoke starts the run; every press after feeds the flame.
+      let started = false;
+      stoke.addEventListener('click', function () {
+        if (!started) { started = true; start(); }
+        else addHeat();
+      });
+      paint();
+      wrap.querySelector('.flame-back').addEventListener('click', function () { cancelAnimationFrame(raf); clearTimeout(flareT); back(); });
+    }
+
     // --- the eruption ---
     function erupt() {
       const overlay = document.createElement('div');
@@ -1085,9 +1226,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const reward = document.createElement('div');
         reward.className = 'eruption-reward';
         reward.innerHTML =
-          '<img class="cookie-img" src="media/cookie-cut.png" alt="A cookie">' +
-          '<h3>The volcano erupted!!</h3>' +
-          '<p>It produced exactly one cookie. To claim it, you must first accept the cookie terms and conditions, all of them.</p>' +
+          '<img class="fireboy-rise" src="media/fireboy-cut.gif" alt="Fireboy rising from the crater">' +
+          '<h3>Fireboy rises from the crater!</h3>' +
+          '<p>The four moods clicked back together and Fireboy climbed out of the volcano, holding exactly one cookie. To claim it, you must first accept the cookie terms and conditions, all of them.</p>' +
           '<button class="btn solid" type="button"><span>Claim the cookie</span></button>';
         overlay.appendChild(reward);
         requestAnimationFrame(() => reward.classList.add('show'));
