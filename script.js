@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // MOODS Fireboy's flame burns in. Collect all four and the flame is
   // whole again. Bestiary entries for the Codex.
   const LORE = {
-    m1: { epithet: 'the Blaze', domain: 'the machine when it runs hot', creed: '"Run it hotter. Then check your wiring."' },
-    m2: { epithet: 'the Warmth', domain: 'the team, the books, the morale', creed: '"Accounted for &mdash; and cheerfully so."' },
-    m3: { epithet: 'the Smoulder', domain: 'the long grind, the foundation', creed: '"Level starts at the base, not the top."' },
-    m4: { epithet: 'the Spark', domain: "this season's orbit", creed: '"I go around, so the team goes forward."' }
+    m1: { epithet: 'Fireboy at full burn', domain: 'the machine when it runs hot', creed: '"Run it hotter. Then check your wiring."' },
+    m2: { epithet: 'Fireboy at his kindest', domain: 'the team, the books, the morale', creed: '"Accounted for &mdash; and cheerfully so."' },
+    m3: { epithet: 'Fireboy banked low', domain: 'the long grind, the foundation', creed: '"Level starts at the base, not the top."' },
+    m4: { epithet: 'Fireboy catching', domain: "this season's orbit", creed: '"I go around, so the team goes forward."' }
   };
   const LS_FOUND = 'vx-hunt-found';
   const LS_DONE = 'vx-hunt-cookie';
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- the cookie terms and conditions ---
     function tncHTML() {
       const sections = [
-        ['1. Definitions', '"The Cookie" means one (1) virtual chocolate-chip cookie, freshly erupted. "You" means the person who found and clicked all four stickers. "The Volcano" means the Volcano. "The Team" means KCLMS Volcanix, its members, mascots (Volcy, Happy, Grumpy and Orbitty), successors, and whichever parent is driving us to the qualifier.'],
+        ['1. Definitions', '"The Cookie" means one (1) virtual chocolate-chip cookie, freshly erupted. "You" means the person who found and clicked all four stickers. "The Volcano" means the Volcano. "The Team" means KCLMS Volcanix, its members, Fireboy (in all four of his moods), successors, and whichever parent is driving us to the qualifier.'],
         ['2. Grant of Cookie', 'Subject to your full and unconditional acceptance of these terms, the Volcano grants you a non-exclusive, non-transferable, non-refundable, non-edible licence to one Cookie. The Cookie may not be sublicensed, resold, or dunked in milk you do not own.'],
         ['3. Eruption Disclaimer', 'The eruption you witnessed was performed by a trained volcano. Do not attempt at home, at school, or inside the pit area at a FIRST Tech Challenge event, where open magma is a clear violation of the pit safety rules.'],
         ['4. Browser Cookie Clause', 'By accepting, you consent to us setting exactly one (1) real browser cookie named volcanix_cookie. Its value is the word "earned". It stores nothing else and is not used for tracking.'],
@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ['7. Mecanum Clause', 'You acknowledge that mecanum wheels allow omnidirectional movement, a fact recorded here for completeness despite having no bearing on the Cookie.'],
         ['8. Odometry of the Heart', 'The Team accepts no liability for any drift, slippage, or loss of localisation you may experience upon realising the Cookie is not real.'],
         ['9. Open Source Provision', 'Like everything else we make, the Cookie is open source and may be forked under the same licence as our code.'],
-        ['10. Sticker Repatriation', 'Volcy, Happy, Grumpy and Orbitty remain the intellectual property of the Team. Clicking them does not constitute adoption, though they do appreciate the attention.'],
+        ['10. Sticker Repatriation', 'Fireboy and all four of his moods remain the intellectual property of the Team. Clicking them does not constitute adoption, though they do appreciate the attention.'],
         ['11. Dispute Resolution', 'Any disputes arising from or relating to the Cookie shall be settled by a best-of-three match of rock, paper, scissors at the nearest available robotics venue, refereed by the robot.'],
         ['12. Termination', 'This licence terminates automatically if you (a) clear your browser storage, (b) press "start the hunt again", or (c) claim the Cookie is a biscuit in a legally binding tone of voice.'],
         ['13. Severability', 'If any clause of these terms is found to be unenforceable, too silly, or eaten, the remaining clauses shall continue at full crunch.'],
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
-      const refusals = ['Decline', 'Are you sure?', 'The Volcano is watching', 'Grumpy is disappointed', 'Provision 11 may apply', 'Decline'];
+      const refusals = ['Decline', 'Are you sure?', 'The Volcano is watching', 'The Smoulder is disappointed', 'Provision 11 may apply', 'Decline'];
       let ri = 0, disputeShown = false;
       decline.addEventListener('click', function () {
         ri = (ri + 1) % refusals.length;
@@ -513,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.addEventListener('click', function () { showCalibration(overlay, wrap); });
           }
         } else {
-          call.innerHTML = '<b>The robot keeps the cookie.</b> Grumpy nods slowly. Reality remains 1&deg; off true.';
+          call.innerHTML = '<b>The robot keeps the cookie.</b> The Smoulder nods slowly. Reality remains 1&deg; off true.';
           btn.innerHTML = '<span>Try the dispute again</span>';
           btn.addEventListener('click', function () { showDispute(overlay, wrap, back); });
         }
@@ -628,7 +628,7 @@ document.addEventListener('DOMContentLoaded', function () {
             wrap.querySelector('.calib-actions').appendChild(behold);
           }
         } else {
-          progress.innerHTML = '<b>Not level.</b> Grumpy exhales through his nose.';
+          progress.innerHTML = '<b>Not level.</b> The Smoulder exhales through his nose.';
           wrap.querySelector('.tnc-sub').innerHTML =
             'The cookie holds. You keep it &mdash; but reality stays 1&deg; off true. You can straighten frames by hand (click them), or try the calibration again.';
           cont.innerHTML = '<span>Try again</span>';
