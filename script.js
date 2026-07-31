@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const TARGETS = ['m1', 'm2', 'm3', 'm4'];
   const NAMES = { m1: 'Volcy', m2: 'Happy', m3: 'Grumpy', m4: 'Orbitty' };
   const HINTS = {
-    m1: 'hot-headed, near the machine',
+    m1: 'hot-headed, next to the paperwork',
     m2: 'watching the money',
     m3: 'at the bottom of everything',
     m4: 'orbiting this season'
