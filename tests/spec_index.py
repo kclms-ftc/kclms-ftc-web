@@ -30,7 +30,7 @@ class SpecHomepageTeasers(unittest.TestCase):
             self.skipTest("no teaser block yet")
         hrefs = [a.get("href") or "" for a in block.find_all("a")]
         self.assertTrue(
-            any(re.search(r"updates/[a-z0-9-]+\.html$", h) for h in hrefs),
+            any(re.search(r"eruptions/[a-z0-9-]+\.html$", h) for h in hrefs),
             "the teaser links the section but not a specific post",
         )
 
@@ -52,7 +52,7 @@ class SpecHomepageTeasers(unittest.TestCase):
 
     def test_homepage_links_both_new_pages(self):
         hrefs = [S.normalise_href(a.get("href")) for a in page().find_all("a")]
-        for target in ("updates.html", "events.html"):
+        for target in ("eruptions.html", "events.html"):
             with self.subTest(target=target):
                 self.assertIn(target, hrefs, f"homepage never links {target}")
 

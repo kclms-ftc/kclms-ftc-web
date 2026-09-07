@@ -1271,7 +1271,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const chips = document.querySelectorAll('.chip[data-filter]');
   const rows = document.querySelectorAll('.update-index .row-item');
-  const empty = document.getElementById('updates-empty');
+  const empty = document.getElementById('eruptions-empty');
   if (!chips.length || !rows.length) return;
 
   function apply(tag) {

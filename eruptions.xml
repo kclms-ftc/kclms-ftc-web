@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>KCLMS Volcanix Eruptions</title>
+        <link>https://volcanixftc.com/eruptions.html</link>
+        <atom:link href="https://volcanixftc.com/eruptions.xml" rel="self" type="application/rss+xml"/>
+        <description>What the KCLMS Volcanix First Tech Challenge team has been building, written for our sponsors and mentors.</description>
+        <language>en-GB</language>
+        <lastBuildDate>Mon, 07 Sep 2026 20:16:14 +0000</lastBuildDate>
+        <item>
+            <title>Where We Are Since the Think Award</title>
+            <link>https://volcanixftc.com/eruptions/think-award-catch-up.html</link>
+            <guid isPermaLink="true">https://volcanixftc.com/eruptions/think-award-catch-up.html</guid>
+            <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
+            <category>competition</category>
+            <description>Where KCLMS Volcanix has got to since the Think Award: the DECODE robot, the outreach, the money, and what we are working on next.</description>
+        </item>
+        <item>
+            <title>Lorem Ipsum Dolor Sit Amet</title>
+            <link>https://volcanixftc.com/eruptions/lorem-ipsum-sample.html</link>
+            <guid isPermaLink="true">https://volcanixftc.com/eruptions/lorem-ipsum-sample.html</guid>
+            <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+            <category>build</category>
+            <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A placeholder eruption used to check the layout of a post with photos, numbers and panels.</description>
+        </item>
+    </channel>
+</rss>

@@ -13,7 +13,7 @@
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://volcanixftc.com/updates.html</loc>
+        <loc>https://volcanixftc.com/eruptions.html</loc>
         <lastmod>2026-09-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -43,8 +43,14 @@
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://volcanixftc.com/updates/think-award-catch-up.html</loc>
+        <loc>https://volcanixftc.com/eruptions/think-award-catch-up.html</loc>
         <lastmod>2026-09-07</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://volcanixftc.com/eruptions/lorem-ipsum-sample.html</loc>
+        <lastmod>2026-08-15</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>

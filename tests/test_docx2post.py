@@ -111,8 +111,8 @@ class TestDocxConverter(unittest.TestCase):
         cls.docx = os.path.join(cls.tmp, "update.docx")
         build_docx(cls.docx)
 
-        cls.out_html = os.path.join(S.ROOT, "updates", f"{SLUG}.html")
-        cls.out_media = os.path.join(S.ROOT, "media", "updates", SLUG)
+        cls.out_html = os.path.join(S.ROOT, "eruptions", f"{SLUG}.html")
+        cls.out_media = os.path.join(S.ROOT, "media", "eruptions", SLUG)
 
         code = docx2post.main([
             cls.docx,
@@ -177,7 +177,7 @@ class TestDocxConverter(unittest.TestCase):
     def test_image_is_extracted(self):
         files = os.listdir(self.out_media)
         self.assertEqual(len(files), 1, f"expected one image, got {files}")
-        self.assertIn(f"media/updates/{SLUG}/", self.html)
+        self.assertIn(f"media/eruptions/{SLUG}/", self.html)
 
     def test_image_is_resized(self):
         name = os.listdir(self.out_media)[0]
@@ -189,7 +189,7 @@ class TestDocxConverter(unittest.TestCase):
         )
 
     def test_image_carries_dimensions_and_alt(self):
-        self.assertRegex(self.html, r'<img src="media/updates/[^"]+"[^>]*width="\d+"')
+        self.assertRegex(self.html, r'<img src="media/eruptions/[^"]+"[^>]*width="\d+"')
         self.assertRegex(self.html, r'height="\d+"')
         self.assertIn('alt="The robot mid-build"', self.html)
 

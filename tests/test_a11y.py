@@ -12,6 +12,11 @@ ALL_HTML = sorted(
 
 # Icon-only anchors need a label; these carry visible text instead.
 def has_accessible_name(anchor):
+    # A link hidden from assistive tech needs no name: the featured post's
+    # photo link duplicates the title link beside it and is deliberately
+    # aria-hidden and out of the tab order.
+    if anchor.get("aria-hidden") == "true":
+        return True
     if anchor.stripped_text():
         return True
     if anchor.get("aria-label") or anchor.get("title"):

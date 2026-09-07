@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Regenerate the updates index, the RSS feed and the sitemap from the posts.
 
-The posts in updates/ are the single source of truth. This reads them and
+The posts in eruptions/ are the single source of truth. This reads them and
 rewrites everything that has to agree with them, so the index can never drift
 from the files and the feed can never miss a post.
 
-    python3 tools/rebuild_updates.py           write
-    python3 tools/rebuild_updates.py --check   exit 1 if anything is stale
+    python3 tools/rebuild_eruptions.py           write
+    python3 tools/rebuild_eruptions.py --check   exit 1 if anything is stale
 
 Run it after adding a post (by hand or via tools/docx2post.py).
 """
@@ -20,10 +20,12 @@ import os
 import re
 import sys
 
+from docx2post import image_size
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ORIGIN = "https://volcanixftc.com"
-INDEX_PAGE = os.path.join(ROOT, "updates.html")
-FEED = os.path.join(ROOT, "updates.xml")
+INDEX_PAGE = os.path.join(ROOT, "eruptions.html")
+FEED = os.path.join(ROOT, "eruptions.xml")
 SITEMAP = os.path.join(ROOT, "sitemap.xml")
 
 TAG_LABELS = {
@@ -37,7 +39,7 @@ TAG_LABELS = {
 CORE_PAGES = [
     ("", "weekly", "1.0"),
     ("portfolio.html", "monthly", "0.9"),
-    ("updates.html", "weekly", "0.9"),
+    ("eruptions.html", "weekly", "0.9"),
     ("team.html", "monthly", "0.8"),
     ("resources.html", "monthly", "0.8"),
     ("events.html", "monthly", "0.7"),
@@ -52,7 +54,7 @@ def field(source, pattern, default=""):
 
 def read_posts():
     posts = []
-    for path in sorted(glob.glob(os.path.join(ROOT, "updates", "*.html"))):
+    for path in sorted(glob.glob(os.path.join(ROOT, "eruptions", "*.html"))):
         with open(path, encoding="utf-8") as handle:
             source = handle.read()
         slug = os.path.splitext(os.path.basename(path))[0]
@@ -60,15 +62,18 @@ def read_posts():
         if not date:
             print(f"  ! {slug}: no dated <time>, skipped")
             continue
+        image = field(source, r'<meta property="og:image" content="([^"]+)"')
         posts.append(
             {
+                "image": image.replace(ORIGIN + "/", ""),
+                "alt": field(source, r'<figure class="post-figure">\s*<img src="[^"]*" alt="([^"]*)"'),
                 "slug": slug,
                 "date": date,
                 "date_label": field(source, r"<time datetime=\"[^\"]+\">([^<]+)</time>"),
                 "title": field(source, r"<h1>(.*?)</h1>"),
                 "summary": field(source, r'<meta name="description" content="(.*?)"'),
                 "tag": field(source, r'class="post" id="[^"]*" data-tag="([^"]+)"'),
-                "url": f"{ORIGIN}/updates/{slug}.html",
+                "url": f"{ORIGIN}/eruptions/{slug}.html",
             }
         )
     posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
@@ -79,18 +84,48 @@ def short_month(date):
     return datetime.date.fromisoformat(date).strftime("%b %Y")
 
 
-def render_index(posts):
+def render_featured(posts):
+    """The newest post, shown large at the top of eruptions.html."""
     if not posts:
         return (
             '        <p class="resource-empty">The first update goes up after our '
             "next milestone.</p>"
+        )
+    post = posts[0]
+    # The photo repeats a link the title already provides, so it is decorative
+    # for anyone using a screen reader and hidden from the tab order.
+    width, height = image_size(os.path.join(ROOT, post["image"]))
+    dims = f' width="{width}" height="{height}"' if width and height else ""
+    return "\n".join([
+        '        <article class="featured-post">',
+        f'            <a class="featured-media" href="eruptions/{post["slug"]}.html" tabindex="-1" aria-hidden="true">',
+        f'                <img src="{post["image"]}" alt="" aria-hidden="true"{dims} loading="lazy">',
+        "            </a>",
+        '            <div class="featured-body">',
+        f'                <p class="post-date"><time datetime="{post["date"]}">'
+        f'{short_month(post["date"])}</time> &middot; Latest eruption</p>',
+        f'                <h3><a href="eruptions/{post["slug"]}.html">{post["title"]}</a></h3>',
+        f'                <p>{html.escape(post["summary"], quote=False)}</p>',
+        f'                <a href="eruptions/{post["slug"]}.html" class="btn solid">'
+        "<span>Read the Full Post</span></a>",
+        "            </div>",
+        "        </article>",
+    ])
+
+
+def render_index(posts):
+    posts = posts[1:]
+    if not posts:
+        return (
+            '        <p class="resource-empty">Nothing older yet. This is the '
+            "first update.</p>"
         )
     rows = ['        <div class="rows update-index">']
     for post in posts:
         rows.append(f'            <div class="row-item" data-tag="{post["tag"]}">')
         rows.append(f'                <span class="row-label">{short_month(post["date"])}</span>')
         rows.append(
-            f'                <h3><a href="updates/{post["slug"]}.html">{post["title"]}</a></h3>'
+            f'                <h3><a href="eruptions/{post["slug"]}.html">{post["title"]}</a></h3>'
         )
         rows.append(
             f'                <p>{html.escape(post["summary"], quote=False)}'
@@ -121,12 +156,18 @@ def render_chips(posts):
 
 
 def replace_marked(source, name, block):
+    """Swap whatever sits between a pair of markers, empty markers included."""
     pattern = re.compile(
-        rf"(<!-- {name}:START -->\n).*?(\n\s*<!-- {name}:END -->)", re.S
+        rf"([ \t]*)(<!-- {name}:START -->).*?([ \t]*<!-- {name}:END -->)", re.S
     )
-    if not pattern.search(source):
-        raise SystemExit(f"updates.html is missing the {name} markers")
-    return pattern.sub(lambda m: m.group(1) + block + m.group(2), source, count=1)
+    match = pattern.search(source)
+    if not match:
+        raise SystemExit(f"eruptions.html is missing the {name} markers")
+    indent = match.group(1)
+    return pattern.sub(
+        lambda m: f"{indent}{m.group(2)}\n{block}\n{indent}<!-- {name}:END -->",
+        source, count=1,
+    )
 
 
 def render_feed(posts):
@@ -150,9 +191,9 @@ def render_feed(posts):
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>KCLMS Volcanix Updates</title>
-        <link>{ORIGIN}/updates.html</link>
-        <atom:link href="{ORIGIN}/updates.xml" rel="self" type="application/rss+xml"/>
+        <title>KCLMS Volcanix Eruptions</title>
+        <link>{ORIGIN}/eruptions.html</link>
+        <atom:link href="{ORIGIN}/eruptions.xml" rel="self" type="application/rss+xml"/>
         <description>What the KCLMS Volcanix First Tech Challenge team has been building, written for our sponsors and mentors.</description>
         <language>en-GB</language>
         <lastBuildDate>{built}</lastBuildDate>
@@ -212,8 +253,9 @@ def main(argv=None):
 
     with open(INDEX_PAGE, encoding="utf-8") as handle:
         page = handle.read()
-    page = replace_marked(page, "UPDATES:INDEX", render_index(posts))
-    page = replace_marked(page, "UPDATES:CHIPS", render_chips(posts))
+    page = replace_marked(page, "ERUPTIONS:FEATURED", render_featured(posts))
+    page = replace_marked(page, "ERUPTIONS:INDEX", render_index(posts))
+    page = replace_marked(page, "ERUPTIONS:CHIPS", render_chips(posts))
     write(INDEX_PAGE, page, args.check, stale)
     write(FEED, render_feed(posts), args.check, stale)
     write(SITEMAP, render_sitemap(posts), args.check, stale)
@@ -221,7 +263,7 @@ def main(argv=None):
     if args.check:
         if stale:
             print("Stale: " + ", ".join(stale))
-            print("Run tools/rebuild_updates.py to regenerate.")
+            print("Run tools/rebuild_eruptions.py to regenerate.")
             return 1
         print(f"{len(posts)} post(s); index, feed and sitemap all current.")
         return 0
