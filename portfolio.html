@@ -14,6 +14,7 @@
     <meta property="og:description" content="The 2025-26 season document behind our Think Award. 16 pages.">
     <meta property="og:image" content="https://volcanixftc.com/media/portfolio-cover.png">
     <meta property="og:site_name" content="KCLMS Volcanix">
+    <meta property="og:locale" content="en_GB">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://volcanixftc.com/media/portfolio-cover.png">
     <meta name="robots" content="index, follow">
@@ -56,20 +57,22 @@
 
 <body>
 
+    <!-- NAV:START -->
     <nav class="topnav">
         <div class="nav-bar">
-            <a href="index.html" class="wordmark" aria-label="Volcanix home">
+            <a href="/" class="wordmark" aria-label="Volcanix home">
                 <span class="wm-main">Volcanix</span>
                 <span class="wm-sub">Robotics</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html"><span>Home</span></a></li>
-                <li><a href="team.html"><span>Team</span></a></li>
-                <li><a href="sponsors.html"><span>Sponsors</span></a></li>
-                <li><a href="resources.html"><span>Resources</span></a></li>
+                <li><a href="/"><span>Home</span></a></li>
+                <li><a href="/team.html"><span>Team</span></a></li>
+                <li><a href="/sponsors.html"><span>Sponsors</span></a></li>
+                <li><a href="/resources.html"><span>Resources</span></a></li>
             </ul>
         </div>
     </nav>
+    <!-- NAV:END -->
 
     <header class="hero page-banner clip">
         <div class="hero-slide active"><img src="media/think-award-best.jpg" alt="FIRST Tech Challenge UK Think Award plaque won by KCLMS Volcanix" width="1237" height="1653" fetchpriority="high"></div>
@@ -81,18 +84,80 @@
         <div class="zz abs"></div>
     </header>
 
-    <section class="section reveal">
-        <p class="center mb">Every design decision, prototype and test from our DECODE season. This is the document the judges read.</p>
-        <p class="center mb"><a href="media/engineering-portfolio-2025-26.pdf" download class="btn solid"><span>Download PDF</span></a></p>
-        <div class="pdf-frame">
-            <object data="media/engineering-portfolio-2025-26.pdf" type="application/pdf">
-                <div class="pdf-fallback">
-                    <img src="media/portfolio-cover.png" alt="Cover of the KCLMS Volcanix engineering portfolio" width="706" height="1000" loading="lazy">
-                    <p>Your browser cannot display the PDF inline.</p>
-                    <a href="media/engineering-portfolio-2025-26.pdf" download class="btn solid"><span>Download the Portfolio</span></a>
-                </div>
-            </object>
+    <div class="block reveal">
+        <div class="block-media"><img src="media/robot-2.jpg" alt="The KCLMS Volcanix competition robot on the workshop bench" width="1920" height="1442" loading="lazy"></div>
+        <div class="block-body">
+            <h2>What This Document Is</h2>
+            <p>Every design decision, prototype and test from our DECODE season, written up as we went rather than assembled at the end. This is the document the judges read when they gave us the <strong>Think Award</strong> at our first UK qualifier.</p>
+            <p>It is 16 pages. The summary below covers what is in it; the full PDF is at the bottom of this page.</p>
+            <a href="media/engineering-portfolio-2025-26.pdf" download class="btn solid"><span>Download PDF</span></a>
         </div>
+    </div>
+
+    <!-- The season -->
+    <div class="section-banner">
+        <h2>This Season: Decode</h2>
+        <p class="meta">Read the pattern &middot; Launch in order</p>
+    </div>
+    <div class="block flip reveal from-right">
+        <div class="block-media"><img src="media/arena.jpg" alt="First Tech Challenge DECODE competition arena" width="1442" height="1920" loading="lazy"></div>
+        <div class="block-body">
+            <h3>The Challenge</h3>
+            <p>Robots read a coded pattern with vision, then launch artifacts into goals in that order. Scoring rewards two things at once: reading the pattern correctly, and being able to put artifacts where you meant to, repeatedly.</p>
+            <p>That shaped the whole build. A launcher that is accurate but slow loses to one that is slightly less accurate and can cycle. Our strategy chapter is about where we chose to sit on that trade.</p>
+        </div>
+    </div>
+
+    <!-- The robot -->
+    <div class="section-banner">
+        <h2>The Robot</h2>
+        <p class="meta">Drive &middot; Odometry &middot; Vision &middot; Launcher</p>
+    </div>
+    <div class="block reveal from-left">
+        <div class="block-media"><img src="media/robot-cad.jpeg" alt="CAD model of the KCLMS Volcanix competition robot" width="1573" height="1007" loading="lazy"></div>
+        <div class="block-body">
+            <h3>How It Is Built</h3>
+            <p>A mecanum drivetrain for free lateral movement, three-wheel odometry for position we can trust, and a dual-flywheel launcher tuned for repeatable shots rather than maximum range.</p>
+            <ul class="spec-list">
+                <li><span>Drivetrain</span><span>Mecanum, four wheels</span></li>
+                <li><span>Localisation</span><span>Three-wheel odometry</span></li>
+                <li><span>Pathing</span><span>Pedro Pathing</span></li>
+                <li><span>Vision</span><span>Limelight, tuned in-house</span></li>
+                <li><span>Scoring</span><span>Dual-flywheel launcher</span></li>
+                <li><span>Autonomous</span><span>Repeatable, pattern-driven</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="block flip reveal from-right">
+        <div class="block-media"><img src="media/programming-2.jpg" alt="KCLMS Volcanix students working on the robot control code" width="1442" height="1920" loading="lazy"></div>
+        <div class="block-body">
+            <h3>Code and Vision</h3>
+            <p>We run Pedro Pathing for autonomous movement and a Limelight vision stack we tuned ourselves rather than taking off the shelf. The tuning process, and what we got wrong first, is written up in the portfolio.</p>
+            <p>Everything is public. The CAD, the code and these write-ups are all open source, because a season's worth of tuning notes is more useful to the next rookie team than it is sitting in our repo unread.</p>
+            <a href="resources.html" class="btn ghost"><span>Code &amp; CAD</span></a>
+        </div>
+    </div>
+
+    <!-- The document itself -->
+    <div class="section-banner">
+        <h2>Read the Portfolio</h2>
+        <p class="meta">16 pages &middot; PDF</p>
+    </div>
+    <section class="section reveal">
+        <p class="center mb"><a href="media/engineering-portfolio-2025-26.pdf" download class="btn solid"><span>Download PDF</span></a></p>
+        <details class="doc-read">
+            <summary><span>Read it here</span></summary>
+            <div class="pdf-frame">
+                <object data="media/engineering-portfolio-2025-26.pdf" type="application/pdf">
+                    <div class="pdf-fallback">
+                        <img src="media/portfolio-cover.png" alt="Cover of the KCLMS Volcanix engineering portfolio" width="706" height="1000" loading="lazy">
+                        <p>Your browser cannot display the PDF inline.</p>
+                        <a href="media/engineering-portfolio-2025-26.pdf" download class="btn solid"><span>Download the Portfolio</span></a>
+                    </div>
+                </object>
+            </div>
+        </details>
     </section>
 
     <!-- London skyline -->
@@ -102,12 +167,13 @@
     </div>
 
     <!-- Footer -->
+    <!-- FOOTER:START -->
     <footer class="footer">
-        <img class="footer-watermark" src="mascots/m4-cut.png" alt="" aria-hidden="true" width="553" height="552" loading="lazy">
+        <img class="footer-watermark" src="/mascots/m4-cut.png" alt="" aria-hidden="true" width="553" height="552" loading="lazy">
         <div class="footer-inner">
             <div class="footer-cols">
                 <div>
-                    <a href="index.html"><img class="footer-mascot" src="mascots/m3-cut.png" alt="Volcanix mascot sticker" data-hunt="m3" width="469" height="463" loading="lazy"></a>
+                    <a href="/"><img class="footer-mascot" src="/mascots/m3-cut.png" alt="Volcanix mascot sticker" data-hunt="m3" width="469" height="463" loading="lazy"></a>
                     <span class="footer-brand">KCLMS Volcanix</span>
                     <p>The First Tech Challenge team at King's College London Mathematics School. Think Award winners, open source by default.</p>
                     <div class="footer-social">
@@ -117,16 +183,16 @@
                     </div>
                 </div>
                 <div>
-                    <h4>Explore</h4>
+                    <h3>Explore</h3>
                     <ul>
-                        <li><a href="team.html">The Team</a></li>
-                        <li><a href="sponsors.html">Sponsors &amp; Finances</a></li>
-                        <li><a href="portfolio.html">Engineering Portfolio</a></li>
-                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="/team.html">The Team</a></li>
+                        <li><a href="/sponsors.html">Sponsors &amp; Finances</a></li>
+                        <li><a href="/portfolio.html">Engineering Portfolio</a></li>
+                        <li><a href="/resources.html">Resources</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Contact</h4>
+                    <h3>Contact</h3>
                     <ul>
                         <li><a href="mailto:kclmsftc@gmail.com">kclmsftc@gmail.com</a></li>
                         <li><a href="https://www.google.com/maps/place/King's+College+London+Mathematics+School/@51.4958875,-0.1140411,17z/data=!3m1!4b1!4m6!3m5!1s0x487604be7bc868c3:0x41455f6e6b8f68e8!8m2!3d51.4958875!4d-0.1114662!16s%2Fg%2F11cmyvcq2s?entry=ttu" target="_blank" rel="noopener">King's College London<br>Mathematics School<br>London SE11 6NJ</a></li>
@@ -139,6 +205,7 @@
             <p>FIRST&reg; and FIRST&reg; Tech Challenge are trademarks of FIRST.</p>
         </div>
     </footer>
+    <!-- FOOTER:END -->
 
 <script src="script.js"></script>
 </body>

@@ -319,6 +319,10 @@ strong { font-weight: 700; color: var(--cream); }
 .block-media img:hover { transform: rotate(0deg) scale(1.02); }
 .block-body { flex: 1; }
 .block-body h3 { margin-bottom: 10px; }
+/* A block that opens a page is the page's first section, so it carries an h2
+   for the outline. It still reads at h3 size - the heading level is about
+   document structure, not scale. */
+.block-body h2 { font-size: clamp(19px, 2.4vw, 26px); color: var(--yellow); margin-bottom: 10px; }
 .block-body p { margin-bottom: 18px; }
 
 /* === STATS BAND === */
@@ -532,6 +536,44 @@ strong { font-weight: 700; color: var(--cream); }
 .finance-feed-empty { font-size: 13px; color: rgba(255, 242, 220, 0.5); padding: 8px 0; }
 .finance-host img { max-width: 130px; margin-top: 18px; background: var(--cream); padding: 10px 14px; border: 2px solid var(--orange); }
 
+/* === COLLAPSED DOCUMENT READER ===
+   The portfolio PDF alone is 15MB. Embedding it inline meant every visitor
+   paid for it on page load, and the page above it was unreadable without
+   scrolling past a whole document. The embed now sits behind a closed
+   <details>, so the browser only fetches it when someone asks to read. */
+.doc-read { margin-top: 8px; }
+.doc-read > summary {
+  display: inline-block;
+  list-style: none;
+  cursor: pointer;
+  transform: skewX(-12deg);
+  padding: 11px 30px;
+  margin: 4px auto 18px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 2px solid var(--orange);
+  background: transparent;
+  color: var(--cream);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.55);
+  transition: background-color var(--t), color var(--t), transform var(--t), box-shadow var(--t);
+}
+.doc-read > summary::-webkit-details-marker { display: none; }
+.doc-read > summary > span { display: inline-block; transform: skewX(12deg); }
+.doc-read > summary:hover {
+  background: var(--orange);
+  color: var(--black);
+  transform: skewX(-12deg) translate(-2px, -3px);
+  box-shadow: 9px 10px 0 rgba(0, 0, 0, 0.55);
+}
+.doc-read > summary:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
+.doc-read[open] > summary { margin-bottom: 18px; }
+/* the summary is centred in the section, the frame is full width */
+.section > .doc-read { text-align: center; }
+.section > .doc-read .pdf-frame { text-align: left; }
+
 /* === PDF VIEWER === */
 .pdf-frame { width: 100%; height: 900px; border: 2px solid var(--orange); box-shadow: var(--stamp); overflow: hidden; background: var(--panel); }
 .pdf-frame object { width: 100%; height: 100%; }
@@ -618,7 +660,7 @@ strong { font-weight: 700; color: var(--cream); }
 .footer-cols { display: flex; gap: 40px; margin-bottom: 30px; }
 .footer-cols > div { flex: 1; }
 .footer-cols > div:first-child { flex: 1.4; }
-.footer h4 { margin-bottom: 12px; color: var(--yellow); }
+.footer h3, .footer h4 { font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; color: var(--yellow); }
 .footer p, .footer li, .footer a { color: rgba(255, 242, 220, 0.72); font-size: 13px; }
 .footer li { margin-bottom: 6px; }
 .footer a:hover { color: var(--cream); }

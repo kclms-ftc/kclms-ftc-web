@@ -42,9 +42,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // === ACTIVE NAV LINK ===
 document.addEventListener('DOMContentLoaded', function () {
-  const current = window.location.pathname.split('/').pop() || 'index.html';
+  // The shared nav uses root-absolute links (/team.html) so one identical
+  // block can sit on every page, 404 included. Compare basenames, not the raw
+  // href, and treat a directory URL as its index.
+  const path = window.location.pathname;
+  const current = path.split('/').filter(Boolean).pop() || 'index.html';
+  const section = path.split('/').filter(Boolean)[0] || '';
   document.querySelectorAll('.nav-links a').forEach(link => {
-    if (link.getAttribute('href') === current) link.classList.add('active');
+    const href = link.getAttribute('href') || '';
+    const target = href.split('/').filter(Boolean).pop() || 'index.html';
+    // A post at /updates/some-post.html still lights up the Updates button.
+    const inSection = section && target === section + '.html';
+    if (target === current || inSection) link.classList.add('active');
   });
 });
 
