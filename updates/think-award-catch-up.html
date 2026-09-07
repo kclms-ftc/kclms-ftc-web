@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Where KCLMS Volcanix has got to since the Think Award: the DECODE robot, the outreach, the money, and what we are working on next.">
+    <link rel="canonical" href="https://volcanixftc.com/updates/think-award-catch-up.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://volcanixftc.com/updates/think-award-catch-up.html">
+    <meta property="og:title" content="Where We Are Since the Think Award - KCLMS Volcanix">
+    <meta property="og:description" content="A catch-up for our sponsors and mentors: the robot, the outreach, the money, and what is next.">
+    <meta property="og:image" content="https://volcanixftc.com/media/think-award-best.jpg">
+    <meta property="og:site_name" content="KCLMS Volcanix">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://volcanixftc.com/media/think-award-best.jpg">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+    <title>Where We Are Since the Think Award - KCLMS Volcanix</title>
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32.png">
+    <link rel="apple-touch-icon" href="/media/apple-touch-icon.png">
+    <link rel="alternate" type="application/rss+xml" title="Volcanix Updates" href="/updates.xml">
+    <link rel="preload" href="/SplineSansMono.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="/Bahnschrift.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "headline": "Where We Are Since the Think Award",
+          "datePublished": "2026-09-07",
+          "author": { "@type": "Organization", "name": "KCLMS Volcanix" },
+          "publisher": { "@type": "Organization", "name": "KCLMS Volcanix", "url": "https://volcanixftc.com/" },
+          "image": "https://volcanixftc.com/media/think-award-best.jpg",
+          "mainEntityOfPage": "https://volcanixftc.com/updates/think-award-catch-up.html"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://volcanixftc.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Updates", "item": "https://volcanixftc.com/updates.html" },
+            { "@type": "ListItem", "position": 3, "name": "Where We Are Since the Think Award", "item": "https://volcanixftc.com/updates/think-award-catch-up.html" }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- NAV:START -->
+    <nav class="topnav">
+        <div class="nav-bar">
+            <a href="/" class="wordmark" aria-label="Volcanix home">
+                <span class="wm-main">Volcanix</span>
+                <span class="wm-sub">Robotics</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/"><span>Home</span></a></li>
+                <li><a href="/team.html"><span>Team</span></a></li>
+                <li><a href="/updates.html"><span>Updates</span></a></li>
+                <li><a href="/resources.html"><span>Resources</span></a></li>
+                <li><a href="/sponsors.html"><span>Sponsors</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- NAV:END -->
+
+    <article class="post" id="think-award-catch-up" data-tag="competition">
+        <header class="post-head">
+            <p class="post-date"><time datetime="2026-09-07">7 September 2026</time></p>
+            <h1>Where We Are Since the Think Award</h1>
+            <p class="post-by">The Volcanix Team &middot; Season catch-up</p>
+        </header>
+
+        <p>This is the first of our team updates. We are writing these so our sponsors and mentors can see what we are doing without us having to book a meeting every time something changes. This first one is a catch-up: everything since we won the Think Award at our first UK qualifier.</p>
+
+        <figure class="post-figure">
+            <img src="/media/think-award-best.jpg" alt="The FIRST Tech Challenge UK Think Award plaque won by KCLMS Volcanix" width="1237" height="1653" loading="lazy">
+            <figcaption>The Think Award, from our first UK qualifier</figcaption>
+        </figure>
+
+        <h2>The Award</h2>
+
+        <p>The Think Award is judged on the engineering portfolio: how a team reasons about its design, not how well the robot happens to run on the day. Winning it at our first qualifier told us the thing we most wanted to know, which is that documenting the process as we went was worth the time it cost.</p>
+
+        <p>The portfolio that won it is sixteen pages and it is on this site in full. So is the reasoning behind every subsystem.</p>
+
+        <h2>The Robot</h2>
+
+        <p>We are competing in DECODE. Robots read a coded pattern with vision, then launch artifacts into goals in that order, so the season rewards two separate things: reading the pattern correctly, and putting artifacts where you meant to, repeatedly.</p>
+
+        <p>What we built for that:</p>
+
+        <ul class="post-list">
+            <li>A mecanum drivetrain, for lateral movement without turning first.</li>
+            <li>Three-wheel odometry, so the robot's idea of where it is can be trusted.</li>
+            <li>Pedro Pathing for autonomous movement.</li>
+            <li>A Limelight vision stack, which we tuned ourselves rather than taking off the shelf.</li>
+            <li>A dual-flywheel launcher, tuned for repeatable shots rather than maximum range.</li>
+        </ul>
+
+        <p>The trade we kept coming back to is that a launcher which is accurate but slow loses to one that is slightly less accurate and can cycle. Where we chose to sit on that is written up properly in the portfolio.</p>
+
+        <figure class="post-figure">
+            <img src="/media/build-1.jpg" alt="Volcanix students assembling the robot chassis in the workshop" width="1440" height="1920" loading="lazy">
+            <figcaption>Build sessions, most of a season's worth</figcaption>
+        </figure>
+
+        <h2>The Season So Far</h2>
+
+        <section class="stats clip">
+            <div class="stat">
+                <span class="stat-number" data-target="1">0</span>
+                <span class="stat-label">Think Award, first try</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" data-target="15">0</span>
+                <span class="stat-label">teammates</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" data-target="600">0</span>
+                <span class="stat-label">hours in the workshop</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" data-target="200">0</span>
+                <span class="stat-label">students reached</span>
+            </div>
+        </section>
+
+        <h2>Outreach</h2>
+
+        <p>Fifteen of us build the robot, but the outreach reaches further than that. School visits, workshops and help for rookie teams have put us in front of around two hundred younger students so far. We also ran a bake sale, which paid for parts and was more work than it sounds.</p>
+
+        <p>Everything we make is open source by default. The CAD, the code and the write-ups are all public, because a season of tuning notes is more use to the next rookie team than it is sitting unread in our repository.</p>
+
+        <figure class="post-figure">
+            <img src="/media/bakesale.jpeg" alt="The KCLMS Volcanix bake sale fundraising stall" width="1920" height="1440" loading="lazy">
+            <figcaption>The bake sale</figcaption>
+        </figure>
+
+        <div class="post-panel post-spend">
+            <h2>Where the Money Went</h2>
+            <p>Sponsorship pays for parts, competition entry fees and outreach. We publish our books rather than summarising them, so every transaction this season is listed in full, with what it was for.</p>
+            <p><a href="/sponsors.html">See the open finances &rarr;</a></p>
+        </div>
+
+        <div class="post-panel post-thanks">
+            <h2>Thank You</h2>
+            <p>None of the above happens without our sponsors. <strong>King's College London</strong> and <strong>Record Financial Group</strong> at Tensor tier, and <strong>Apian</strong> at Matrix tier, paid for the parts this robot is made of and the entry fees that got it to a competition.</p>
+            <p>If your company wants to do the same, the tiers start under &pound;100 and our books are public. <a href="/sponsors.html">Sponsor the team &rarr;</a></p>
+        </div>
+
+        <div class="post-panel post-next">
+            <h2>What's Next</h2>
+            <p>Between now and the next update we are working on autonomous consistency, because a routine that scores well four times out of five is worth less than a duller one that scores every time. We are also tightening the vision pipeline's handling of poor lighting, which cost us at the qualifier.</p>
+            <p>The next update goes up after our next milestone rather than on a fixed date, so it will have something real in it.</p>
+        </div>
+
+        <div class="post-foot">
+            <a href="/updates.html" class="btn ghost"><span>All Updates</span></a>
+            <a href="/portfolio.html" class="btn ghost"><span>The Portfolio</span></a>
+        </div>
+    </article>
+
+    <!-- London skyline -->
+    <div class="skyline">
+        <span class="skyline-label">London &middot; UK</span>
+        <div class="skyline-strip" role="img" aria-label="London skyline silhouette"></div>
+    </div>
+
+    <!-- FOOTER:START -->
+    <footer class="footer">
+        <img class="footer-watermark" src="/mascots/m4-cut.png" alt="" aria-hidden="true" width="553" height="552" loading="lazy">
+        <div class="footer-inner">
+            <div class="footer-cols">
+                <div>
+                    <a href="/"><img class="footer-mascot" src="/mascots/m3-cut.png" alt="Volcanix mascot sticker" data-hunt="m3" width="469" height="463" loading="lazy"></a>
+                    <span class="footer-brand">KCLMS Volcanix</span>
+                    <p>The First Tech Challenge team at King's College London Mathematics School. Think Award winners, open source by default.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/kclms_ftc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                        <a href="https://www.linkedin.com/in/kclms-ftc" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+                        <a href="mailto:kclmsftc@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="/team.html">The Team</a></li>
+                        <li><a href="/updates.html">Updates</a></li>
+                        <li><a href="/events.html">Events</a></li>
+                        <li><a href="/sponsors.html">Sponsors &amp; Finances</a></li>
+                        <li><a href="/portfolio.html">Engineering Portfolio</a></li>
+                        <li><a href="/resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:kclmsftc@gmail.com">kclmsftc@gmail.com</a></li>
+                        <li><a href="https://www.google.com/maps/place/King's+College+London+Mathematics+School/@51.4958875,-0.1140411,17z/data=!3m1!4b1!4m6!3m5!1s0x487604be7bc868c3:0x41455f6e6b8f68e8!8m2!3d51.4958875!4d-0.1114662!16s%2Fg%2F11cmyvcq2s?entry=ttu" target="_blank" rel="noopener">King's College London<br>Mathematics School<br>London SE11 6NJ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 KCLMS Volcanix. All rights reserved.</p>
+            <p>FIRST&reg; and FIRST&reg; Tech Challenge are trademarks of FIRST.</p>
+        </div>
+    </footer>
+    <!-- FOOTER:END -->
+
+<script src="/script.js"></script>
+</body>
+
+</html>

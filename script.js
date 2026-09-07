@@ -1264,3 +1264,67 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 });
+
+// === UPDATES: TAG FILTER ===
+// Chips filter the index rows in place. No routing, no rebuild: the rows are
+// already on the page, we just hide the ones that do not match.
+document.addEventListener('DOMContentLoaded', function () {
+  const chips = document.querySelectorAll('.chip[data-filter]');
+  const rows = document.querySelectorAll('.update-index .row-item');
+  const empty = document.getElementById('updates-empty');
+  if (!chips.length || !rows.length) return;
+
+  function apply(tag) {
+    let shown = 0;
+    rows.forEach(row => {
+      const match = tag === 'all' || row.getAttribute('data-tag') === tag;
+      row.hidden = !match;
+      if (match) shown++;
+    });
+    if (empty) empty.hidden = shown !== 0;
+    chips.forEach(chip => {
+      chip.setAttribute('aria-pressed', String(chip.getAttribute('data-filter') === tag));
+    });
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => apply(chip.getAttribute('data-filter')));
+  });
+});
+
+// === RESOURCES: SEARCH ===
+// Filters the resource cards on title and blurb. Section banners for a
+// category with nothing left in it are hidden too, so the page never shows a
+// heading above an empty gap.
+document.addEventListener('DOMContentLoaded', function () {
+  const box = document.getElementById('resource-search');
+  const cards = document.querySelectorAll('.resource-card');
+  const empty = document.getElementById('resource-none');
+  if (!box || !cards.length) return;
+
+  function textOf(card) {
+    const title = card.querySelector('h3');
+    const blurb = card.querySelector('.resource-blurb');
+    return ((title ? title.textContent : '') + ' ' + (blurb ? blurb.textContent : '')).toLowerCase();
+  }
+
+  box.addEventListener('input', function () {
+    const term = box.value.trim().toLowerCase();
+    let shown = 0;
+    cards.forEach(card => {
+      const match = !term || textOf(card).indexOf(term) !== -1;
+      card.hidden = !match;
+      if (match) shown++;
+    });
+    // hide a category heading and its section when everything in it is gone
+    document.querySelectorAll('.resource-grid').forEach(grid => {
+      const live = grid.querySelectorAll('.resource-card:not([hidden])').length;
+      const section = grid.closest('.section');
+      if (!section) return;
+      section.hidden = live === 0;
+      const banner = section.previousElementSibling;
+      if (banner && banner.classList.contains('section-banner')) banner.hidden = live === 0;
+    });
+    if (empty) empty.hidden = shown !== 0;
+  });
+});

@@ -21,6 +21,7 @@ behind. Later runs just replace what is between the markers.
 """
 
 import argparse
+import glob
 import os
 import re
 import sys
@@ -30,11 +31,16 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = [
     "index.html",
     "team.html",
-    "sponsors.html",
+    "updates.html",
+    "events.html",
     "resources.html",
+    "sponsors.html",
     "portfolio.html",
     "404.html",
-]
+] + sorted(
+    os.path.relpath(p, ROOT)
+    for p in glob.glob(os.path.join(ROOT, "updates", "*.html"))
+)
 
 BLOCKS = [
     {

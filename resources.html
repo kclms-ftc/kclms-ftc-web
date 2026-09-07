@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Read and download KCLMS Volcanix team resources - the Volcanix handbook, our engineering portfolio, the branding guidelines and the robot's technical detail.">
-    <meta name="keywords" content="KCLMS Volcanix handbook, FTC team handbook, engineering portfolio, First Tech Challenge UK resources">
+        content="Read and download KCLMS Volcanix team resources - the Volcanix handbook, our engineering portfolio, the branding guidelines, and our open-source robot code for rookie FTC teams.">
+    <meta name="keywords" content="KCLMS Volcanix handbook, FTC team handbook, engineering portfolio, First Tech Challenge UK resources, FTC rookie team resources, open source FTC code">
     <link rel="canonical" href="https://volcanixftc.com/resources.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://volcanixftc.com/resources.html">
     <meta property="og:title" content="Resources - KCLMS Volcanix">
-    <meta property="og:description" content="The Volcanix handbook, our engineering portfolio, and more to come.">
+    <meta property="og:description" content="Our handbook, engineering portfolio, branding guidelines and open-source code, all in one place.">
     <meta property="og:image" content="https://volcanixftc.com/media/happy-environment.jpeg">
     <meta property="og:site_name" content="KCLMS Volcanix">
     <meta property="og:locale" content="en_GB">
@@ -67,8 +67,9 @@
             <ul class="nav-links">
                 <li><a href="/"><span>Home</span></a></li>
                 <li><a href="/team.html"><span>Team</span></a></li>
-                <li><a href="/sponsors.html"><span>Sponsors</span></a></li>
+                <li><a href="/updates.html"><span>Updates</span></a></li>
                 <li><a href="/resources.html"><span>Resources</span></a></li>
+                <li><a href="/sponsors.html"><span>Sponsors</span></a></li>
             </ul>
         </div>
     </nav>
@@ -78,71 +79,171 @@
         <div class="hero-slide active"><img src="media/happy-environment.jpeg" alt="KCLMS Volcanix team members collaborating in the workshop" width="2048" height="1537" fetchpriority="high"></div>
         <div class="hero-copy">
             <h1 class="mega">Resources</h1>
-            <p class="tagline">Our documents, in one place.</p>
+            <p class="tagline">Our documents and our code, in one place.</p>
         </div>
         <div class="zz abs"></div>
     </header>
 
-    <!-- Handbook -->
+    <section class="section reveal">
+        <div class="resource-search-wrap">
+            <input type="search" id="resource-search" placeholder="Search resources&hellip;" aria-label="Search resources by name or description" autocomplete="off">
+        </div>
+        <p class="resource-empty" id="resource-none" hidden>Nothing matches that search.</p>
+    </section>
+
+    <!-- Team documents -->
     <div class="section-banner">
-        <h2>Volcanix Handbook</h2>
+        <h2>Team Documents</h2>
+        <p class="meta">How the team runs</p>
     </div>
     <section class="section reveal">
-        <p class="center mb"><a href="media/volcanix-handbook.pdf" download class="btn solid"><span>Download PDF</span></a></p>
-        <div class="pdf-frame">
-            <object data="media/volcanix-handbook.pdf" type="application/pdf">
-                <div class="pdf-fallback">
-                    <p>Your browser cannot display the PDF inline.</p>
-                    <a href="media/volcanix-handbook.pdf" download class="btn solid"><span>Download the Handbook</span></a>
+        <div class="resource-grid">
+
+            <article class="resource-card" data-kind="pdf">
+                <img class="resource-cover" src="media/team-group.jpg" alt="The KCLMS Volcanix team" width="1920" height="1442" loading="lazy">
+                <div class="resource-body">
+                    <h3>Volcanix Handbook</h3>
+                    <p class="resource-blurb">How the team is organised: roles, expectations, how we run meetings and how decisions get made. The document we hand new members.</p>
+                    <p class="resource-meta">PDF &middot; 217 KB &middot; updated Jul 2026</p>
+                    <p><a href="media/volcanix-handbook.pdf" download class="btn solid"><span>Download</span></a></p>
+                    <details class="doc-read">
+                        <summary><span>Read here</span></summary>
+                        <div class="pdf-frame">
+                            <object data="media/volcanix-handbook.pdf" type="application/pdf">
+                                <div class="pdf-fallback">
+                                    <p>Your browser cannot display the PDF inline.</p>
+                                    <a href="media/volcanix-handbook.pdf" download class="btn solid"><span>Download the Handbook</span></a>
+                                </div>
+                            </object>
+                        </div>
+                    </details>
                 </div>
-            </object>
+            </article>
+
+            <article class="resource-card" data-kind="pdf">
+                <img class="resource-cover" src="media/volcanix-logo-512.png" alt="The Volcanix team logo" width="512" height="512" loading="lazy">
+                <div class="resource-body">
+                    <h3>Branding Guidelines</h3>
+                    <p class="resource-blurb">Logo usage, the colour sheet, typefaces and the rules we hold ourselves to. Useful if you are a sponsor putting our mark on something.</p>
+                    <p class="resource-meta">PDF &middot; 1.3 MB &middot; updated Jul 2026</p>
+                    <p><a href="media/volcanix-branding.pdf" download class="btn solid"><span>Download</span></a></p>
+                    <details class="doc-read">
+                        <summary><span>Read here</span></summary>
+                        <div class="pdf-frame">
+                            <object data="media/volcanix-branding.pdf" type="application/pdf">
+                                <div class="pdf-fallback">
+                                    <p>Your browser cannot display the PDF inline.</p>
+                                    <a href="media/volcanix-branding.pdf" download class="btn solid"><span>Download the Branding Guidelines</span></a>
+                                </div>
+                            </object>
+                        </div>
+                    </details>
+                </div>
+            </article>
+
         </div>
     </section>
 
-    <!-- Portfolio -->
+    <!-- Engineering -->
     <div class="section-banner">
-        <h2>Engineering Portfolio</h2>
+        <h2>Engineering</h2>
+        <p class="meta">The robot, and the reasoning behind it</p>
     </div>
     <section class="section reveal">
-        <p class="center mb"><a href="media/engineering-portfolio-2025-26.pdf" download class="btn solid"><span>Download PDF</span></a></p>
-        <div class="pdf-frame">
-            <object data="media/engineering-portfolio-2025-26.pdf" type="application/pdf">
-                <div class="pdf-fallback">
-                    <img src="media/portfolio-cover.png" alt="Cover of the KCLMS Volcanix engineering portfolio" width="706" height="1000" loading="lazy">
-                    <p>Your browser cannot display the PDF inline.</p>
-                    <a href="media/engineering-portfolio-2025-26.pdf" download class="btn solid"><span>Download the Portfolio</span></a>
+        <div class="resource-grid">
+
+            <article class="resource-card" data-kind="pdf">
+                <img class="resource-cover" src="media/portfolio-cover.png" alt="Cover of the KCLMS Volcanix engineering portfolio" width="706" height="1000" loading="lazy">
+                <div class="resource-body">
+                    <h3>Engineering Portfolio</h3>
+                    <p class="resource-blurb">Sixteen pages covering every design decision, prototype and test of our DECODE season, including the CAD. This is the document that won the Think Award.</p>
+                    <p class="resource-meta">PDF &middot; 14.3 MB &middot; updated Jul 2026</p>
+                    <p>
+                        <a href="media/engineering-portfolio-2025-26.pdf" download class="btn solid"><span>Download</span></a>
+                        <a href="portfolio.html" class="btn ghost"><span>Summary</span></a>
+                    </p>
+                    <details class="doc-read">
+                        <summary><span>Read here</span></summary>
+                        <div class="pdf-frame">
+                            <object data="media/engineering-portfolio-2025-26.pdf" type="application/pdf">
+                                <div class="pdf-fallback">
+                                    <img src="media/portfolio-cover.png" alt="Cover of the KCLMS Volcanix engineering portfolio" width="706" height="1000" loading="lazy">
+                                    <p>Your browser cannot display the PDF inline.</p>
+                                    <a href="media/engineering-portfolio-2025-26.pdf" download class="btn solid"><span>Download the Portfolio</span></a>
+                                </div>
+                            </object>
+                        </div>
+                    </details>
                 </div>
-            </object>
+            </article>
+
         </div>
     </section>
 
-    <!-- The Robot -->
+    <!-- Code -->
     <div class="section-banner">
-        <h2>The Robot</h2>
-    </div>
-    <div class="block reveal">
-        <div class="block-media"><img src="media/robot-hero.jpg" alt="Close-up of the KCLMS Volcanix competition robot" width="1442" height="1920" loading="lazy"></div>
-        <div class="block-body">
-            <h3>Mecanum, Odometry, Vision</h3>
-            <p>Mecanum drive, three-wheel odometry, Pedro Pathing and a Limelight vision stack we tuned ourselves.</p>
-            <p>The robot no longer has a page of its own. The full technical write-up, the CAD and the season strategy all live in the engineering portfolio above.</p>
-            <a href="portfolio.html" class="btn ghost"><span>Technical Details</span></a>
-        </div>
-    </div>
-
-    <!-- Branding Guidelines -->
-    <div class="section-banner">
-        <h2>Branding Guidelines</h2>
+        <h2>Code &amp; CAD</h2>
+        <p class="meta">Open source by default</p>
     </div>
     <section class="section reveal">
-        <p class="center mb"><a href="media/volcanix-branding.pdf" download class="btn solid"><span>Download PDF</span></a></p>
-        <div class="pdf-frame">
-            <object data="media/volcanix-branding.pdf" type="application/pdf">
-                <div class="pdf-fallback">
-                    <p>Your browser cannot display the PDF inline.</p>
-                    <a href="media/volcanix-branding.pdf" download class="btn solid"><span>Download the Branding Guidelines</span></a>
+        <div class="resource-grid">
+
+            <article class="resource-card" data-kind="code">
+                <img class="resource-cover" src="media/programming-2.jpg" alt="Volcanix students working on the robot control code" width="1442" height="1920" loading="lazy">
+                <div class="resource-body">
+                    <h3>Robot Code</h3>
+                    <p class="resource-blurb">Our FTC Robot Controller workspace for Android Studio: the mecanum drive, three-wheel odometry, Pedro Pathing routines and the Limelight vision stack.</p>
+                    <p class="resource-meta">LINK &middot; external &middot; updated Jul 2026</p>
+                    <p><a href="https://github.com/kclms-ftc/frc" class="btn solid" target="_blank" rel="noopener"><span>On GitHub</span></a></p>
                 </div>
-            </object>
+            </article>
+
+            <article class="resource-card" data-kind="code">
+                <img class="resource-cover" src="media/robot-cad.jpeg" alt="CAD model of the KCLMS Volcanix competition robot" width="1573" height="1007" loading="lazy">
+                <div class="resource-body">
+                    <h3>Starter Bot</h3>
+                    <p class="resource-blurb">The repository behind our starter bot. A smaller, simpler codebase than the competition robot, and the better place to start reading if you are new to FTC.</p>
+                    <p class="resource-meta">LINK &middot; external &middot; updated Jul 2026</p>
+                    <p><a href="https://github.com/kclms-ftc/starter-bot" class="btn solid" target="_blank" rel="noopener"><span>On GitHub</span></a></p>
+                </div>
+            </article>
+
+            <article class="resource-card" data-kind="code">
+                <img class="resource-cover" src="media/bg-building.jpg" alt="King's College London Mathematics School building" width="1920" height="1442" loading="lazy">
+                <div class="resource-body">
+                    <h3>This Website</h3>
+                    <p class="resource-blurb">The source of the site you are reading, tests included. Hand-written static HTML on GitHub Pages, no framework, if you want to build something like it.</p>
+                    <p class="resource-meta">LINK &middot; external &middot; updated Sep 2026</p>
+                    <p><a href="https://github.com/kclms-ftc/kclms-ftc-web" class="btn solid" target="_blank" rel="noopener"><span>On GitHub</span></a></p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Rookie teams -->
+    <div class="section-banner">
+        <h2>For Rookie Teams</h2>
+        <p class="meta">What we wish someone had told us</p>
+    </div>
+    <section class="section reveal">
+        <p class="center mb">Everything above is public on purpose. If you are a rookie FTC team, these are the ones worth your time first, and we are happy to answer questions about any of them.</p>
+        <div class="rows">
+            <div class="row-item">
+                <span class="row-label">Start here</span>
+                <h3>Read the portfolio, not the code</h3>
+                <p>The <a href="media/engineering-portfolio-2025-26.pdf" download>engineering portfolio</a> shows the reasoning behind each subsystem, which is worth more than the finished source. Judges reward the reasoning too.</p>
+            </div>
+            <div class="row-item">
+                <span class="row-label">Then</span>
+                <h3>Fork the starter bot</h3>
+                <p>The <a href="https://github.com/kclms-ftc/starter-bot" target="_blank" rel="noopener">starter bot</a> is deliberately smaller than our competition code. Get a robot driving from that before you try to read the full workspace.</p>
+            </div>
+            <div class="row-item">
+                <span class="row-label">Ask</span>
+                <h3>Just email us</h3>
+                <p>We were a rookie team recently enough to remember it. Portfolio structure, CAD, Pedro Pathing tuning, or how to approach a sponsor: <a href="mailto:kclmsftc@gmail.com">kclmsftc@gmail.com</a>.</p>
+            </div>
         </div>
     </section>
 
@@ -152,7 +253,6 @@
         <div class="skyline-strip" role="img" aria-label="London skyline silhouette"></div>
     </div>
 
-    <!-- Footer -->
     <!-- FOOTER:START -->
     <footer class="footer">
         <img class="footer-watermark" src="/mascots/m4-cut.png" alt="" aria-hidden="true" width="553" height="552" loading="lazy">
@@ -172,6 +272,8 @@
                     <h3>Explore</h3>
                     <ul>
                         <li><a href="/team.html">The Team</a></li>
+                        <li><a href="/updates.html">Updates</a></li>
+                        <li><a href="/events.html">Events</a></li>
                         <li><a href="/sponsors.html">Sponsors &amp; Finances</a></li>
                         <li><a href="/portfolio.html">Engineering Portfolio</a></li>
                         <li><a href="/resources.html">Resources</a></li>

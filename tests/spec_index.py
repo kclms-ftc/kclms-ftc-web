@@ -30,8 +30,8 @@ class SpecHomepageTeasers(unittest.TestCase):
             self.skipTest("no teaser block yet")
         hrefs = [a.get("href") or "" for a in block.find_all("a")]
         self.assertTrue(
-            any(re.search(r"updates\.html#\d{4}-\d{2}$", h) for h in hrefs),
-            "the teaser links the page but not the post",
+            any(re.search(r"updates/[a-z0-9-]+\.html$", h) for h in hrefs),
+            "the teaser links the section but not a specific post",
         )
 
     def test_teaser_is_dated(self):

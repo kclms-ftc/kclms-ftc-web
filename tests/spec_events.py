@@ -52,8 +52,25 @@ class SpecEventsPage(unittest.TestCase):
     def test_headline(self):
         self.assertIn("Events", page().find("h1").stripped_text())
 
-    def test_has_cards(self):
-        self.assertGreaterEqual(len(cards()), 1, "events.html has no events")
+    def test_populated_or_honestly_empty(self):
+        """Nothing is scheduled yet, and inventing dates would be worse than
+        saying so. Either there are real cards, or the empty state carries the
+        page. What is not allowed is a blank column."""
+        if not cards():
+            self.assertIsNotNone(
+                page().find(cls="event-empty"),
+                "no events and no empty state: the page would just be a gap",
+            )
+            empty = page().find(cls="event-empty")
+            self.assertTrue(
+                empty.find_all("a"), "the empty state offers the reader nothing to do"
+            )
+
+    def test_says_how_to_book_the_team(self):
+        """The page has to work as an inbound route for schools and sponsors,
+        not only as a calendar."""
+        hrefs = " ".join(a.get("href") or "" for a in page().find_all("a"))
+        self.assertIn("mailto:", hrefs, "no way to get in touch about an event")
 
     def test_both_sections_present(self):
         headings = {

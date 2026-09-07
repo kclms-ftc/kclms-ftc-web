@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>KCLMS Volcanix Updates</title>
+        <link>https://volcanixftc.com/updates.html</link>
+        <atom:link href="https://volcanixftc.com/updates.xml" rel="self" type="application/rss+xml"/>
+        <description>What the KCLMS Volcanix First Tech Challenge team has been building, written for our sponsors and mentors.</description>
+        <language>en-GB</language>
+        <lastBuildDate>Mon, 07 Sep 2026 16:58:18 +0000</lastBuildDate>
+        <item>
+            <title>Where We Are Since the Think Award</title>
+            <link>https://volcanixftc.com/updates/think-award-catch-up.html</link>
+            <guid isPermaLink="true">https://volcanixftc.com/updates/think-award-catch-up.html</guid>
+            <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
+            <category>competition</category>
+            <description>Where KCLMS Volcanix has got to since the Think Award: the DECODE robot, the outreach, the money, and what we are working on next.</description>
+        </item>
+    </channel>
+</rss>

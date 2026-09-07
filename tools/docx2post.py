@@ -298,6 +298,23 @@ def extract_images(docx, images, slug, dry_run=False):
 
 # ----------------------------------------------------------------- rendering
 
+def normalise_headings(blocks):
+    """Re-base the writer's heading depth so the page outline never skips.
+
+    The document's first heading becomes the page h1, and whatever depth the
+    writer used for their sections (Heading1, Heading2, or a mix) is shifted so
+    the shallowest one lands on h2.
+    """
+    levels = [b["level"] for b in blocks if b["kind"] == "heading"]
+    if not levels:
+        return blocks
+    shallowest = min(levels)
+    for block in blocks:
+        if block["kind"] == "heading":
+            block["level"] = min(2 + (block["level"] - shallowest), 4)
+    return blocks
+
+
 def render_body(blocks, images):
     """Blocks to markup, in the site's existing component language."""
     out = []
@@ -320,8 +337,7 @@ def render_body(blocks, images):
         close_list()
 
         if block["kind"] == "heading":
-            # h1 is the post title, so document headings start at h2.
-            level = min(block["level"] + 1, 4)
+            level = block["level"]
             out.append(f"        <h{level}>{block['html']}</h{level}>")
         elif block["kind"] == "para":
             out.append(f"        <p>{block['html']}</p>")
@@ -388,8 +404,22 @@ def render_page(meta, body):
         </header>
 
 {body}
+
+        <div class="post-foot">
+            <a href="/updates.html" class="btn ghost"><span>All Updates</span></a>
+            <a href="/sponsors.html" class="btn ghost"><span>Our Sponsors</span></a>
+        </div>
     </article>
 
+    <div class="skyline">
+        <span class="skyline-label">London &middot; UK</span>
+        <div class="skyline-strip" role="img" aria-label="London skyline silhouette"></div>
+    </div>
+
+    <!-- FOOTER:START -->
+    <!-- FOOTER:END -->
+
+<script src="/script.js"></script>
 </body>
 
 </html>
@@ -432,7 +462,7 @@ def main(argv=None):
     )[:180]
 
     extracted = extract_images(docx, images, slug, dry_run=args.dry_run)
-    body = render_body(blocks, extracted)
+    body = render_body(normalise_headings(blocks), extracted)
 
     first_image = next(iter(extracted.values()), None)
     meta = {
@@ -463,7 +493,7 @@ def main(argv=None):
     if missing:
         print(f"  ! {len(missing)} image(s) need alt text writing before publish")
     print("  next: fill in the numbers band, what's next, spend line and thanks,")
-    print("        then run tools/rebuild_updates.py")
+    print("        then run tools/sync-nav.sh and tools/rebuild_updates.py")
     return 0
 
 

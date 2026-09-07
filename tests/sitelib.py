@@ -242,7 +242,11 @@ class Page:
         if footer is None:
             return []
         for column in footer.find_all("div"):
-            heading = column.find("h3") or column.find("h4")
+            # the heading must be a direct child, or footer-inner (which wraps
+            # everything, social links included) matches first
+            heading = next(
+                (c for c in column.children if c.tag in ("h3", "h4")), None
+            )
             if heading is not None and heading.stripped_text() == "Explore":
                 return [
                     (a.stripped_text(), normalise_href(a.get("href")))
