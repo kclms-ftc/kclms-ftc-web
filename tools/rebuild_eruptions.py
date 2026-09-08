@@ -84,56 +84,80 @@ def short_month(date):
     return datetime.date.fromisoformat(date).strftime("%b %Y")
 
 
-def render_featured(posts):
-    """The newest post, shown large at the top of eruptions.html."""
+def render_latest(posts):
+    """The newest eruption, reproduced in full on the index page.
+
+    The post file stays the canonical copy; this lifts its body so a reader
+    landing on eruptions.html gets the whole thing without a click. Headings
+    are demoted two levels because the page already spends h1 on "Eruptions"
+    and h2 on the section banner.
+    """
     if not posts:
         return (
-            '        <p class="resource-empty">The first update goes up after our '
-            "next milestone.</p>"
+            '        <p class="resource-empty">The first eruption goes up after '
+            "our next milestone.</p>"
         )
     post = posts[0]
-    # The photo repeats a link the title already provides, so it is decorative
-    # for anyone using a screen reader and hidden from the tab order.
-    width, height = image_size(os.path.join(ROOT, post["image"]))
-    dims = f' width="{width}" height="{height}"' if width and height else ""
+    with open(os.path.join(ROOT, "eruptions", f"{post['slug']}.html"),
+              encoding="utf-8") as handle:
+        source = handle.read()
+
+    match = re.search(r'<article class="post"[^>]*>(.*?)</article>', source, re.S)
+    if not match:
+        raise SystemExit(f"{post['slug']}.html has no post article to lift")
+    body = match.group(1)
+
+    # the post page's own footer buttons do not belong on the index
+    body = re.sub(r'\s*<div class="post-foot">.*?</div>\s*', "\n", body, flags=re.S)
+    # h1 -> h3, h2 -> h4, and anything deeper is already fine
+    body = re.sub(r"<(/?)h2>", r"<\1h4>", body)
+    body = re.sub(r"<(/?)h1>", r"<\1h3>", body)
+
+    permalink = f"eruptions/{post['slug']}.html"
     return "\n".join([
-        '        <article class="featured-post">',
-        f'            <a class="featured-media" href="eruptions/{post["slug"]}.html" tabindex="-1" aria-hidden="true">',
-        f'                <img src="{post["image"]}" alt="" aria-hidden="true"{dims} loading="lazy">',
-        "            </a>",
-        '            <div class="featured-body">',
-        f'                <p class="post-date"><time datetime="{post["date"]}">'
-        f'{short_month(post["date"])}</time> &middot; Latest eruption</p>',
-        f'                <h3><a href="eruptions/{post["slug"]}.html">{post["title"]}</a></h3>',
-        f'                <p>{html.escape(post["summary"], quote=False)}</p>',
-        f'                <a href="eruptions/{post["slug"]}.html" class="btn solid">'
-        "<span>Read the Full Post</span></a>",
-        "            </div>",
+        f'        <article class="post post-inline" id="{post["slug"]}" '
+        f'data-tag="{post["tag"]}">',
+        body.rstrip(),
+        '            <p class="post-permalink">',
+        f'                <a href="{permalink}">Open this eruption on its own page '
+        "&rarr;</a>",
+        "            </p>",
         "        </article>",
     ])
 
 
 def render_index(posts):
+    """Everything older than the latest, as cards rather than a thin list."""
     posts = posts[1:]
     if not posts:
         return (
             '        <p class="resource-empty">Nothing older yet. This is the '
-            "first update.</p>"
+            "first eruption.</p>"
         )
-    rows = ['        <div class="rows update-index">']
+    out = ['        <div class="eruption-cards">']
     for post in posts:
-        rows.append(f'            <div class="row-item" data-tag="{post["tag"]}">')
-        rows.append(f'                <span class="row-label">{short_month(post["date"])}</span>')
-        rows.append(
-            f'                <h3><a href="eruptions/{post["slug"]}.html">{post["title"]}</a></h3>'
-        )
-        rows.append(
-            f'                <p>{html.escape(post["summary"], quote=False)}'
-            f'<span class="update-read">Read the full post &rarr;</span></p>'
-        )
-        rows.append("            </div>")
-    rows.append("        </div>")
-    return "\n".join(rows)
+        width, height = image_size(os.path.join(ROOT, post["image"]))
+        dims = f' width="{width}" height="{height}"' if width and height else ""
+        link = f"eruptions/{post['slug']}.html"
+        out.extend([
+            f'            <article class="eruption-card" data-tag="{post["tag"]}">',
+            f'                <a class="eruption-media" href="{link}" tabindex="-1" '
+            'aria-hidden="true">',
+            f'                    <img src="{post["image"]}" alt="" aria-hidden="true"'
+            f'{dims} loading="lazy">',
+            "                </a>",
+            '                <div class="eruption-body">',
+            f'                    <p class="post-date"><time datetime="{post["date"]}">'
+            f'{short_month(post["date"])}</time></p>',
+            f'                    <h3><a href="{link}">{post["title"]}</a></h3>',
+            f'                    <p>{html.escape(post["summary"], quote=False)}</p>',
+            f'                    <a href="{link}" class="btn ghost">'
+            "<span>Read the Full Post</span></a>",
+            "                </div>",
+            "            </article>",
+        ])
+    out.append("        </div>")
+    return "\n".join(out)
 
 
 def render_chips(posts):
@@ -253,7 +277,7 @@ def main(argv=None):
 
     with open(INDEX_PAGE, encoding="utf-8") as handle:
         page = handle.read()
-    page = replace_marked(page, "ERUPTIONS:FEATURED", render_featured(posts))
+    page = replace_marked(page, "ERUPTIONS:LATEST", render_latest(posts))
     page = replace_marked(page, "ERUPTIONS:INDEX", render_index(posts))
     page = replace_marked(page, "ERUPTIONS:CHIPS", render_chips(posts))
     write(INDEX_PAGE, page, args.check, stale)

@@ -1524,6 +1524,7 @@ body.world-aligned .sponsor-logos li { transition: transform 0.8s cubic-bezier(0
 .post-panel h2, .post-panel h3 { margin-top: 0; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; color: var(--yellow); }
 .post-panel p:last-child { margin-bottom: 0; }
 .post-panel.post-thanks { border-left-color: var(--yellow); }
+.post-panel.post-next { border-left-color: var(--amber); }
 .post-panel.post-spend { border-left-color: var(--red); }
 
 .post-foot { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); margin-top: 34px; padding-top: 20px; }
@@ -1532,6 +1533,45 @@ body.world-aligned .sponsor-logos li { transition: transform 0.8s cubic-bezier(0
    upscaling it into mush */
 .post-figure.small { text-align: center; }
 .post-figure.small img { width: auto; max-width: 100%; }
+
+/* === ERUPTIONS: THE LATEST POST, INLINE === */
+/* The newest eruption is reproduced in full on the index. It keeps the post
+   styling but drops the article max-width, because it sits inside the page
+   rather than on a page of its own. */
+.post-inline { max-width: 780px; padding-top: 0; }
+.post-permalink { border-top: 1px solid var(--line); margin-top: 30px; padding-top: 18px; font-size: 14px; }
+
+/* === ERUPTIONS: PREVIOUS, AS CARDS === */
+.eruption-cards { display: flex; flex-direction: column; gap: 26px; }
+.eruption-card {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  background: var(--panel);
+  border: 2px solid var(--orange);
+  border-top-width: 8px;
+  box-shadow: var(--stamp);
+  padding: 24px;
+  transition: transform var(--t), box-shadow var(--t);
+}
+.eruption-card[hidden] { display: none; }
+.eruption-card:hover { transform: translateY(-4px); box-shadow: 11px 12px 0 rgba(143, 32, 22, 0.85); }
+.eruption-media { flex: 0 0 34%; display: block; }
+.eruption-media img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 2px solid var(--orange);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.55);
+  transform: rotate(-1deg);
+  transition: transform var(--t);
+}
+.eruption-card:hover .eruption-media img { transform: rotate(0deg) scale(1.02); }
+.eruption-body { flex: 1; min-width: 0; }
+.eruption-body h3 { font-size: clamp(20px, 2.6vw, 27px); margin-bottom: 10px; }
+.eruption-body h3 a { color: var(--cream); }
+.eruption-body h3 a:hover { color: var(--yellow); }
+.eruption-body p { margin-bottom: 16px; }
 
 /* === ERUPTIONS: THE FEATURED POST === */
 .featured-post {
@@ -1714,6 +1754,8 @@ body.world-aligned .sponsor-logos li { transition: transform 0.8s cubic-bezier(0
   .teasers { flex-direction: column; }
   .featured-post { flex-direction: column; gap: 22px; }
   .featured-media { flex: none; width: 100%; }
+  .eruption-card { flex-direction: column; gap: 22px; align-items: stretch; }
+  .eruption-media { flex: none; width: 100%; }
   .event-grid, .resource-grid { flex-direction: column; }
   .resource-card { max-width: none; }
   .update-index .row-item h3 { flex: 1 1 auto; }

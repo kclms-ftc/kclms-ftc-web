@@ -1270,7 +1270,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // already on the page, we just hide the ones that do not match.
 document.addEventListener('DOMContentLoaded', function () {
   const chips = document.querySelectorAll('.chip[data-filter]');
-  const rows = document.querySelectorAll('.update-index .row-item');
+  const rows = document.querySelectorAll('.eruption-cards .eruption-card');
   const empty = document.getElementById('eruptions-empty');
   if (!chips.length || !rows.length) return;
 

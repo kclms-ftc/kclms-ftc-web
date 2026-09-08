@@ -157,16 +157,17 @@ class SpecEruptionsIndex(unittest.TestCase):
         return S.Page.load(INDEX).find_all("div", cls="row-item")
 
     def index_rows(self):
-        holder = S.Page.load(INDEX).find("div", cls="update-index")
-        return holder.find_all("div", cls="row-item") if holder else []
+        holder = S.Page.load(INDEX).find("div", cls="eruption-cards")
+        return holder.find_all("article", cls="eruption-card") if holder else []
 
     def test_headline(self):
         self.assertEqual(S.Page.load(INDEX).find("h1").stripped_text(), "Eruptions")
 
-    def test_latest_post_is_featured(self):
-        """The newest post gets a card of its own at the top of the page."""
-        featured = S.Page.load(INDEX).find("article", cls="featured-post")
-        self.assertIsNotNone(featured, "the latest post is not featured")
+    def test_latest_post_is_reproduced_in_full(self):
+        """The newest eruption reads in full on the index, not as an excerpt."""
+        page = S.Page.load(INDEX)
+        inline = page.find("article", cls="post-inline")
+        self.assertIsNotNone(inline, "the latest eruption is not inlined")
         newest = os.path.splitext(os.path.basename(post_files()[-1]))[0]
         dates = {
             os.path.splitext(os.path.basename(p))[0]:
@@ -175,19 +176,41 @@ class SpecEruptionsIndex(unittest.TestCase):
             for p in post_files()
         }
         newest = max(dates, key=dates.get)
-        hrefs = [a.get("href") for a in featured.find_all("a")]
-        self.assertTrue(
-            any(newest in (h or "") for h in hrefs),
-            f"the featured card is not the newest post ({newest})",
-        )
-        self.assertTrue(featured.find("img"), "the featured card has no photo")
-        self.assertTrue(featured.find("p").stripped_text(), "no excerpt shown")
+        self.assertEqual(inline.get("id"), newest, "the wrong post is inlined")
 
-    def test_previous_list_holds_every_post_but_the_featured_one(self):
+        # the inlined copy must be the whole article, not a teaser
+        source = S.Page.load(f"eruptions/{newest}.html")
+        original = post_article(source)
+        for panel in ("post-spend", "post-thanks", "post-next"):
+            self.assertIsNotNone(
+                inline.find(cls=panel), f"the inlined post is missing {panel}"
+            )
+        self.assertEqual(
+            len(inline.find_all("figure", cls="post-figure")),
+            len(original.find_all("figure", cls="post-figure")),
+            "the inlined post dropped photos",
+        )
+        hrefs = [a.get("href") or "" for a in inline.find_all("a")]
+        self.assertTrue(
+            any(newest in h for h in hrefs), "no permalink to the post's own page"
+        )
+
+    def test_previous_eruptions_are_cards(self):
+        """Same box treatment as the latest, so the section reads as one thing."""
+        for card in self.index_rows():
+            with self.subTest(card=card.line):
+                self.assertTrue(card.find("img"), "a previous eruption has no photo")
+                self.assertTrue(card.find("h3").stripped_text(), "no title")
+                self.assertTrue(card.find("time"), "no date")
+                self.assertTrue(
+                    card.find("a", cls="btn"), "no read-on button"
+                )
+
+    def test_previous_list_holds_every_post_but_the_latest(self):
         self.assertEqual(
             len(self.index_rows()),
             max(len(post_files()) - 1, 0),
-            "the Previous Eruptions list and the files in eruptions/ have diverged",
+            "the Previous Eruptions cards and the files in eruptions/ have diverged",
         )
 
     def test_previous_section_is_labelled(self):
@@ -215,11 +238,15 @@ class SpecEruptionsIndex(unittest.TestCase):
             dates.append(post_article(page).find("time").get("datetime"))
         self.assertEqual(dates, sorted(dates, reverse=True), "posts are out of order")
 
-    def test_rows_are_labelled_and_summarised(self):
-        for row in self.index_rows():
-            with self.subTest(row=row.line):
-                self.assertTrue(row.find("span", cls="row-label").stripped_text())
-                self.assertTrue(row.find("p").stripped_text())
+    def test_cards_are_dated_and_summarised(self):
+        for card in self.index_rows():
+            with self.subTest(card=card.line):
+                self.assertTrue(card.find("p", cls="post-date").stripped_text())
+                summary = [
+                    p for p in card.find_all("p") if not p.has_class("post-date")
+                ]
+                self.assertTrue(summary, "card has no summary")
+                self.assertTrue(summary[0].stripped_text())
 
     def test_chips_cover_every_tag_in_use(self):
         chips = S.Page.load(INDEX).find_all("button", cls="chip")
