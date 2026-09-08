@@ -8,7 +8,7 @@ anybody's words, including their typos. What you approved in the docx is what
 ships.
 
     python3 tools/docx2post.py drafts/september.docx \\
-        --slug think-award-catch-up \\
+        --slug autonomous-consistency \\
         --date 2026-09-07 \\
         --author "Ansh Gupta" --role "Build Lead" \\
         --tag build

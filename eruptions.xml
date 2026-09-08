@@ -6,14 +6,14 @@
         <atom:link href="https://volcanixftc.com/eruptions.xml" rel="self" type="application/rss+xml"/>
         <description>What the KCLMS Volcanix First Tech Challenge team has been building, written for our sponsors and mentors.</description>
         <language>en-GB</language>
-        <lastBuildDate>Mon, 07 Sep 2026 20:16:14 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 08 Sep 2026 06:10:03 +0000</lastBuildDate>
         <item>
-            <title>Where We Are Since the Think Award</title>
-            <link>https://volcanixftc.com/eruptions/think-award-catch-up.html</link>
-            <guid isPermaLink="true">https://volcanixftc.com/eruptions/think-award-catch-up.html</guid>
+            <title>Consectetur Adipiscing Elit</title>
+            <link>https://volcanixftc.com/eruptions/lorem-ipsum-latest.html</link>
+            <guid isPermaLink="true">https://volcanixftc.com/eruptions/lorem-ipsum-latest.html</guid>
             <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
-            <category>competition</category>
-            <description>Where KCLMS Volcanix has got to since the Think Award: the DECODE robot, the outreach, the money, and what we are working on next.</description>
+            <category>build</category>
+            <description>Sed ut perspiciatis unde omnis iste natus error sit voluptatem. A placeholder eruption standing in for the current team update.</description>
         </item>
         <item>
             <title>Lorem Ipsum Dolor Sit Amet</title>

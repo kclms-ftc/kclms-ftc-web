@@ -25,6 +25,7 @@ from docx2post import image_size
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ORIGIN = "https://volcanixftc.com"
 INDEX_PAGE = os.path.join(ROOT, "eruptions.html")
+HOME_PAGE = os.path.join(ROOT, "index.html")
 FEED = os.path.join(ROOT, "eruptions.xml")
 SITEMAP = os.path.join(ROOT, "sitemap.xml")
 
@@ -160,6 +161,33 @@ def render_index(posts):
     return "\n".join(out)
 
 
+def render_teaser(posts):
+    """The homepage card pointing at the newest eruption.
+
+    Generated rather than hand-written: it went stale the first time a post
+    was replaced, and a dead link on the homepage is the worst place to have
+    one.
+    """
+    if not posts:
+        return (
+            '        <div class="teaser latest-update">\n'
+            '            <p class="teaser-kicker">Latest eruption</p>\n'
+            "            <h3>Nothing published yet</h3>\n"
+            "        </div>"
+        )
+    post = posts[0]
+    link = f"eruptions/{post['slug']}.html"
+    return "\n".join([
+        '        <div class="teaser latest-update">',
+        f'            <p class="teaser-kicker"><time datetime="{post["date"]}">'
+        f'{post["date_label"]}</time> &middot; Latest eruption</p>',
+        f'            <h3><a href="{link}">{post["title"]}</a></h3>',
+        f'            <p>{html.escape(post["summary"], quote=False)}</p>',
+        '            <a href="eruptions.html" class="btn ghost"><span>All Eruptions</span></a>',
+        "        </div>",
+    ])
+
+
 def render_chips(posts):
     used = []
     for post in posts:
@@ -186,7 +214,7 @@ def replace_marked(source, name, block):
     )
     match = pattern.search(source)
     if not match:
-        raise SystemExit(f"eruptions.html is missing the {name} markers")
+        raise SystemExit(f"missing the {name} markers")
     indent = match.group(1)
     return pattern.sub(
         lambda m: f"{indent}{m.group(2)}\n{block}\n{indent}<!-- {name}:END -->",
@@ -281,6 +309,11 @@ def main(argv=None):
     page = replace_marked(page, "ERUPTIONS:INDEX", render_index(posts))
     page = replace_marked(page, "ERUPTIONS:CHIPS", render_chips(posts))
     write(INDEX_PAGE, page, args.check, stale)
+
+    with open(HOME_PAGE, encoding="utf-8") as handle:
+        home = handle.read()
+    home = replace_marked(home, "ERUPTIONS:TEASER", render_teaser(posts))
+    write(HOME_PAGE, home, args.check, stale)
     write(FEED, render_feed(posts), args.check, stale)
     write(SITEMAP, render_sitemap(posts), args.check, stale)
 
