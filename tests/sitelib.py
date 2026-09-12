@@ -22,7 +22,7 @@ CONTENT_PAGES = [
     "sponsors.html",
     "resources.html",
     "portfolio.html",
-    "eruptions.html",
+    "updates.html",
     "events.html",
 ]
 
@@ -37,7 +37,7 @@ REDIRECT_STUBS = {
     "outreach.html": "index.html",
     "robot.html": "portfolio.html",
     "season.html": "portfolio.html",
-    "updates.html": "eruptions.html",
+    "eruptions.html": "updates.html",
 }
 
 # Not part of the browsable site: 404 is served by Pages on miss, the Google
@@ -50,7 +50,7 @@ UNLISTED_PAGES = ["404.html", "google8b7aa737005bf562.html"]
 NAV = [
     ("Home", "index.html"),
     ("Team", "team.html"),
-    ("Eruptions", "eruptions.html"),
+    ("Updates", "updates.html"),
     ("Resources", "resources.html"),
     ("Sponsors", "sponsors.html"),
 ]
@@ -58,7 +58,7 @@ NAV = [
 # Footer "Explore" column, same deal.
 FOOTER_EXPLORE = [
     ("The Team", "team.html"),
-    ("Eruptions", "eruptions.html"),
+    ("Updates", "updates.html"),
     ("Events", "events.html"),
     ("Sponsors & Finances", "sponsors.html"),
     ("Engineering Portfolio", "portfolio.html"),

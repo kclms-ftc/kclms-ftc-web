@@ -1542,8 +1542,8 @@ body.world-aligned .sponsor-logos li { transition: transform 0.8s cubic-bezier(0
 .post-permalink { border-top: 1px solid var(--line); margin-top: 30px; padding-top: 18px; font-size: 14px; }
 
 /* === ERUPTIONS: PREVIOUS, AS CARDS === */
-.eruption-cards { display: flex; flex-direction: column; gap: 26px; }
-.eruption-card {
+.update-cards { display: flex; flex-direction: column; gap: 26px; }
+.update-card {
   display: flex;
   gap: 30px;
   align-items: center;
@@ -1554,10 +1554,10 @@ body.world-aligned .sponsor-logos li { transition: transform 0.8s cubic-bezier(0
   padding: 24px;
   transition: transform var(--t), box-shadow var(--t);
 }
-.eruption-card[hidden] { display: none; }
-.eruption-card:hover { transform: translateY(-4px); box-shadow: 11px 12px 0 rgba(143, 32, 22, 0.85); }
-.eruption-media { flex: 0 0 34%; display: block; }
-.eruption-media img {
+.update-card[hidden] { display: none; }
+.update-card:hover { transform: translateY(-4px); box-shadow: 11px 12px 0 rgba(143, 32, 22, 0.85); }
+.update-media { flex: 0 0 34%; display: block; }
+.update-media img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
@@ -1566,12 +1566,12 @@ body.world-aligned .sponsor-logos li { transition: transform 0.8s cubic-bezier(0
   transform: rotate(-1deg);
   transition: transform var(--t);
 }
-.eruption-card:hover .eruption-media img { transform: rotate(0deg) scale(1.02); }
-.eruption-body { flex: 1; min-width: 0; }
-.eruption-body h3 { font-size: clamp(20px, 2.6vw, 27px); margin-bottom: 10px; }
-.eruption-body h3 a { color: var(--cream); }
-.eruption-body h3 a:hover { color: var(--yellow); }
-.eruption-body p { margin-bottom: 16px; }
+.update-card:hover .update-media img { transform: rotate(0deg) scale(1.02); }
+.update-body { flex: 1; min-width: 0; }
+.update-body h3 { font-size: clamp(20px, 2.6vw, 27px); margin-bottom: 10px; }
+.update-body h3 a { color: var(--cream); }
+.update-body h3 a:hover { color: var(--yellow); }
+.update-body p { margin-bottom: 16px; }
 
 /* === ERUPTIONS: THE FEATURED POST === */
 .featured-post {
@@ -1754,8 +1754,8 @@ body.world-aligned .sponsor-logos li { transition: transform 0.8s cubic-bezier(0
   .teasers { flex-direction: column; }
   .featured-post { flex-direction: column; gap: 22px; }
   .featured-media { flex: none; width: 100%; }
-  .eruption-card { flex-direction: column; gap: 22px; align-items: stretch; }
-  .eruption-media { flex: none; width: 100%; }
+  .update-card { flex-direction: column; gap: 22px; align-items: stretch; }
+  .update-media { flex: none; width: 100%; }
   .event-grid, .resource-grid { flex-direction: column; }
   .resource-card { max-width: none; }
   .update-index .row-item h3 { flex: 1 1 auto; }

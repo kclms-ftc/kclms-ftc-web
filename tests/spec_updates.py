@@ -2,8 +2,8 @@
 
 Architecture, decided with the team: no CMS and no build step. A writer sends a
 .docx, it is approved as a document, and tools/docx2post.py converts it into a
-page under eruptions/. Posts are one file each; eruptions.html, eruptions.xml and
-sitemap.xml are all generated from those files by tools/rebuild_eruptions.py, so
+page under updates/. Posts are one file each; updates.html, updates.xml and
+sitemap.xml are all generated from those files by tools/rebuild_updates.py, so
 they cannot drift.
 
 What the tests hold to:
@@ -26,14 +26,14 @@ import xml.etree.ElementTree as ET
 
 import sitelib as S
 
-INDEX = "eruptions.html"
-FEED = "eruptions.xml"
+INDEX = "updates.html"
+FEED = "updates.xml"
 TAGS = {"build", "outreach", "competition", "funding"}
-REBUILD = os.path.join(S.ROOT, "tools", "rebuild_eruptions.py")
+REBUILD = os.path.join(S.ROOT, "tools", "rebuild_updates.py")
 
 
 def post_files():
-    return sorted(glob.glob(os.path.join(S.ROOT, "eruptions", "*.html")))
+    return sorted(glob.glob(os.path.join(S.ROOT, "updates", "*.html")))
 
 
 def post_pages():
@@ -44,7 +44,7 @@ def post_article(page):
     return page.find("article", cls="post")
 
 
-class SpecEruptionsExist(unittest.TestCase):
+class SpecUpdatesExist(unittest.TestCase):
     def test_index_is_built(self):
         self.assertTrue(S.built(INDEX), f"{INDEX} has not been built yet")
 
@@ -52,11 +52,11 @@ class SpecEruptionsExist(unittest.TestCase):
         self.assertTrue(S.built(FEED), f"{FEED} has not been built yet")
 
     def test_at_least_one_post(self):
-        self.assertTrue(post_files(), "there are no posts in eruptions/")
+        self.assertTrue(post_files(), "there are no posts in updates/")
 
     def test_converter_and_rebuilder_exist(self):
         """The publishing route is a tool, not a hand-edit."""
-        for tool in ("tools/docx2post.py", "tools/rebuild_eruptions.py"):
+        for tool in ("tools/docx2post.py", "tools/rebuild_updates.py"):
             with self.subTest(tool=tool):
                 self.assertTrue(os.path.exists(os.path.join(S.ROOT, tool)))
 
@@ -126,7 +126,7 @@ class SpecPostPages(unittest.TestCase):
     def test_each_post_is_shareable(self):
         for page in post_pages():
             slug = os.path.splitext(os.path.basename(page.name))[0]
-            expected = f"{S.SITE_ORIGIN}/eruptions/{slug}.html"
+            expected = f"{S.SITE_ORIGIN}/updates/{slug}.html"
             with self.subTest(post=page.name):
                 self.assertEqual(page.link_rel("canonical"), expected)
                 self.assertEqual(page.prop("og:url"), expected)
@@ -148,26 +148,26 @@ class SpecPostPages(unittest.TestCase):
         for page in post_pages():
             hrefs = [S.normalise_href(a.get("href")) for a in page.find_all("a")]
             with self.subTest(post=page.name):
-                self.assertIn("eruptions.html", hrefs)
+                self.assertIn("updates.html", hrefs)
 
 
 @unittest.skipUnless(S.built(INDEX), f"{INDEX} not built")
-class SpecEruptionsIndex(unittest.TestCase):
+class SpecUpdatesIndex(unittest.TestCase):
     def rows(self):
         return S.Page.load(INDEX).find_all("div", cls="row-item")
 
     def index_rows(self):
-        holder = S.Page.load(INDEX).find("div", cls="eruption-cards")
-        return holder.find_all("article", cls="eruption-card") if holder else []
+        holder = S.Page.load(INDEX).find("div", cls="update-cards")
+        return holder.find_all("article", cls="update-card") if holder else []
 
     def test_headline(self):
-        self.assertEqual(S.Page.load(INDEX).find("h1").stripped_text(), "Eruptions")
+        self.assertEqual(S.Page.load(INDEX).find("h1").stripped_text(), "Updates")
 
     def test_latest_post_is_reproduced_in_full(self):
-        """The newest eruption reads in full on the index, not as an excerpt."""
+        """The newest update reads in full on the index, not as an excerpt."""
         page = S.Page.load(INDEX)
         inline = page.find("article", cls="post-inline")
-        self.assertIsNotNone(inline, "the latest eruption is not inlined")
+        self.assertIsNotNone(inline, "the latest update is not inlined")
         newest = os.path.splitext(os.path.basename(post_files()[-1]))[0]
         dates = {
             os.path.splitext(os.path.basename(p))[0]:
@@ -179,7 +179,7 @@ class SpecEruptionsIndex(unittest.TestCase):
         self.assertEqual(inline.get("id"), newest, "the wrong post is inlined")
 
         # the inlined copy must be the whole article, not a teaser
-        source = S.Page.load(f"eruptions/{newest}.html")
+        source = S.Page.load(f"updates/{newest}.html")
         original = post_article(source)
         for panel in ("post-spend", "post-thanks", "post-next"):
             self.assertIsNotNone(
@@ -195,11 +195,11 @@ class SpecEruptionsIndex(unittest.TestCase):
             any(newest in h for h in hrefs), "no permalink to the post's own page"
         )
 
-    def test_previous_eruptions_are_cards(self):
+    def test_previous_updates_are_cards(self):
         """Same box treatment as the latest, so the section reads as one thing."""
         for card in self.index_rows():
             with self.subTest(card=card.line):
-                self.assertTrue(card.find("img"), "a previous eruption has no photo")
+                self.assertTrue(card.find("img"), "a previous update has no photo")
                 self.assertTrue(card.find("h3").stripped_text(), "no title")
                 self.assertTrue(card.find("time"), "no date")
                 self.assertTrue(
@@ -210,7 +210,7 @@ class SpecEruptionsIndex(unittest.TestCase):
         self.assertEqual(
             len(self.index_rows()),
             max(len(post_files()) - 1, 0),
-            "the Previous Eruptions cards and the files in eruptions/ have diverged",
+            "the Previous Updates cards and the files in updates/ have diverged",
         )
 
     def test_previous_section_is_labelled(self):
@@ -218,8 +218,8 @@ class SpecEruptionsIndex(unittest.TestCase):
             b.stripped_text().lower()
             for b in S.Page.load(INDEX).find_all("div", cls="section-banner")
         )
-        self.assertIn("latest eruption", headings)
-        self.assertIn("previous eruptions", headings)
+        self.assertIn("latest update", headings)
+        self.assertIn("previous updates", headings)
 
     def test_rows_link_real_posts_newest_first(self):
         hrefs = []
@@ -234,7 +234,7 @@ class SpecEruptionsIndex(unittest.TestCase):
         slugs = [os.path.splitext(os.path.basename(h))[0] for h in hrefs]
         dates = []
         for slug in slugs:
-            page = S.Page.load(f"eruptions/{slug}.html")
+            page = S.Page.load(f"updates/{slug}.html")
             dates.append(post_article(page).find("time").get("datetime"))
         self.assertEqual(dates, sorted(dates, reverse=True), "posts are out of order")
 
@@ -271,12 +271,12 @@ class SpecEruptionsIndex(unittest.TestCase):
         ]
         self.assertTrue(
             any(link.get("type") == "application/rss+xml" for link in alternates),
-            "eruptions.html no longer advertises its feed",
+            "updates.html no longer advertises its feed",
         )
 
 
 @unittest.skipUnless(S.built(FEED), f"{FEED} not built")
-class SpecEruptionsFeed(unittest.TestCase):
+class SpecUpdatesFeed(unittest.TestCase):
     def setUp(self):
         self.channel = ET.parse(os.path.join(S.ROOT, FEED)).getroot().find("channel")
 
@@ -292,7 +292,7 @@ class SpecEruptionsFeed(unittest.TestCase):
         links = [i.findtext("link") for i in self.channel.findall("item")]
         for path in post_files():
             slug = os.path.splitext(os.path.basename(path))[0]
-            url = f"{S.SITE_ORIGIN}/eruptions/{slug}.html"
+            url = f"{S.SITE_ORIGIN}/updates/{slug}.html"
             with self.subTest(post=slug):
                 self.assertIn(url, links)
 

@@ -14,10 +14,10 @@ ships.
         --tag build
 
 Writes:
-    eruptions/<slug>.html          the post page
-    media/eruptions/<slug>/*       every image in the document, resized
+    updates/<slug>.html          the post page
+    media/updates/<slug>/*       every image in the document, resized
 
-Then run `python3 tools/rebuild_eruptions.py` to fold the new post into the
+Then run `python3 tools/rebuild_updates.py` to fold the new post into the
 index, the RSS feed and the sitemap.
 
 Standard library only. Image resizing uses `sips`, which ships with macOS; on
@@ -265,7 +265,7 @@ def shrink(path, max_width=MAX_IMAGE_WIDTH):
 def extract_images(docx, images, slug, dry_run=False):
     """Pull every referenced image out of the docx, resized, and return the
     render info keyed by relationship id."""
-    out_dir = os.path.join(ROOT, "media", "eruptions", slug)
+    out_dir = os.path.join(ROOT, "media", "updates", slug)
     if not dry_run:
         os.makedirs(out_dir, exist_ok=True)
     seen = {}
@@ -278,7 +278,7 @@ def extract_images(docx, images, slug, dry_run=False):
             continue
         ext = os.path.splitext(rel["target"])[1].lower() or ".png"
         name = f"{slug}-{index}{ext}"
-        rel_path = f"media/eruptions/{slug}/{name}"
+        rel_path = f"media/updates/{slug}/{name}"
         abs_path = os.path.join(out_dir, name)
         if not dry_run:
             with open(abs_path, "wb") as handle:
@@ -370,9 +370,9 @@ def render_page(meta, body):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{esc(meta['summary'])}">
-    <link rel="canonical" href="https://volcanixftc.com/eruptions/{slug}.html">
+    <link rel="canonical" href="https://volcanixftc.com/updates/{slug}.html">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://volcanixftc.com/eruptions/{slug}.html">
+    <meta property="og:url" content="https://volcanixftc.com/updates/{slug}.html">
     <meta property="og:title" content="{esc(title)} - KCLMS Volcanix">
     <meta property="og:description" content="{esc(meta['summary'])}">
     <meta property="og:image" content="https://volcanixftc.com/{meta['image']}">
@@ -387,7 +387,7 @@ def render_page(meta, body):
     <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32.png">
     <link rel="apple-touch-icon" href="/media/apple-touch-icon.png">
-    <link rel="alternate" type="application/rss+xml" title="Volcanix Eruptions" href="/eruptions.xml">
+    <link rel="alternate" type="application/rss+xml" title="Volcanix Updates" href="/updates.xml">
     <link rel="stylesheet" href="/styles.css">
 </head>
 
@@ -406,7 +406,7 @@ def render_page(meta, body):
 {body}
 
         <div class="post-foot">
-            <a href="/eruptions.html" class="btn ghost"><span>All Eruptions</span></a>
+            <a href="/updates.html" class="btn ghost"><span>All Updates</span></a>
             <a href="/sponsors.html" class="btn ghost"><span>Our Sponsors</span></a>
         </div>
     </article>
@@ -478,7 +478,7 @@ def main(argv=None):
     }
     page = render_page(meta, body)
 
-    out_path = os.path.join(ROOT, "eruptions", f"{slug}.html")
+    out_path = os.path.join(ROOT, "updates", f"{slug}.html")
     if args.dry_run:
         print(page)
         return 0
@@ -487,13 +487,13 @@ def main(argv=None):
     with open(out_path, "w", encoding="utf-8") as handle:
         handle.write(page)
 
-    print(f"  wrote eruptions/{slug}.html")
-    print(f"  {len(extracted)} image(s) -> media/eruptions/{slug}/")
+    print(f"  wrote updates/{slug}.html")
+    print(f"  {len(extracted)} image(s) -> media/updates/{slug}/")
     missing = [i for i in extracted.values() if not i["alt"]]
     if missing:
         print(f"  ! {len(missing)} image(s) need alt text writing before publish")
     print("  next: fill in the numbers band, what's next, spend line and thanks,")
-    print("        then run tools/sync-nav.sh and tools/rebuild_eruptions.py")
+    print("        then run tools/sync-nav.sh and tools/rebuild_updates.py")
     return 0
 
 

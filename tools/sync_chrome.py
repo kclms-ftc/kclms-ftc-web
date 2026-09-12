@@ -31,7 +31,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = [
     "index.html",
     "team.html",
-    "eruptions.html",
+    "updates.html",
     "events.html",
     "resources.html",
     "sponsors.html",
@@ -39,7 +39,7 @@ PAGES = [
     "404.html",
 ] + sorted(
     os.path.relpath(p, ROOT)
-    for p in glob.glob(os.path.join(ROOT, "eruptions", "*.html"))
+    for p in glob.glob(os.path.join(ROOT, "updates", "*.html"))
 )
 
 BLOCKS = [

@@ -39,13 +39,13 @@ python3 tools/docx2post.py drafts/the-update.docx \
     --tag build          # build | outreach | competition | funding
 
 tools/sync-nav.sh              # gives the new page its nav and footer
-python3 tools/rebuild_eruptions.py   # index, RSS feed and sitemap
+python3 tools/rebuild_updates.py   # index, RSS feed and sitemap
 python3 tests/run.py           # must be green before pushing
 ```
 
 The converter prints a warning naming any image that still needs alt text.
 
-Then open `eruptions/<slug>.html` and fill in the numbers band, the spend line,
+Then open `updates/<slug>.html` and fill in the numbers band, the spend line,
 the thanks and the what's next, unless the writer already covered them in the
 document.
 
@@ -58,5 +58,5 @@ document is a thing every writer on the team already knows how to produce, and
 approving one is just reading it.
 
 The cost of that choice is that publishing is a manual step someone has to run.
-`tools/rebuild_eruptions.py --check` is wired into the test suite so a forgotten
+`tools/rebuild_updates.py --check` is wired into the test suite so a forgotten
 rebuild fails loudly rather than quietly leaving the index out of date.

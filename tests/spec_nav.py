@@ -90,7 +90,7 @@ class SpecNav(unittest.TestCase):
     def test_sitemap_covers_the_new_pages(self):
         with open(os.path.join(S.ROOT, "sitemap.xml"), encoding="utf-8") as handle:
             sitemap = handle.read()
-        for page in ("resources.html", "eruptions.html", "events.html"):
+        for page in ("resources.html", "updates.html", "events.html"):
             with self.subTest(page=page):
                 self.assertIn(page, sitemap, f"{page} is missing from sitemap.xml")
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>KCLMS Volcanix Updates</title>
+        <link>https://volcanixftc.com/updates.html</link>
+        <atom:link href="https://volcanixftc.com/updates.xml" rel="self" type="application/rss+xml"/>
+        <description>What the KCLMS Volcanix First Tech Challenge team has been building, written for our sponsors and mentors.</description>
+        <language>en-GB</language>
+        <lastBuildDate>Sat, 12 Sep 2026 20:41:57 +0000</lastBuildDate>
+        <item>
+            <title>Consectetur Adipiscing Elit</title>
+            <link>https://volcanixftc.com/updates/lorem-ipsum-latest.html</link>
+            <guid isPermaLink="true">https://volcanixftc.com/updates/lorem-ipsum-latest.html</guid>
+            <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
+            <category>build</category>
+            <description>Sed ut perspiciatis unde omnis iste natus error sit voluptatem. A placeholder update standing in for the current team update.</description>
+        </item>
+        <item>
+            <title>Lorem Ipsum Dolor Sit Amet</title>
+            <link>https://volcanixftc.com/updates/lorem-ipsum-sample.html</link>
+            <guid isPermaLink="true">https://volcanixftc.com/updates/lorem-ipsum-sample.html</guid>
+            <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+            <category>build</category>
+            <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A placeholder update used to check the layout of a post with photos, numbers and panels.</description>
+        </item>
+    </channel>
+</rss>

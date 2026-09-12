@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Regenerate the updates index, the RSS feed and the sitemap from the posts.
 
-The posts in eruptions/ are the single source of truth. This reads them and
+The posts in updates/ are the single source of truth. This reads them and
 rewrites everything that has to agree with them, so the index can never drift
 from the files and the feed can never miss a post.
 
-    python3 tools/rebuild_eruptions.py           write
-    python3 tools/rebuild_eruptions.py --check   exit 1 if anything is stale
+    python3 tools/rebuild_updates.py           write
+    python3 tools/rebuild_updates.py --check   exit 1 if anything is stale
 
 Run it after adding a post (by hand or via tools/docx2post.py).
 """
@@ -24,9 +24,9 @@ from docx2post import image_size
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ORIGIN = "https://volcanixftc.com"
-INDEX_PAGE = os.path.join(ROOT, "eruptions.html")
+INDEX_PAGE = os.path.join(ROOT, "updates.html")
 HOME_PAGE = os.path.join(ROOT, "index.html")
-FEED = os.path.join(ROOT, "eruptions.xml")
+FEED = os.path.join(ROOT, "updates.xml")
 SITEMAP = os.path.join(ROOT, "sitemap.xml")
 
 TAG_LABELS = {
@@ -40,7 +40,7 @@ TAG_LABELS = {
 CORE_PAGES = [
     ("", "weekly", "1.0"),
     ("portfolio.html", "monthly", "0.9"),
-    ("eruptions.html", "weekly", "0.9"),
+    ("updates.html", "weekly", "0.9"),
     ("team.html", "monthly", "0.8"),
     ("resources.html", "monthly", "0.8"),
     ("events.html", "monthly", "0.7"),
@@ -55,7 +55,7 @@ def field(source, pattern, default=""):
 
 def read_posts():
     posts = []
-    for path in sorted(glob.glob(os.path.join(ROOT, "eruptions", "*.html"))):
+    for path in sorted(glob.glob(os.path.join(ROOT, "updates", "*.html"))):
         with open(path, encoding="utf-8") as handle:
             source = handle.read()
         slug = os.path.splitext(os.path.basename(path))[0]
@@ -74,7 +74,7 @@ def read_posts():
                 "title": field(source, r"<h1>(.*?)</h1>"),
                 "summary": field(source, r'<meta name="description" content="(.*?)"'),
                 "tag": field(source, r'class="post" id="[^"]*" data-tag="([^"]+)"'),
-                "url": f"{ORIGIN}/eruptions/{slug}.html",
+                "url": f"{ORIGIN}/updates/{slug}.html",
             }
         )
     posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
@@ -86,20 +86,20 @@ def short_month(date):
 
 
 def render_latest(posts):
-    """The newest eruption, reproduced in full on the index page.
+    """The newest update, reproduced in full on the index page.
 
     The post file stays the canonical copy; this lifts its body so a reader
-    landing on eruptions.html gets the whole thing without a click. Headings
-    are demoted two levels because the page already spends h1 on "Eruptions"
+    landing on updates.html gets the whole thing without a click. Headings
+    are demoted two levels because the page already spends h1 on "Updates"
     and h2 on the section banner.
     """
     if not posts:
         return (
-            '        <p class="resource-empty">The first eruption goes up after '
+            '        <p class="resource-empty">The first update goes up after '
             "our next milestone.</p>"
         )
     post = posts[0]
-    with open(os.path.join(ROOT, "eruptions", f"{post['slug']}.html"),
+    with open(os.path.join(ROOT, "updates", f"{post['slug']}.html"),
               encoding="utf-8") as handle:
         source = handle.read()
 
@@ -114,13 +114,13 @@ def render_latest(posts):
     body = re.sub(r"<(/?)h2>", r"<\1h4>", body)
     body = re.sub(r"<(/?)h1>", r"<\1h3>", body)
 
-    permalink = f"eruptions/{post['slug']}.html"
+    permalink = f"updates/{post['slug']}.html"
     return "\n".join([
         f'        <article class="post post-inline" id="{post["slug"]}" '
         f'data-tag="{post["tag"]}">',
         body.rstrip(),
         '            <p class="post-permalink">',
-        f'                <a href="{permalink}">Open this eruption on its own page '
+        f'                <a href="{permalink}">Open this update on its own page '
         "&rarr;</a>",
         "            </p>",
         "        </article>",
@@ -133,21 +133,21 @@ def render_index(posts):
     if not posts:
         return (
             '        <p class="resource-empty">Nothing older yet. This is the '
-            "first eruption.</p>"
+            "first update.</p>"
         )
-    out = ['        <div class="eruption-cards">']
+    out = ['        <div class="update-cards">']
     for post in posts:
         width, height = image_size(os.path.join(ROOT, post["image"]))
         dims = f' width="{width}" height="{height}"' if width and height else ""
-        link = f"eruptions/{post['slug']}.html"
+        link = f"updates/{post['slug']}.html"
         out.extend([
-            f'            <article class="eruption-card" data-tag="{post["tag"]}">',
-            f'                <a class="eruption-media" href="{link}" tabindex="-1" '
+            f'            <article class="update-card" data-tag="{post["tag"]}">',
+            f'                <a class="update-media" href="{link}" tabindex="-1" '
             'aria-hidden="true">',
             f'                    <img src="{post["image"]}" alt="" aria-hidden="true"'
             f'{dims} loading="lazy">',
             "                </a>",
-            '                <div class="eruption-body">',
+            '                <div class="update-body">',
             f'                    <p class="post-date"><time datetime="{post["date"]}">'
             f'{short_month(post["date"])}</time></p>',
             f'                    <h3><a href="{link}">{post["title"]}</a></h3>',
@@ -162,7 +162,7 @@ def render_index(posts):
 
 
 def render_teaser(posts):
-    """The homepage card pointing at the newest eruption.
+    """The homepage card pointing at the newest update.
 
     Generated rather than hand-written: it went stale the first time a post
     was replaced, and a dead link on the homepage is the worst place to have
@@ -171,19 +171,19 @@ def render_teaser(posts):
     if not posts:
         return (
             '        <div class="teaser latest-update">\n'
-            '            <p class="teaser-kicker">Latest eruption</p>\n'
+            '            <p class="teaser-kicker">Latest update</p>\n'
             "            <h3>Nothing published yet</h3>\n"
             "        </div>"
         )
     post = posts[0]
-    link = f"eruptions/{post['slug']}.html"
+    link = f"updates/{post['slug']}.html"
     return "\n".join([
         '        <div class="teaser latest-update">',
         f'            <p class="teaser-kicker"><time datetime="{post["date"]}">'
-        f'{post["date_label"]}</time> &middot; Latest eruption</p>',
+        f'{post["date_label"]}</time> &middot; Latest update</p>',
         f'            <h3><a href="{link}">{post["title"]}</a></h3>',
         f'            <p>{html.escape(post["summary"], quote=False)}</p>',
-        '            <a href="eruptions.html" class="btn ghost"><span>All Eruptions</span></a>',
+        '            <a href="updates.html" class="btn ghost"><span>All Updates</span></a>',
         "        </div>",
     ])
 
@@ -243,9 +243,9 @@ def render_feed(posts):
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>KCLMS Volcanix Eruptions</title>
-        <link>{ORIGIN}/eruptions.html</link>
-        <atom:link href="{ORIGIN}/eruptions.xml" rel="self" type="application/rss+xml"/>
+        <title>KCLMS Volcanix Updates</title>
+        <link>{ORIGIN}/updates.html</link>
+        <atom:link href="{ORIGIN}/updates.xml" rel="self" type="application/rss+xml"/>
         <description>What the KCLMS Volcanix First Tech Challenge team has been building, written for our sponsors and mentors.</description>
         <language>en-GB</language>
         <lastBuildDate>{built}</lastBuildDate>
@@ -305,14 +305,14 @@ def main(argv=None):
 
     with open(INDEX_PAGE, encoding="utf-8") as handle:
         page = handle.read()
-    page = replace_marked(page, "ERUPTIONS:LATEST", render_latest(posts))
-    page = replace_marked(page, "ERUPTIONS:INDEX", render_index(posts))
-    page = replace_marked(page, "ERUPTIONS:CHIPS", render_chips(posts))
+    page = replace_marked(page, "UPDATES:LATEST", render_latest(posts))
+    page = replace_marked(page, "UPDATES:INDEX", render_index(posts))
+    page = replace_marked(page, "UPDATES:CHIPS", render_chips(posts))
     write(INDEX_PAGE, page, args.check, stale)
 
     with open(HOME_PAGE, encoding="utf-8") as handle:
         home = handle.read()
-    home = replace_marked(home, "ERUPTIONS:TEASER", render_teaser(posts))
+    home = replace_marked(home, "UPDATES:TEASER", render_teaser(posts))
     write(HOME_PAGE, home, args.check, stale)
     write(FEED, render_feed(posts), args.check, stale)
     write(SITEMAP, render_sitemap(posts), args.check, stale)
@@ -320,7 +320,7 @@ def main(argv=None):
     if args.check:
         if stale:
             print("Stale: " + ", ".join(stale))
-            print("Run tools/rebuild_eruptions.py to regenerate.")
+            print("Run tools/rebuild_updates.py to regenerate.")
             return 1
         print(f"{len(posts)} post(s); index, feed and sitemap all current.")
         return 0
