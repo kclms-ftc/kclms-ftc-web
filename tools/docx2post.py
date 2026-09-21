@@ -368,6 +368,7 @@ def render_page(meta, body):
 
 <head>
     <meta charset="UTF-8">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){{if(!window.volcanixReady)document.documentElement.classList.remove('js')}},3000);</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{esc(meta['summary'])}">
     <link rel="canonical" href="https://volcanixftc.com/updates/{slug}.html">
@@ -474,7 +475,7 @@ def main(argv=None):
         "role": args.role,
         "tag": args.tag,
         "summary": summary,
-        "image": first_image["src"] if first_image else "media/team-group.jpg",
+        "image": first_image["src"] if first_image else "media/team-2026.jpg",
     }
     page = render_page(meta, body)
 

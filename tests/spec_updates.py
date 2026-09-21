@@ -32,8 +32,19 @@ TAGS = {"build", "outreach", "competition", "funding"}
 REBUILD = os.path.join(S.ROOT, "tools", "rebuild_updates.py")
 
 
-def post_files():
+def all_post_files():
     return sorted(glob.glob(os.path.join(S.ROOT, "updates", "*.html")))
+
+
+def is_draft(path):
+    with open(path, encoding="utf-8") as handle:
+        return 'data-status="draft"' in handle.read()
+
+
+def post_files():
+    """Published posts only. Drafts keep their files but are deliberately
+    left out of the index, the chips, the teaser, the feed and the sitemap."""
+    return [p for p in all_post_files() if not is_draft(p)]
 
 
 def post_pages():
@@ -250,6 +261,10 @@ class SpecUpdatesIndex(unittest.TestCase):
 
     def test_chips_cover_every_tag_in_use(self):
         chips = S.Page.load(INDEX).find_all("button", cls="chip")
+        if len(post_files()) < 2:
+            # nothing older than the latest post, so nothing to filter
+            self.assertFalse(chips, "filter chips shown with nothing to filter")
+            return
         values = {c.get("data-filter") for c in chips}
         self.assertIn("all", values, "there is no All chip")
         for page in post_pages():
@@ -301,6 +316,27 @@ class SpecUpdatesFeed(unittest.TestCase):
             with self.subTest(item=item.findtext("title")):
                 parsed = email.utils.parsedate_to_datetime(item.findtext("pubDate"))
                 self.assertIsInstance(parsed, datetime.datetime)
+
+
+class SpecDrafts(unittest.TestCase):
+    def test_drafts_are_not_published_anywhere(self):
+        drafts = [os.path.splitext(os.path.basename(p))[0]
+                  for p in all_post_files() if is_draft(p)]
+        for name in ("updates.html", "index.html", "updates.xml", "sitemap.xml"):
+            with open(os.path.join(S.ROOT, name), encoding="utf-8") as handle:
+                text = handle.read()
+            for slug in drafts:
+                with self.subTest(file=name, draft=slug):
+                    self.assertNotIn(f"updates/{slug}.html", text,
+                                     f"draft {slug} leaks into {name}")
+
+    def test_drafts_are_noindex(self):
+        for path in all_post_files():
+            if not is_draft(path):
+                continue
+            page = S.Page.load(os.path.relpath(path, S.ROOT))
+            with self.subTest(draft=page.name):
+                self.assertIn("noindex", page.meta("robots") or "")
 
 
 class SpecGeneratedFilesAreCurrent(unittest.TestCase):

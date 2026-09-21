@@ -1,3 +1,6 @@
+// Tells the inline guard in each page's <head> that the script arrived.
+window.volcanixReady = true;
+
 // KCLMS VOLCANIX - interactive behaviour
 // =======================================
 
@@ -66,13 +69,18 @@ document.addEventListener('DOMContentLoaded', function () {
     items.forEach(el => el.classList.add('in'));
     return;
   }
+  // threshold 0: a section reveals as soon as any of it is on screen. The
+  // old 15%-of-the-element rule could never be met by a section much taller
+  // than the viewport, so the team grid and the full inlined update stayed
+  // blank under the hero on phones. Anything already scrolled past (a
+  // restored scroll position, an anchor jump) is revealed too.
   const revealObserver = new IntersectionObserver(function (entries) {
     entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
+      if (!entry.isIntersecting && entry.boundingClientRect.top > 0) return;
       entry.target.classList.add('in');
       revealObserver.unobserve(entry.target);
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
   items.forEach(el => revealObserver.observe(el));
 });
 

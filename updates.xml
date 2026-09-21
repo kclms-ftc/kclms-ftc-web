@@ -6,7 +6,7 @@
         <atom:link href="https://volcanixftc.com/updates.xml" rel="self" type="application/rss+xml"/>
         <description>What the KCLMS Volcanix First Tech Challenge team has been building, written for our sponsors and mentors.</description>
         <language>en-GB</language>
-        <lastBuildDate>Sun, 13 Sep 2026 17:16:40 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 21 Sep 2026 12:38:29 +0000</lastBuildDate>
         <item>
             <title>KCLMS Pre-Season Catchup</title>
             <link>https://volcanixftc.com/updates/kclms-pre-season-catchup.html</link>
@@ -14,22 +14,6 @@
             <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
             <category>outreach</category>
             <description>Counting down to BioBuzz kick-off: three things KCLMS Volcanix has done to prepare for the new season, from the team roster to upskilling to starting new teams.</description>
-        </item>
-        <item>
-            <title>Consectetur Adipiscing Elit</title>
-            <link>https://volcanixftc.com/updates/lorem-ipsum-latest.html</link>
-            <guid isPermaLink="true">https://volcanixftc.com/updates/lorem-ipsum-latest.html</guid>
-            <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
-            <category>build</category>
-            <description>Sed ut perspiciatis unde omnis iste natus error sit voluptatem. A placeholder update standing in for the current team update.</description>
-        </item>
-        <item>
-            <title>Lorem Ipsum Dolor Sit Amet</title>
-            <link>https://volcanixftc.com/updates/lorem-ipsum-sample.html</link>
-            <guid isPermaLink="true">https://volcanixftc.com/updates/lorem-ipsum-sample.html</guid>
-            <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
-            <category>build</category>
-            <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A placeholder update used to check the layout of a post with photos, numbers and panels.</description>
         </item>
     </channel>
 </rss>

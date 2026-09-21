@@ -63,6 +63,13 @@ def read_posts():
         if not date:
             print(f"  ! {slug}: no dated <time>, skipped")
             continue
+        # A draft keeps its file (so it can be restored by deleting one
+        # attribute) but stays out of the index, chips, teaser, feed and
+        # sitemap. This replaces commenting the generated HTML out by hand,
+        # which the next rebuild would have quietly undone.
+        if re.search(r'<article class="post"[^>]*data-status="draft"', source):
+            print(f"  - {slug}: draft, not published")
+            continue
         image = field(source, r'<meta property="og:image" content="([^"]+)"')
         posts.append(
             {
@@ -131,10 +138,8 @@ def render_index(posts):
     """Everything older than the latest, as cards rather than a thin list."""
     posts = posts[1:]
     if not posts:
-        return (
-            '        <p class="resource-empty">Nothing older yet. This is the '
-            "first update.</p>"
-        )
+        # the section banner above says there is nothing here yet
+        return ""
     out = ['        <div class="update-cards">']
     for post in posts:
         width, height = image_size(os.path.join(ROOT, post["image"]))
@@ -189,6 +194,10 @@ def render_teaser(posts):
 
 
 def render_chips(posts):
+    # The chips filter the previous-updates cards, so with nothing older
+    # than the latest post there is nothing to filter and no chips.
+    if len(posts) < 2:
+        return ""
     used = []
     for post in posts:
         if post["tag"] and post["tag"] not in used:
@@ -217,7 +226,9 @@ def replace_marked(source, name, block):
         raise SystemExit(f"missing the {name} markers")
     indent = match.group(1)
     return pattern.sub(
-        lambda m: f"{indent}{m.group(2)}\n{block}\n{indent}<!-- {name}:END -->",
+        lambda m: f"{indent}{m.group(2)}\n"
+        + (f"{block}\n" if block else "")
+        + f"{indent}<!-- {name}:END -->",
         source, count=1,
     )
 
