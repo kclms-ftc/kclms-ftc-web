@@ -377,7 +377,7 @@ strong { font-weight: 700; color: var(--cream); }
 /* === TEAM CARDS === */
 .team-grid { display: flex; flex-wrap: wrap; gap: 26px; justify-content: center; padding: 8px 0; }
 .team-card {
-  width: 300px;
+  width: 240px;
   background: var(--panel);
   border: 2px solid var(--orange);
   box-shadow: var(--stamp);
