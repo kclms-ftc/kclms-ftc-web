@@ -384,7 +384,7 @@ strong { font-weight: 700; color: var(--cream); }
   transform: rotate(-1deg);
   transition: transform var(--t), box-shadow var(--t);
 }
-.team-grid .team-card:nth-child(even) { transform: rotate(1deg); }
+/*.team-grid .team-card:nth-child(even) { transform: rotate(1deg); } */
 .team-card:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 11px 12px 0 rgba(143, 32, 22, 0.85); }
 .team-card img { width: 100%; height: 250px; object-fit: cover; object-position: 50% 22%; border-bottom: 2px solid var(--orange); }
 .team-card .team-info { padding: 14px 16px 18px; }
