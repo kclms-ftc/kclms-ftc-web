@@ -380,6 +380,7 @@ strong { font-weight: 700; color: var(--cream); }
   width: 240px;
   background: var(--panel);
   border: 2px solid var(--orange);
+  overflow: hidden;
   box-shadow: var(--stamp);
   transform: rotate(-1deg);
   transition: transform var(--t), box-shadow var(--t);
