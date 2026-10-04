@@ -6,7 +6,15 @@
         <atom:link href="https://volcanixftc.com/updates.xml" rel="self" type="application/rss+xml"/>
         <description>What the KCLMS Volcanix First Tech Challenge team has been building, written for our sponsors and mentors.</description>
         <language>en-GB</language>
-        <lastBuildDate>Mon, 21 Sep 2026 12:38:29 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 04 Oct 2026 19:07:51 +0000</lastBuildDate>
+        <item>
+            <title>Volcanix Recruitment Update</title>
+            <link>https://volcanixftc.com/updates/kclms-recruitment-update.html</link>
+            <guid isPermaLink="true">https://volcanixftc.com/updates/kclms-recruitment-update.html</guid>
+            <pubDate>Sun, 04 Oct 2026 00:00:00 +0000</pubDate>
+            <category>outreach</category>
+            <description>An update concerning the newest members of the team.</description>
+        </item>
         <item>
             <title>KCLMS Pre-Season Catchup</title>
             <link>https://volcanixftc.com/updates/kclms-pre-season-catchup.html</link>
