@@ -496,32 +496,30 @@ strong { font-weight: 700; color: var(--cream); }
   filter: brightness(0) saturate(100%) invert(78%) sepia(56%) saturate(560%) hue-rotate(358deg) brightness(96%) contrast(92%);
 }
 
-/* tensor tier (KCL, record, tormo)
-   MUST STAY at 90 deg!! else we get huge breaks when it repeats; ie when we used 120 prev
-   Also changed bg size to 300% 100% to prevent stretch
-   */
+/* Tensor tier (KCL, Record, Tormo): rainbow shimmer on hover */
 .sponsor-logos li.tier-tensor { position: relative; }
 .sponsor-logos li.tier-tensor::before {
   content: ""; position: absolute; inset: -3px; z-index: -1; border-radius: inherit;
-  background: linear-gradient(90deg, #ff004c, #ff8a00, #ffe600, #00e676, #00b0ff, #d500f9, #ff004c);
-  background-size: 300% 100%;
+  background: linear-gradient(120deg, #ff004c, #ff8a00, #ffe600, #00e676, #00b0ff, #d500f9, #ff004c);
+  background-size: 300% 300%;
   opacity: 0; transition: opacity var(--t);
 }
-/* kcl red */
+/* KCL: red-focused rainbow (their brand red) */
 .sponsor-logos li.tier-tensor-kcl::before {
-  background: linear-gradient(90deg, #e1051d, #ff2d55, #ff5e3a, #ff8a00, #ffb400, #ff2d7a, #e1051d);
+  background: linear-gradient(90deg, #e1051d, #ff2d55, #ff5e3a, #ff8a00, #ffb400, #ff2d7a, #e1051d, #e1051d);
 }
-/* blue for record */
+/* Record: deep-blue-focused rainbow (their brand navy) */
 .sponsor-logos li.tier-tensor-record::before {
-  background: linear-gradient(90deg, #001b6e, #0033cc, #0077ff, #00b0ff, #3a6bff, #5e17eb, #001b6e);
+  background: linear-gradient(90deg, #0D3D68, #2C6C87, #58BEBE, #DAEDEE, #58BEBE, #2C6C87, #0D3D68);
 }
-/* blue, green for tormo */
+/* Record: deep-blue-focused rainbow (their brand navy) */
 .sponsor-logos li.tier-tensor-tormo::before {
-  background: linear-gradient(90deg, #2b308c, #2b3a8c, #b0d91e, #2b3a8c, #2b308c);
+  background: linear-gradient(90deg, #22333B, #354974, #7388cb, #8c9fc5, #7388cb, #354974, #22333B);
 }
+
 .sponsor-logos li.tier-tensor-kcl::before,
-.sponsor-logos li.tier-tensor-tormo::before,
-.sponsor-logos li.tier-tensor-record::before { background-size: 300% 100%; }
+.sponsor-logos li.tier-tensor-record::before,
+.sponsor-logos li.tier-tensor-tormo::before { background-size: 300% 300%; }
 
 .sponsor-logos li.tier-tensor:hover::before { opacity: 1; animation: tensor-rainbow 3s linear infinite; }
 .sponsor-logos li.tier-tensor:hover img { animation: tensor-hue 3s linear infinite; }
@@ -531,7 +529,6 @@ strong { font-weight: 700; color: var(--cream); }
   .sponsor-logos li.tier-tensor:hover::before { animation: none; }
   .sponsor-logos li.tier-tensor:hover img { animation: none; }
 }
-
 
 /* === FINANCE CARD === */
 .finance {
